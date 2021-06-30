@@ -31,7 +31,9 @@ body {
   align-items: center;
   justify-content: space-around;
 }
-
+.algo{
+  border: 10px;
+}
 .OpcMenu {
   height: 100%;
   width: 50%;
