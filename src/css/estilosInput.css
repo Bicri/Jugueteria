@@ -27,7 +27,8 @@
     padding: 10px 5px;
     border-radius: 5px;
     width: 300px;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.144); 
+    height: 40px;
+    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.096);   
 
 }
 .inputText:focus{
@@ -163,15 +164,20 @@ table{
     box-shadow: 0 0 1px 3px rgba(76, 0, 255, 0.5);
   }
 
-  .boton-primario{
+  .boton-primario{    
     border: 2px solid rgba(104, 0, 173, 0.164);
-    width: 100px;
-    height: 40px;
+
+    width: auto;
+    height: 43px;
+    margin:0 3px;
+    padding:0 25px;
+    font-weight: 400;
+    
     box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.096);  
     background: rgb(255, 255, 255);
     border-radius: 5px;
     color: black;
-
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   }
 
   .boton-primario:hover{
@@ -181,12 +187,17 @@ table{
     color: white;
     cursor:pointer;
   }
+  .boton-primario:focus{
+    box-shadow: 0 0 5px 1px rgba(143, 45, 209, 0.534);
+  }
 
   .boton-aceptar{
     border: 2px solid rgba(104, 0, 173, 0.164);
-    width: 100px;
-    height: 40px;
-    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.568); 
+    width: auto;
+    height: 43px;
+    margin:0 3px;
+    padding:0 25px;
+    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.096); 
     background: rgb(109, 221, 146);
     border-radius: 5px;
     color: white;
@@ -195,7 +206,7 @@ table{
 
   .boton-aceptar:hover{
     background: rgb(100, 194, 104);
-    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.568); 
+    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.096);
     
     color: white;
     cursor:pointer;
@@ -203,9 +214,11 @@ table{
 
   .boton-cancelar{
     border: 2px solid rgba(104, 0, 173, 0.164);
-    width: 100px;
-    height: 40px;
-    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.568); 
+    width: auto;
+    height: 43px;
+    margin:0 3px;
+    padding:0 25px;
+    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.096); 
     background: rgb(240, 72, 72);
     border-radius: 5px;
     color: white;
@@ -214,22 +227,24 @@ table{
 
   .boton-cancelar:hover{
     background: rgb(240, 90, 72);
-    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.568); 
+    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.096);
     color: white;
     cursor:pointer;
   }
 
-  .boton-mini-editar{
+  .boton-mini{
     border: 2px solid rgba(104, 0, 173, 0.164);
-    width: 40px;
-    height: 40px;
-    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.568); 
+    width: auto;
+    height: 43px;
+    margin:0 3px;
+    padding:0 25px;
+    box-shadow: -2px 2px 5px 0 rgba(0, 0, 0, 0.096); 
     background: #22C9C9;
     border-radius: 5px;
     color: white;
     cursor:pointer;
   }
-  .boton-mini-editar:hover{
-    border: 2px solid white;
+  .boton-mini:hover{    
+    background: #2eacac;
 
   }

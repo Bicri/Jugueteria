@@ -3,7 +3,7 @@ $directoryURI = $_SERVER['REQUEST_URI'];
 $path = parse_url($directoryURI, PHP_URL_PATH);
 //echo $path;
 $components = explode('/', $path);
-$first_part = $components[3];
+$first_part = $components[2];
 //echo "<br>".$first_part;
 ?>
     <nav class="nav">
