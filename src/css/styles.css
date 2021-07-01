@@ -1,0 +1,40 @@
+.Container-Elements {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  flex-direction: row;
+}
+
+.producto {
+  display: flex;
+  padding: 10px;
+  width: 250px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  margin: 10px;
+  background: white;
+}
+
+.Titulo-seccion {
+  margin-left: 28px;
+  margin-top: 20px;
+  color: lightslategrey;
+}
+
+.Header-seccion {
+  position: sticky;
+  display: flex;
+  z-index: 10;
+  flex-direction: row;
+  align-items: center;
+  background: white;
+  top: 0px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}

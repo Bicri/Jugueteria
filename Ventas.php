@@ -8,221 +8,43 @@
     <title>Jugueteria</title>
     <link rel="stylesheet" href="src/css/estilos.css">
     <link rel="stylesheet" href="src/css/estilosInput.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/css/styles.css" />
 </head>
 
 <body>
     <div class="contenedorFlex">
         <?php include_once("Layouts/header.php"); ?>
         <div class="MasterContainer">            
-            <!-- <div style="position:sticky; display:flex; z-index:10;flex-direction:row; align-items:center; background: white; top:0px; padding:10px 20px; border-radius: 10px;"> -->
-            <h1 style="margin-left:28px; margin-top:20px; color:lightslategrey;">VENTAS</h1>
-            <div class="headerSticky">
-            <input type="text" name="" class="inputText" id="">
+        <h1 class="Titulo-seccion" style="background: white; width:100%; margin: 0 20px; padding-top: 10px;">VENTAS</h1>    
+        <div class="Header-seccion">    
+            <input type="text" name="buscarID" class="inputText" id="">
             <input type="button" value="Buscar" class="boton-primario">
-            </div>
-            
-            
-            <div class="container" style="width: 100%; margin: 0 auto; display:flex; justify-content: space-evenly; flex-wrap: wrap; flex-direction: row;">
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-                <div class="producto" style="display:flex; padding:10px; width:250px; justify-content: center;flex-direction: column;
-                    align-items: center; border:1px solid lightgray; border-radius: 15px; margin:10px; background:white;">
-
-                    <h1>Titulo</h1>
-                    <p>ID:#</p>
-                    <p>Precio:#</p>
-                    <p>cantidad:#</p>
-                    <input type='button' value='Añadir' id='boton' style="border: 2px solid rgba(104, 0, 173, 0.164);
-                        width: 100px;
-                        height: 40px;
-                            cursor:pointer;
-                        background: white;
-                        border-radius: 5px;
-                        color: black;">
-                    </input>
-                </div>
-
-
-            </div>
+            <input type="button" value="Ver carrito" class="boton-mini">
         </div>
-    </div>
+            
+            
+            <div class="Container-Elements" id="items">      
+          
 
 
-
+    <!-- TEMPLATE PARA CADA PRODUCTO -->
+    <template id="template-card">
+      <div class="producto">
+        <h5>Nombre</h5>
+        <p>Código: <span id="codigo"></span></p>
+        <p>PrecioVenta: <span id="precio"></span></p>
+        <p>Cantidad: <span id="cantidad"></span></p>
+        <button class="btn btn-dark boton-card">Comprar</button>
+      </div>
+    </template>
+    <!-- TEMPLATE PARA CADA PRODUCTO -->
+    <script src="src/js/script.js"></script>
 </body>
 
 </html>
