@@ -38,8 +38,8 @@
       <div class="producto">
         <h5>Nombre</h5>
         <p>Código: <span id="codigo"></span></p>
-        <p>PrecioVenta: <span id="precio"></span></p>
-        <p>Cantidad: <span id="cantidad"></span></p>
+        <p>Precio de venta: <span id="precio"></span></p>
+        <p>Almacen: <span id="cantidad"></span></p>
         <button class="btn btn-dark boton-card">Comprar</button>
       </div>
     </template>
