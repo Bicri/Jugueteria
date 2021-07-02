@@ -25,7 +25,8 @@
         <div class="Header-seccion">    
             <input type="text" name="buscarID" id="buscarID" class="inputText" id="">
             <input type="button" value="Buscar" id="pruebaID" class="boton-primario">
-            <input type="button" value="Ver carrito" class="boton-mini">
+            <input type="button" value="Ver carrito" id="pruebaOBJ" class="boton-mini">
+            <!-- <button id="pruebaOBJ" onClick="javascript:window.location.href='/Jugueteria/ObjetoCarrito.php'">Edit</button> -->
         </div>
             
             
