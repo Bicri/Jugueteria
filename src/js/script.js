@@ -3,6 +3,7 @@ const templateCard = document.querySelector("#template-card").content;
 const fragment = document.createDocumentFragment();
 let carrito = {};
 const fethcData = async () => {
+  
   try {
     const data = await (await fetch("index.php")).json();
     console.log(data);
@@ -11,28 +12,52 @@ const fethcData = async () => {
     console.log(error);
   }
 };
-/* 
-const fetchID = async (id) => {
-  const productosPintados = document.querySelectorAll('.producto');
-  productosPintados.forEach(element => {
-    element.remove();
-  });
-  try {    
-    const data = await (await fetch("datos.json")).json();
-    console.log(data);
-    pintarCards(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
-document.querySelector('#pruebaID').addEventListener('click',fetchID); */
 
 document.addEventListener("DOMContentLoaded", () => {
   fethcData();
 });
 
-const pintarCards = (data) => {
+
+/*  */
+const templateSinRes = document.querySelector('#template-sinResultados').content;
+const PintarNullCard = ()=>{
   
+  templateSinRes.querySelector("h5").textContent = "SIN RESULTADOS";
+    const clone = templateSinRes.cloneNode(true);
+    fragment.appendChild(clone);
+  
+  items.appendChild(fragment);
+  console.log(items);
+};
+
+const fetchID = async (id) => {
+  
+  const productosPintados = document.querySelectorAll('.producto');
+  productosPintados.forEach(element => {
+    element.remove();
+  });
+  try {    
+    const data = await (await fetch(`index.php?buscarId=${id}`)).json();
+    if(data.items.length==0)PintarNullCard();
+    else pintarCards(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+document.querySelector('#pruebaID').addEventListener('click',()=>{
+  let ID = document.querySelector('#buscarID').value;
+  fetchID(ID);
+});
+
+/*  */
+
+
+
+
+
+
+const pintarCards = (data) => {  
   data.items.forEach((element) => {
     templateCard.querySelector("h5").textContent = element.nombre;
     templateCard.querySelector("#precio").textContent =element.venta;

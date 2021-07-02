@@ -108,7 +108,7 @@ body {
 .MasterContainer {
   width: 95%;
   position: relative;
-  box-shadow: -15px 8px 15px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: -5px 8px 20px 5px rgba(25, 33, 144, 0.335);
   border-radius: 10px;
 
   overflow-x: auto;

@@ -248,3 +248,6 @@ table{
     background: #2eacac;
 
   }
+  .boton-mini:focus{
+    box-shadow: 0 0 4px 1px #1c6969;
+  }
