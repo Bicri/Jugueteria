@@ -21,11 +21,12 @@
     <div class="contenedorFlex">
         <?php include_once("Layouts/header.php"); ?>
         <div class="MasterContainer">            
-        <h1 class="Titulo-seccion" style="background: white; width:100%; margin: 0 20px; padding-top: 10px;">VENTAS</h1>    
+        <h1 class="Titulo-seccion" style="background: white; width:98.5%; margin: 0 20px; padding-top: 10px;">VENTAS</h1>    
         <div class="Header-seccion">    
-            <input type="text" name="buscarID" class="inputText" id="">
-            <input type="button" value="Buscar" class="boton-primario">
-            <input type="button" value="Ver carrito" class="boton-mini">
+            <input type="text" name="buscarID" id="buscarID" class="inputText" id="">
+            <input type="button" value="Buscar" id="pruebaID" class="boton-primario">
+            <input type="button" value="Ver carrito" id="pruebaOBJ" class="boton-mini">
+            <!-- <button id="pruebaOBJ" onClick="javascript:window.location.href='/Jugueteria/ObjetoCarrito.php'">Edit</button> -->
         </div>
             
             
@@ -40,10 +41,19 @@
         <p>Código: <span id="codigo"></span></p>
         <p>Precio de venta: <span id="precio"></span></p>
         <p>Almacen: <span id="cantidad"></span></p>
-        <button class="btn btn-dark boton-card">Comprar</button>
+        <button class="btn btn-dark boton-card" style=" border:none;
+        backdrop-filter: blur(25px);
+        ">Comprar</button>
       </div>
     </template>
-    <!-- TEMPLATE PARA CADA PRODUCTO -->
+    <!-- ------------------------------------ -->
+    <!-- TEMPLATE PARA mensaje SIN RESULTADOS -->
+    <template id="template-sinResultados">
+      <div class="producto" >
+      <h5 style="padding:0; margin:0;"></h5>
+      </div>
+    </template>
+    <!-- ------------------------------------ -->
     <script src="src/js/script.js"></script>
 </body>
 
