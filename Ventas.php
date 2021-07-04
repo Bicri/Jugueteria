@@ -25,8 +25,8 @@
         <div class="Header-seccion">    
             <input type="text" name="buscarID" id="buscarID" class="inputText" id="">
             <input type="button" value="Buscar" id="pruebaID" class="boton-primario">
-            <input type="button" value="Ver carrito" id="pruebaOBJ" class="boton-mini">
-            <!-- <button id="pruebaOBJ" onClick="javascript:window.location.href='/Jugueteria/ObjetoCarrito.php'">Edit</button> -->
+            <input type="button" value="Ver carrito" id="verCarrito" class="boton-mini">
+            <button id="pruebaOBJ">Edit</button>
         </div>
             
             
@@ -54,6 +54,16 @@
       </div>
     </template>
     <!-- ------------------------------------ -->
+
+
+    <!-- ----------------MODALES-------------------- -->
+    <div class="containerModal">
+      <div class="contenidoModal">
+        
+      </div>
+    </div>
+    <!-- ------------------------------------ -->
+    
     <script src="src/js/script.js"></script>
 </body>
 

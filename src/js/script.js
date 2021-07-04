@@ -4,13 +4,16 @@ const fragment = document.createDocumentFragment();
 let carrito = {};
 const pruebaOBJ = document.querySelector("#pruebaOBJ");
 
+const VerCarritoBTN = document.querySelector("#verCarrito");
+
+const VerCarritoFunc=()=>{
+  console.log("carrito open");
+}
+VerCarritoBTN.addEventListener("click", () => {VerCarritoFunc();});
+
+
 const mandarObjCarrito = async (carritoOBJ) => {
-  
-<<<<<<< HEAD
-  let dataDesdePHP =await fetch('ObjetoCarrito.php?ALGO=2&DOS=2', {
-=======
-  let dataDesdePHP =await fetch('ObjetoCarrito.php?ALGO=2&DOS=2', { //Ten cuidado aqui Angel
->>>>>>> master
+  let dataDesdePHP =await fetch('Jugueteria/pruebaMandar.php?ALGO=2&DOS=2', { //Ten cuidado aqui Angel
     method: 'POST', // or 'PUT'
     body: JSON.stringify(carritoOBJ),
     headers: {
@@ -21,10 +24,8 @@ const mandarObjCarrito = async (carritoOBJ) => {
     console.log(respuestaUltima);    
     //window.location.assign('ObjetoCarrito.php');
 };
+pruebaOBJ.addEventListener("click", () => {mandarObjCarrito(carrito);});
 
-pruebaOBJ.addEventListener("click", () => {
-  mandarObjCarrito(carrito);
-});
 const fethcData = async () => {
   try {
     const data = await (await fetch("Jugueteria/Productos.php")).json();
@@ -35,14 +36,10 @@ const fethcData = async () => {
   }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  fethcData();
-});
+document.addEventListener("DOMContentLoaded", () => {fethcData();});
 
 /*  */
-const templateSinRes = document.querySelector(
-  "#template-sinResultados"
-).content;
+const templateSinRes = document.querySelector("#template-sinResultados").content;
 const PintarNullCard = () => {
   templateSinRes.querySelector("h5").textContent = "SIN RESULTADOS";
   const clone = templateSinRes.cloneNode(true);
@@ -53,16 +50,14 @@ const PintarNullCard = () => {
 };
 
 const fetchID = async (id) => {
-  const productosPintados = document.querySelectorAll(".producto");
+  /* const productosPintados = document.querySelectorAll(".producto");
   productosPintados.forEach((element) => {
     element.remove();
-  });
+  }); */
+  items.innerHTML='';
+  
   try {
-<<<<<<< HEAD
-    const data = await (await fetch(`index.php?buscarId=${id}`)).json();
-=======
     const data = await (await fetch(`Jugueteria/Productos.php?buscarId=${id}`)).json();
->>>>>>> master
     if (data.items.length == 0) PintarNullCard();
     else pintarCards(data);
   } catch (error) {
@@ -107,7 +102,8 @@ const setCarrito = (CardObj) => {
     id: CardObj.querySelector(".boton-card").dataset.codigo,
     nombre: CardObj.querySelector("h5").textContent,
     precio: CardObj.querySelector("#precio").textContent,
-    cantidad: parseInt(CardObj.querySelector("#cantidad").textContent),
+    Almacen:parseInt((CardObj.querySelector('#cantidad').textContent)),
+    cantidad:0
   };
   console.log(producto);
   if (carrito.hasOwnProperty(producto.id)) {

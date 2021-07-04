@@ -68,8 +68,6 @@ class Juguete{
         }
     }
 
-<<<<<<< HEAD
-=======
     public function insertarCarrito($juguete)
     {
         try
@@ -93,7 +91,6 @@ class Juguete{
             echo "Error en el servidor: ".$e->getMessage();
         }
     }
->>>>>>> master
 
 
 }
