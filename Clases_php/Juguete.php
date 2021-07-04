@@ -68,6 +68,32 @@ class Juguete{
         }
     }
 
+<<<<<<< HEAD
+=======
+    public function insertarCarrito($juguete)
+    {
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+            $sql = 'CALL pcd_add_carrito(:_clave, :_cant, :_prec)';
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':_clave',$juguete->id, PDO::PARAM_STR);
+            $stmt->bindParam(':_cant',$juguete->cantidad, PDO::PARAM_INT);
+            $stmt->bindParam(':_prec',$juguete->precio, PDO::PARAM_STR);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            
+            $stmt=null;
+            $this->conexion->desconectar();
+            return 0;
+        }catch(Exception $e)
+        {
+            return 1;
+            echo "Error en el servidor: ".$e->getMessage();
+        }
+    }
+>>>>>>> master
 
 
 }

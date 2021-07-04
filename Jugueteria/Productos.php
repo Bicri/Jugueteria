@@ -1,9 +1,6 @@
 <?php
 
-
-<<<<<<< HEAD
-//require_once ("Clases_php/Conexion.php");
-require_once ("Clases_php/Juguete.php");
+require_once ("../Clases_php/Juguete.php");
 
 
 $juguete = new Juguete();
@@ -19,7 +16,5 @@ if(isset($_GET["buscarId"]) && $_GET["buscarId"]!='')
     echo json_encode(['statuscode' => 200,'items'=>$items]);
 }
 
-=======
->>>>>>> master
 
 ?>

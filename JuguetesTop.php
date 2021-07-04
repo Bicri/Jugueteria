@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xml:lang="es"> 
+
 
 <head>
     <meta charset="UTF-8">
