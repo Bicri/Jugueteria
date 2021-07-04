@@ -9,6 +9,10 @@
     //le mandan en este caso el objeto carrito
     //echo json_encode(file_get_contents('php://input')); 
     //así quedaría la cadena con 3 productos de ejemplo
+    $carritoRecibidoNUEVO = '{
+        "10":{"id":"10","nombre":"Batman","precio":"25.5","Almacen":15,"cantidad":0},
+        "23":{"id":"23","nombre":"Matchbox","precio":"50","Almacen":15,"cantidad":0},
+        "70":{"id":"70","nombre":"Hot wheels","precio":"52","Almacen":4,"cantidad":2}}';
     $carritoRecibido = '{
         "10":{"id":"10","nombre":"Batman","precio":"25.5","cantidad":2},
         "23":{"id":"23","nombre":"Matchbox","precio":"50","cantidad":3},
