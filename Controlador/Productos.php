@@ -1,6 +1,6 @@
 <?php
 
-require_once ("../Clases_php/Juguete.php");
+require_once ("../Modelo/Juguete.php");
 
 
 $juguete = new Juguete();
