@@ -8,6 +8,7 @@ class Fecha{
     private $dia;
     private $mes;
     private $anio;
+    private $semana;
 
     public function getDia()
     {
@@ -22,6 +23,11 @@ class Fecha{
     public function getAnio()
     {
         return $this->anio;
+    }
+
+    public function getSemana()
+    {
+        return $this->semana;
     }
 
     function __construct($dia, $mes, $anio)
@@ -41,6 +47,13 @@ class Fecha{
         return new Fecha(date( 'd', strtotime( 'monday this week' )),
                         date( 'm', strtotime( 'monday this week' ) ),
                         date( 'Y', strtotime( 'monday this week' ) ));
+    }
+
+    public function generarSemana()
+    {
+        $dias = array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+        $this->semana = $dias[date("w")];
+        return $this->semana;
     }
 
     public function ToString()

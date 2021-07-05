@@ -1,7 +1,7 @@
 <?php
-    require_once ("Clases_php/Juguete.php");
+    require_once("Clases_php/Juguete.php");
     //echo json_encode($_POST);   
-    
+
     //echo json_encode($_SERVER["CONTENT_TYPE"]);
 
 
@@ -26,14 +26,12 @@
     print_r($carritoconDecode);*/
 
     $objJuguete = new Juguete(); //instancia a juguete
-    $resp=1; //captura la respuesta
-    foreach ($carritoconDecode as $juguete)
-    {
+    $resp = 1; //captura la respuesta
+    foreach ($carritoconDecode as $juguete) {
         $resp = $objJuguete->insertarCarrito($juguete);
     }
 
     echo $resp;//si es 0 todo fine - si es 1 error
 
 
-    
-    
+?>

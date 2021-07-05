@@ -12,7 +12,7 @@ const VerCarritoFunc=()=>{
 VerCarritoBTN.addEventListener("click", () => {VerCarritoFunc();});
 
 
-const mandarObjCarrito = async (carritoOBJ) => {
+const mandarObjCarrito = async (carritoOBJ) => {                              //PruebaMandar en  carpeta Modelo
   let dataDesdePHP =await fetch('Jugueteria/pruebaMandar.php?ALGO=2&DOS=2', { //Ten cuidado aqui Angel
     method: 'POST', // or 'PUT'
     body: JSON.stringify(carritoOBJ),
@@ -28,7 +28,7 @@ pruebaOBJ.addEventListener("click", () => {mandarObjCarrito(carrito);});
 
 const fethcData = async () => {
   try {
-    const data = await (await fetch("Jugueteria/Productos.php")).json();
+    const data = await (await fetch("Controlador/Productos.php")).json();
     console.log(data);
     pintarCards(data);
   } catch (error) {
@@ -57,7 +57,7 @@ const fetchID = async (id) => {
   items.innerHTML='';
   
   try {
-    const data = await (await fetch(`Jugueteria/Productos.php?buscarId=${id}`)).json();
+    const data = await (await fetch(`Controlador/Productos.php?buscarId=${id}`)).json();
     if (data.items.length == 0) PintarNullCard();
     else pintarCards(data);
   } catch (error) {
