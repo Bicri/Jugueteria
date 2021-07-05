@@ -9,6 +9,7 @@ class Fecha{
     private $mes;
     private $anio;
     private $semana;
+    private $nombreMes;
 
     public function getDia()
     {
@@ -49,11 +50,13 @@ class Fecha{
                         date( 'Y', strtotime( 'monday this week' ) ));
     }
 
-    public function generarSemana()
+    public function fechaFormateada()
     {
         $dias = array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+        $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
         $this->semana = $dias[date("w")];
-        return $this->semana;
+        $this->nombreMes = $meses[date("n")-1];
+        return $this->semana.", ".$this->dia." de ".$this->nombreMes." del ".$this->anio;
     }
 
     public function ToString()
