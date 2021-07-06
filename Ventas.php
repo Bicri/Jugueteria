@@ -139,17 +139,17 @@
 
   <!-- ----------------MODAL añadir a carrito------------------- -->
 
-  <div class="containerModal showModal" id="modalComprar">
+  <div class="containerModal" id="modalComprar">
     <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconComprar">
-    <div class="contenidoModal show modalComprar" style="overflow-x:auto; height:80%" id="contenidoModalComprar">
+    <div class="contenidoModal modalComprar" style="overflow-x:auto; height:80%" id="contenidoModalComprar">
       <h1>Añadir a carrito</h1><br>
       <div>
         <label for="inputCantidad">Cantidad a añadir</label><br>
-        <input type="text" name="inputCantidad" id="inputCantidad" class="inputText"><br><br>
+        <input type="text" name="inputCantidad" maxlength="6" id="inputCantidad" class="inputText"><br><br>
       </div>
       <div>
         <label for="inputPrecio">Precio de venta</label><br>
-        <input type="number" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
+        <input type="number" name="inputPrecio"  id="inputPrecio" class="inputText"><br><br>
         <div style="display:flex; justify-content:center; align-items: center;">
         <input type="button" value="Añadir" class="boton-aceptar" id="AñadirCompra">
         </div>
