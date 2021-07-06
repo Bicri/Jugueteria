@@ -1,5 +1,5 @@
 <?php
-    require_once("Clases_php/Juguete.php");
+    require_once("../Modelo/Juguete.php");
     //echo json_encode($_POST);   
 
     //echo json_encode($_SERVER["CONTENT_TYPE"]);
