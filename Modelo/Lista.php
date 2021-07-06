@@ -1,13 +1,41 @@
 <?php 
+require_once ("Conexion.php");
 
-require_once ("../PDF/fpdf.php");
+
+class Lista{
 
 
-$pdf = new FPDF();
-$pdf->AddPage();
-$pdf->SetFont('Arial','B',18);
-$pdf->Cell(50,12, 'Hola mundo',1,1,'C');
-$pdf->Output();
+    private $conexion; //para instancia de conexion
 
+    public function ObtenerLista()
+    {
+        
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+            $sql = 'CALL pcd_recupera_lista()';
+            $stmt = $con->query($sql);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $items=[];
+            while ($r = $stmt->fetch()){   
+                $item = [
+                    'codigo' => $r['Codigo'],
+                    'nombre' => $r['Nombre'],
+                    'existencia' => $r['Existencia'],
+                    'deseado' => $r['Deseado']
+                ];
+                array_push($items,$item);
+            }
+            $this->conexion->desconectar();
+            $stmt=null;
+            return $items;
+        }catch(Exception $e)
+        {
+            return null;
+            echo "Error en el servidor: ".$e->getMessage();
+        }
+    }
+}
 
 ?>

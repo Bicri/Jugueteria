@@ -18,7 +18,6 @@ class Juguete{
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $items=[];
             while ($r = $stmt->fetch()){   
-                $juguete = new Juguete($r['codigo'],$r['nombre'],$r['precioventa'],$r['existencia'],0,0,0,0);
                 $item = [
                     'codigo' => $r['codigo'],
                     'nombre' => $r['nombre'],
