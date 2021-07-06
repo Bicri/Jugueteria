@@ -4,6 +4,7 @@ const ElementosDebajoCart = document.querySelector("#template-footer").content;
 const ElementosDentroCart = document.querySelector(
   "#template-elementos-carrito"
 ).content;
+const confirmarCompra = document.querySelector('#confirmar-compra');
 const templateElementosCarrito = document.querySelector("#cardss");
 const templateFooterCarrito = document.querySelector("#footer");
 
@@ -186,10 +187,14 @@ const pintarFooter = () => {
 
   if (Object.keys(carrito).length === 0) {
     templateFooterCarrito.innerHTML = `
-      <th scope="row" colspan="5">Carrito vacío con innerHTML</th>
+      <th scope="row" colspan="6">Carrito vacío, comienza a comprar!</th>
       `;
+      confirmarCompra.disabled=true;
+      confirmarCompra.style.cursor = 'not-allowed';
     return;
   }
+  confirmarCompra.disabled=false;
+      confirmarCompra.style.cursor = 'pointer';
   // sumar cantidad y sumar totales
   const nCantidad = Object.values(carrito).reduce(
     (acc, { cantidad }) => acc + cantidad,
@@ -214,6 +219,9 @@ const pintarFooter = () => {
     carrito = {};
     pintarCarrito();
   });
+
+  
+
 };
 
 const btnAumentarDisminuir = (e) => {

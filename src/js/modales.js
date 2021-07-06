@@ -3,6 +3,12 @@ const fondoAdd = document.querySelector(".containerModal");
 const botonCerrar = document.querySelector('.close-icon')
 
 const VerCarritoBTN = document.querySelector("#verCarrito");
+const pruebaModalInput = document.querySelector("#pruebaModalInput");
+
+/* pruebaModalInput.addEventListener("click", () => {
+    contenidoModal.classList.toggle('show');
+    fondoAdd.classList.toggle('showModal');
+}); */
 
 VerCarritoBTN.addEventListener("click", () => {
     contenidoModal.classList.toggle('show');

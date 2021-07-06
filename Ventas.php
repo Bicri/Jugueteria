@@ -53,6 +53,8 @@
         
       </div>
     </div>
+    <button id="pruebaModalInput" class="boton-aceptar">PRUEBA MODAL</button>
+
   </div>
 
 
@@ -76,21 +78,28 @@
             <th scope="col">Producto</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Acción</th>
-            <th scope="col">Total</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Subtotal</th>
           </tr>
         </thead>
 
         <tbody id="cardss"> </tbody>
-        <tfoot>
+        <tfoot style="position:sticky; bottom:0; background:#e6e6e6;">
           <tr id="footer">
-            <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+            <th scope="row" colspan="6">Carrito vacío - comience a comprar!</th>
           </tr>
         </tfoot>
       </table>
+      <div style="width:100%; display:flex; justify-content: flex-end; margin-right:15px;">
+      <button class="btn btn-success btn-sm" id="confirmar-compra" disabled style="cursor:not-allowed;">
+          Confirmar compra
+        </button>
+      </div>
+      
       <hr />
       <!-- FIN TABLA EN CEROS DE CARRITO -->
     </div>
-
+  <!-- TEMPLATES PARA ELEMENTOS DEL CARRITO -->
     <template id="template-elementos-carrito">
       <tr>
         <th scope="row" id="idEnCart">id</th>
@@ -105,22 +114,35 @@
           </button>
         </td>
         <td>$ <span id="precioEnCart">500</span></td>
+        <td>$ <span id="precioEnCart">500</span></td>
       </tr>
     </template>
 
     <template id="template-footer">
-      <th scope="row" colspan="2">Total productos</th>
+      <th scope="row" colspan="3">Total productos</th>
       <td>10</td>
       <td>
         <button class="btn btn-danger btn-sm" id="vaciar-carrito">
           vaciar todo
         </button>
       </td>
-      <td class="font-weight-bold">$ <span>5000</span></td>
+      
+      <td class="font-weight-bold">TOTAL $ <span>5000</span></td>
+      
     </template>
+  <!-- TEMPLATES PARA ELEMENTOS DEL CARRITO -->
 
+  <!-- ----------------MODAL añadir a carrito------------------- -->
 
-
+  <!-- <div class="containerModal1">
+    <img src="./src/img/bx-x.svg" alt="" class="close-icon1">
+    <div class="contenidoModal1" style="overflow-x:auto; height:80%">
+      <h1>Añadir a carrito</h1>
+      <label for="inputCantidad">Cantidad a añadir</label><input type="text" name="inputCantidad" id="inputCantidad">
+      <label for="inputCantidad">Precio de venta</label><input type="number" name="inputCantidad" id="inputCantidad">
+      <button class="boton-aceptar">Añadir</button>
+    </div>
+  </div>   -->
 
 
 
