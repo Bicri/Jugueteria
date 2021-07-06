@@ -8,6 +8,32 @@ const confirmarCompra = document.querySelector('#confirmar-compra');
 const templateElementosCarrito = document.querySelector("#cardss");
 const templateFooterCarrito = document.querySelector("#footer");
 
+
+
+const modalComprar = document.querySelector("#modalComprar");
+const contenidomodalComprar = document.querySelector("#contenidoModalComprar");
+const botonCerrarComprar = document.querySelector("#close-iconComprar");
+
+/* pruebaModalInput.addEventListener("click", () => {
+    console.log("hola modal");    
+  modalComprar.classList.toggle("showModal");
+  contenidomodalComprar.classList.toggle("show");
+}); */
+
+modalComprar.addEventListener("click", (e) => {
+    if (e.target == botonCerrarComprar) {
+        modalComprar.classList.toggle("showModal");
+        contenidomodalComprar.classList.toggle("show");
+    }
+  });
+
+
+
+
+
+
+
+
 const fragment = document.createDocumentFragment();
 let carrito = {};
 const pruebaOBJ = document.querySelector("#pruebaOBJ");
@@ -105,6 +131,8 @@ items.addEventListener("click", (e) => {
 
 const addCarrito = (e) => {
   if (e.target.classList.contains("boton-card")) {
+    modalComprar.classList.toggle("showModal");
+  contenidomodalComprar.classList.toggle("show");  
     setCarrito(e.target.parentElement);
   }
   e.stopPropagation();

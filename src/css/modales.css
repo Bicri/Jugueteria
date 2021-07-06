@@ -21,6 +21,16 @@
     transform: scale(0.3);
     transition: transform .3s 0s ease-in;
 }
+.modalComprar{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+
+    
+}
 
 .show{ /*clase para agregar*/
     transform: scale(1);

@@ -29,7 +29,7 @@
 }
 
 .Header-seccion {
-  position: sticky;
+  position: sticky;  
   display: flex;
   z-index: 10;
   flex-direction: row;

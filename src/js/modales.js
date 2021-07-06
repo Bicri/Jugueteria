@@ -1,28 +1,29 @@
-const contenidoModal = document.querySelector(".contenidoModal");
-const fondoAdd = document.querySelector(".containerModal");
-const botonCerrar = document.querySelector('.close-icon')
+const fondoAdd = document.querySelector("#modalCarrito");
+const contenidoModal = document.querySelector("#modalContenidoCarrito");
+
+
+
+const botonCerrarCarrito = document.querySelector("#close-iconCarrito");
+
 
 const VerCarritoBTN = document.querySelector("#verCarrito");
 const pruebaModalInput = document.querySelector("#pruebaModalInput");
 
-/* pruebaModalInput.addEventListener("click", () => {
-    contenidoModal.classList.toggle('show');
-    fondoAdd.classList.toggle('showModal');
-}); */
+
 
 VerCarritoBTN.addEventListener("click", () => {
-    contenidoModal.classList.toggle('show');
-    fondoAdd.classList.toggle('showModal');
+  contenidoModal.classList.toggle("show");
+  fondoAdd.classList.toggle("showModal");
 });
 
-  fondoAdd.addEventListener('click',e=>{    
-    //console.log(e.target);
-    if(e.target==botonCerrar){
-        fondoAdd.classList.toggle("showModal");
-        contenidoModal.classList.toggle('show');
-        //MenuIcon1.style.opacity=1;
-        //console.log(imagenes.length);
-    }
+fondoAdd.addEventListener("click", (e) => {
+  //console.log(e.target);
+  if (e.target == botonCerrarCarrito) {    
+    contenidoModal.classList.toggle("show");
+    fondoAdd.classList.toggle("showModal");
+    //MenuIcon1.style.opacity=1;
+    //console.log(imagenes.length);
+  }
 });
 /* 
 function addimagen (img){
