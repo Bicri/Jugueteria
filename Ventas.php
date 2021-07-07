@@ -20,10 +20,10 @@
       <h1 class="Titulo-seccion" style="background: white; width:98.5%; margin: 0 20px; padding-top: 10px;">Ventas</h1>
       <div class="Header-seccion">
         <input type="text" name="buscarID" id="buscarID" class="inputText" id="">
-        <input type="button" value="Buscar" id="pruebaID" class="boton-primario">
+        <input type="button" value="Buscar" id="botonBuscarID" class="boton-primario">
         <input type="button" value="Ver carrito" id="verCarrito" class="boton-mini">
-        <input type="button" value="Edit" id="pruebaOBJ" class="boton-mini">
-        <input type="button" value="PruebaModal" id="pruebaModalInput" class="boton-aceptar">
+        <input type="button" value="Edit" id="pruebaOBJ" class="boton-mini" style="display:none">
+        <!-- <input type="button" value="PruebaModal" id="pruebaModalInput" class="boton-aceptar"> -->
 
       </div>
 
@@ -35,10 +35,10 @@
         <!-- TEMPLATE PARA CADA PRODUCTO -->
         <template id="template-card">
           <div class="producto">
-            <h5>Nombre</h5>
-            <p>Código: <span id="codigo"></span></p>
-            <p>Precio de venta: <span id="precio"></span></p>
-            <p>Almacen: <span id="cantidad"></span></p>
+            <h5 class="tituloCard">Nombre</h5>
+            <p>ID: <span id="codigo"></span></p>
+            <p>Precio: $<span id="precio"></span></p>
+            <p>Almacen: <span id="cantidad"></span> unidades</p>
             <button class="btn btn-dark boton-card" style=" border:none;
         backdrop-filter: blur(25px);
         ">Comprar</button>
@@ -93,7 +93,7 @@
         </tfoot>
       </table>
       <div style="width:100%; display:flex; justify-content: flex-end; margin-right:15px;">
-        <button class="btn btn-success btn-sm" id="confirmar-compra" disabled style="cursor:not-allowed;">
+        <button class="btn btn-success btn-sm mb-3" id="confirmar-compra" disabled style="cursor:not-allowed;">
           Confirmar compra
         </button>
       </div>
@@ -142,19 +142,29 @@
   <div class="containerModal" id="modalComprar">
     <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconComprar">
     <div class="contenidoModal modalComprar" style="overflow-x:auto; height:80%" id="contenidoModalComprar">
-      <h1>Añadir a carrito</h1><br>
-      <div>
-        <label for="inputCantidad">Cantidad a añadir</label><br>
-        <input type="text" name="inputCantidad" maxlength="6" id="inputCantidad" class="inputText"><br><br>
-      </div>
-      <div>
-        <label for="inputPrecio">Precio de venta</label><br>
-        <input type="number" name="inputPrecio"  id="inputPrecio" class="inputText"><br><br>
-        <div style="display:flex; justify-content:center; align-items: center;">
-        <input type="button" value="Añadir" class="boton-aceptar" id="AñadirCompra">
+      <div class="container1">
+        <h1>Añadir a carrito</h1><br>
+        <div>
+          <label for="inputCantidad">Cantidad a añadir</label><br>
+          <input type="number" name="inputCantidad" maxlength="6" id="inputCantidad" class="inputText"><br><br>
+        </div>
+        <div>
+          <label for="inputPrecio">Precio de venta</label><br>
+          <input type="number" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
+          <div style="display:flex; justify-content:center; align-items: center;">
+            <input type="button" value="Añadir" class="boton-aceptar" id="AñadirCompra">
+          </div>
         </div>
       </div>
+
+      <div class="container2">
+        <h2>PRODUCTO</h2>
+        <div id="cardenModal"></div>
+      </div>
+
     </div>
+
+  </div>
   </div>
 
 

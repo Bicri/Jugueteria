@@ -57,7 +57,7 @@ class Fecha{
         $this->semana = $dias[date("w")];
         $this->nombreMes = $meses[date("n")-1];
         return $this->semana.", ".$this->dia." de ".$this->nombreMes." del ".$this->anio;
-
+    }
 
     public function ToString()
     {

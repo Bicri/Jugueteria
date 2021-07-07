@@ -104,7 +104,7 @@ const fetchID = async (id) => {
   }
 };
 
-document.querySelector("#pruebaID").addEventListener("click", () => {
+document.querySelector("#botonBuscarID").addEventListener("click", () => {
   let ID = document.querySelector("#buscarID").value;
   fetchID(ID);
 });
@@ -125,18 +125,39 @@ const pintarCards = (data) => {
   console.log(items);
 };
 
+const cardDentroDeModal=(element)=>{
+  document.querySelector("#cardenModal").innerHTML='';  
+    const clone = element.cloneNode(true);
+    fragment.appendChild(clone);  
+  document.querySelector("#cardenModal").appendChild(fragment);
+  document.querySelector("#cardenModal").querySelector('.btn').remove();
+}
+
 items.addEventListener("click", (e) => {
   addCarrito(e);
 });
 
+const AñadirCompra = document.querySelector("#AñadirCompra");
+const inputCantidad = document.querySelector("#inputCantidad");
+const inputPrecio = document.querySelector("#inputPrecio");
 const addCarrito = (e) => {
   if (e.target.classList.contains("boton-card")) {
     modalComprar.classList.toggle("showModal");
-  contenidomodalComprar.classList.toggle("show");  
+  contenidomodalComprar.classList.toggle("show");
+  cardDentroDeModal(e.target.parentElement);
+  AñadirCompra.addEventListener('click',()=>{
     setCarrito(e.target.parentElement);
+    modalComprar.classList.toggle("showModal");
+  contenidomodalComprar.classList.toggle("show");
+  inputCantidad.value='';
+  inputPrecio.value="";
+
+  })
+  //setCarrito(e.target.parentElement);
   }
   e.stopPropagation();
 };
+
 
 /* const setCarrito = (CardObj) => {
   const producto = {
@@ -155,16 +176,17 @@ const addCarrito = (e) => {
 
   console.log(carrito);
 }; */
+
 const setCarrito = (CardObj) => {
   const producto = {
     id: CardObj.querySelector(".boton-card").dataset.codigo,
     nombre: CardObj.querySelector("h5").textContent,
-    precio: CardObj.querySelector("#precio").textContent,
+    precio: parseInt(inputPrecio.value),
     Almacen: parseInt(CardObj.querySelector("#cantidad").textContent),
-    cantidad: 1,
+    cantidad: parseInt(inputCantidad.value),
   };
   console.log(producto);
-  if (!carrito.hasOwnProperty(producto.id)) {
+  if (!carrito.hasOwnProperty(producto.id) && producto.cantidad<= producto.Almacen) {
     carrito[producto.id] = { ...producto };
     pintarCarrito();
     return true;
@@ -172,18 +194,18 @@ const setCarrito = (CardObj) => {
 
   if (
     carrito.hasOwnProperty(producto.id) &&
-    carrito[producto.id].cantidad < 6
+    carrito[producto.id].cantidad <= carrito[producto.id].Almacen
   ) {
-    producto.cantidad = carrito[producto.id].cantidad + 1;
+    producto.cantidad = carrito[producto.id].cantidad +parseInt(inputCantidad.value);
+    producto.Almacen = carrito[producto.id].Almacen -parseInt(inputCantidad.value);
     carrito[producto.id] = { ...producto };
     pintarCarrito();
     return true;
   } else {
-    console.log("NO AGREGADO");
+    alert("almacen insuficiente");
     return false;
   }
-
-  pintarCarrito();
+  
 };
 
 const pintarCarrito = () => {

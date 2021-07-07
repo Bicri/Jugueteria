@@ -1,5 +1,5 @@
 <?php
-    require_once("Clases_php/Juguete.php");
+    require_once("../Modelo/Juguete.php");
     //echo json_encode($_POST);   
 
     //echo json_encode($_SERVER["CONTENT_TYPE"]);
@@ -10,15 +10,15 @@
     //echo json_encode(file_get_contents('php://input')); 
     //así quedaría la cadena con 3 productos de ejemplo
     $carritoRecibidoNUEVO = '{
-        "10":{"id":"10","nombre":"Batman","precio":"25.5","Almacen":15,"cantidad":0},
-        "23":{"id":"23","nombre":"Matchbox","precio":"50","Almacen":15,"cantidad":0},
-        "70":{"id":"70","nombre":"Hot wheels","precio":"52","Almacen":4,"cantidad":2}}';
+        "10":{"id":"10","nombre":"Batman","precio":"2.5","Almacen":3,"cantidad":12},
+        "23":{"id":"23","nombre":"Matchbox","precio":"70","Almacen":15,"cantidad":10},
+        "70":{"id":"70","nombre":"Hot wheels","precio":"82","Almacen":4,"cantidad":20}}';
     $carritoRecibido = '{
         "10":{"id":"10","nombre":"Batman","precio":"25.5","cantidad":2},
         "23":{"id":"23","nombre":"Matchbox","precio":"50","cantidad":3},
         "70":{"id":"70","nombre":"Hot wheels","precio":"52","cantidad":1}
     }';
-    $carritoconDecode = json_decode($carritoRecibido);
+    $carritoconDecode = json_decode($carritoRecibidoNUEVO);
     //LA DIFERENCIA SOLO ES LA IMPRESIÓN para ver la estructura de lo que te convierte
     /*echo "<br><br><br><br><br><br><br><br>";
     var_dump($carritoconDecode);
