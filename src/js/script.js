@@ -213,7 +213,9 @@ const setCarrito = (CardObj) => {
     /* producto.Almacen =
       carrito[producto.id].Almacen - parseInt(inputCantidad.value); */
     carrito[producto.id] = { ...producto };
-    mandarObjCarrito(carrito);
+    let carritoaBD = {...carrito[producto.id]}
+    carritoaBD.cantidad = parseInt(inputCantidad.value)
+    mandarObjCarrito(carritoaBD);
     //fetchID(ID2);
     pintarCarrito();
 
