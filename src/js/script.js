@@ -4,6 +4,7 @@ const ElementosDebajoCart = document.querySelector("#template-footer").content;
 const ElementosDentroCart = document.querySelector(
   "#template-elementos-carrito"
 ).content;
+
 const confirmarCompra = document.querySelector("#confirmar-compra");
 const templateElementosCarrito = document.querySelector("#cardss");
 const templateFooterCarrito = document.querySelector("#footer");
@@ -48,6 +49,7 @@ const mandarObjCarrito = async (carritoOBJ) => {
   mandarObjCarrito(carrito);
 }); */
 
+
 const fethcData = async () => {
   try {
     const data = await (await fetch("Controlador/Productos.php")).json();
@@ -80,7 +82,9 @@ const fetchID = async () => {
   productosPintados.forEach((element) => {
     element.remove();
   }); */
+
   let id = document.querySelector("#buscarID").value;
+
   items.innerHTML = "";
 
   try {
@@ -132,6 +136,7 @@ const inputPrecio = document.querySelector("#inputPrecio");
 const addCarrito = (e) => {
   if (e.target.classList.contains("boton-card")) {
     modalComprar.classList.toggle("showModal");
+
     contenidomodalComprar.classList.toggle("show");
     cardDentroDeModal(e.target.parentElement);
     AñadirCompra.dataset.idproducto = e.target.dataset.codigo;
@@ -141,6 +146,7 @@ const addCarrito = (e) => {
     /*  */
     console.log(e.target.parentElement);
     //setCarrito(e.target.parentElement);
+
   }
   e.stopPropagation();
 };
@@ -157,6 +163,7 @@ AñadirCompra.addEventListener("click", (e) => {
     modalComprar.classList.toggle("showModal");
     contenidomodalComprar.classList.toggle("show");
     console.log("AGREGADOOOOOO");
+
 
     inputCantidad.value = "";
     inputPrecio.value = "";
@@ -182,6 +189,7 @@ AñadirCompra.addEventListener("click", (e) => {
 
   console.log(carrito);
 }; */
+
 let carritoaBD={};
 const setCarrito = (CardObj) => {
   const producto = {
@@ -201,6 +209,7 @@ const setCarrito = (CardObj) => {
     mandarObjCarrito(carritoaBD);
     //fetchID(ID2);
     pintarCarrito();
+
 
     return true;
   }
@@ -236,6 +245,7 @@ const pintarCarrito = () => {
       producto.nombre;
     ElementosDentroCart.querySelector("#cantidadEnCart").textContent =
       producto.cantidad;
+
     ElementosDentroCart.querySelector("#Subtotal").textContent =
       producto.precio * producto.cantidad;
     ElementosDentroCart.querySelector("#precioEnCart").textContent =
@@ -260,12 +270,14 @@ const pintarFooter = () => {
     templateFooterCarrito.innerHTML = `
       <th scope="row" colspan="6">Carrito vacío, comienza a comprar!</th>
       `;
+
     confirmarCompra.disabled = true;
     confirmarCompra.style.cursor = "not-allowed";
     return;
   }
   confirmarCompra.disabled = false;
   confirmarCompra.style.cursor = "pointer";
+
   // sumar cantidad y sumar totales
   const nCantidad = Object.values(carrito).reduce(
     (acc, { cantidad }) => acc + cantidad,
@@ -290,6 +302,7 @@ const pintarFooter = () => {
     carrito = {};
     pintarCarrito();
   });
+
 };
 
 const btnAumentarDisminuir = (e) => {

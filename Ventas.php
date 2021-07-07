@@ -39,6 +39,7 @@
             <p>ID: <span id="codigo"></span></p>
             <p>Precio: $<span id="precio"></span></p>
             <p>Almacen: <span id="cantidad"></span> unidades</p>
+
             <button class="btn btn-dark boton-card" style=" border:none;
         backdrop-filter: blur(25px);
         ">Comprar</button>
@@ -67,7 +68,9 @@
   <div class="containerModal" id="modalCarrito">
     <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconCarrito">
 
+
     <div class="contenidoModal" style="overflow-x:auto; background: white!important;;height:80%" id="modalContenidoCarrito">
+
 
       <div style="position:sticky; top:0; background:white;">
         <h1>Carrito</h1>
@@ -93,7 +96,9 @@
         </tfoot>
       </table>
       <div style="width:100%; display:flex; justify-content: flex-end; margin-right:15px;">
+
         <button class="btn btn-success btn-sm mb-3" id="confirmar-compra" disabled style="cursor:not-allowed;">
+
           Confirmar compra
         </button>
       </div>
@@ -160,11 +165,14 @@
       <div class="container2">
         <h2>PRODUCTO</h2>
         <div id="cardenModal"></div>
+
       </div>
 
     </div>
 
+
   </div>
+
   </div>
 
 
