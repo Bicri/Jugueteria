@@ -67,7 +67,7 @@
   <div class="containerModal" id="modalCarrito">
     <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconCarrito">
 
-    <div class="contenidoModal" style="overflow-x:auto; height:80%" id="modalContenidoCarrito">
+    <div class="contenidoModal" style="overflow-x:auto; background: white!important;;height:80%" id="modalContenidoCarrito">
 
       <div style="position:sticky; top:0; background:white;">
         <h1>Carrito</h1>
