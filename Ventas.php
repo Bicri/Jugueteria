@@ -119,7 +119,7 @@
         </button>
       </td>
       <td>$ <span id="precioEnCart">500</span></td>
-      <td>$ <span id="precioEnCart">500</span></td>
+      <td>$ <span id="Subtotal">500</span></td>
     </tr>
   </template>
 

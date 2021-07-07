@@ -7,18 +7,18 @@
 
     //esta linea es la que tiene lo que le manda el js 7 el file_get_contents agarra lo que 
     //le mandan en este caso el objeto carrito
-    //echo json_encode(file_get_contents('php://input')); 
+    $carritoRecibido =  file_get_contents('php://input');    
     //así quedaría la cadena con 3 productos de ejemplo
-    $carritoRecibidoNUEVO = '{
-        "10":{"id":"10","nombre":"Batman","precio":"2.5","Almacen":3,"cantidad":12},
-        "23":{"id":"23","nombre":"Matchbox","precio":"70","Almacen":15,"cantidad":10},
-        "70":{"id":"70","nombre":"Hot wheels","precio":"82","Almacen":4,"cantidad":20}}';
+    /* $carritoRecibidoNUEVO = '{"10":{"id":10,"nombre":"Batman","precio":25,"Almacen":3,
+        "cantidad":5},"11":{"id":11,"nombre":"Buzz Lightyear","precio":150,"Almacen":100,
+            "cantidad":4},"23":{"id":23,"nombre":"Matchbox","precio":50,"Almacen":8,
+                "cantidad":1}}';
     $carritoRecibido = '{
         "10":{"id":"10","nombre":"Batman","precio":"25.5","cantidad":2},
         "23":{"id":"23","nombre":"Matchbox","precio":"50","cantidad":3},
         "70":{"id":"70","nombre":"Hot wheels","precio":"52","cantidad":1}
-    }';
-    $carritoconDecode = json_decode($carritoRecibidoNUEVO);
+    }'; */
+    $carritoconDecode = json_decode($carritoRecibido);
     //LA DIFERENCIA SOLO ES LA IMPRESIÓN para ver la estructura de lo que te convierte
     /*echo "<br><br><br><br><br><br><br><br>";
     var_dump($carritoconDecode);
@@ -31,7 +31,7 @@
         $resp = $objJuguete->insertarCarrito($juguete);
     }
 
-    echo $resp;//si es 0 todo fine - si es 1 error
+    echo json_encode($carritoRecibido);//si es 0 todo fine - si es 1 error
 
 
 ?>
