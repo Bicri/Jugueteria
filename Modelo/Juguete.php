@@ -91,6 +91,40 @@ class Juguete{
         }
     }
 
+    public function tarjetaCarrito($juguete)
+    {
+        $resp = "";
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+
+            if($juguete->accion == "1")
+            {
+                $sql = 'CALL pcd_addUno_carrito(:_codigo)';
+            }
+            else
+            {
+                $sql = 'CALL pcd_RestUno_carrito(:_codigo)';
+            }
+            
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':_codigo',$juguete->id, PDO::PARAM_STR, 100);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while ($r = $stmt->fetch()){
+                $resp =  $r['Resp'];
+            }
+            $stmt=null;
+            $this->conexion->desconectar();
+            return $resp;
+        }catch(Exception $e)
+        {
+            echo "Error en el servidor: ".$e->getMessage();
+            return -1;
+        }
+    }
+
 
 }
 
