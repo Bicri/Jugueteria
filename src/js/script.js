@@ -32,7 +32,7 @@ const pruebaOBJ = document.querySelector("#pruebaOBJ");
 
 const mandarObjCarrito = async (carritoOBJ) => {
   //PruebaMandar en  carpeta Modelo
-  let dataDesdePHP = await fetch("/Jugueteria/Controlador/ObjetoCarrito.php", {
+  let dataDesdePHP = await fetch("../../Controlador/ObjetoCarrito.php", {
     //Ten cuidado aqui Angel
     method: "POST", // or 'PUT'
     body: JSON.stringify(carritoOBJ),
