@@ -7,8 +7,10 @@ $first_part = $components[2];
 //echo "<br>".$first_part;
 ?>
     <nav class="nav">
-        <div class="Logo">
-            <a href="./Ventas.php" style="color:black; border:1px solid rgba(0,0,0,0.1); background: #fff;" > JUGUETERIA</a>
+
+        <div class="Logo" style="margin-right: 150px;">
+            <a href="./Ventas.php" style="color:black; border:1px solid rgba(0,0,0,0.1); background: #fff;" > LOGO</a>
+
         </div>
         <div class="OpcMenu">
             <a href="./Ventas.php" class="<?php echo ($first_part=="Ventas.php") ? "active":""?>"> INICIO </a>

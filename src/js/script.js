@@ -4,11 +4,10 @@ const ElementosDebajoCart = document.querySelector("#template-footer").content;
 const ElementosDentroCart = document.querySelector(
   "#template-elementos-carrito"
 ).content;
-const confirmarCompra = document.querySelector('#confirmar-compra');
+
+const confirmarCompra = document.querySelector("#confirmar-compra");
 const templateElementosCarrito = document.querySelector("#cardss");
 const templateFooterCarrito = document.querySelector("#footer");
-
-
 
 const modalComprar = document.querySelector("#modalComprar");
 const contenidomodalComprar = document.querySelector("#contenidoModalComprar");
@@ -21,18 +20,11 @@ const botonCerrarComprar = document.querySelector("#close-iconComprar");
 }); */
 
 modalComprar.addEventListener("click", (e) => {
-    if (e.target == botonCerrarComprar) {
-        modalComprar.classList.toggle("showModal");
-        contenidomodalComprar.classList.toggle("show");
-    }
-  });
-
-
-
-
-
-
-
+  if (e.target == botonCerrarComprar) {
+    modalComprar.classList.toggle("showModal");
+    contenidomodalComprar.classList.toggle("show");
+  }
+});
 
 const fragment = document.createDocumentFragment();
 let carrito = {};
@@ -40,24 +32,23 @@ const pruebaOBJ = document.querySelector("#pruebaOBJ");
 
 const mandarObjCarrito = async (carritoOBJ) => {
   //PruebaMandar en  carpeta Modelo
-  let dataDesdePHP = await fetch(
-    "/Jugueteria/Controlador/pruebaMandar.php?ALGO=2&DOS=2",
-    {
-      //Ten cuidado aqui Angel
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(carritoOBJ),
-      headers: {
-        "Content-Type": "application/json", // AQUI indicamos el formato
-      }, // data can be `string` or {object}!
-    }
-  );
+  let dataDesdePHP = await fetch("../../Controlador/ObjetoCarrito.php", {
+    //Ten cuidado aqui Angel
+    method: "POST", // or 'PUT'
+    body: JSON.stringify(carritoOBJ),
+    headers: {
+      "Content-Type": "application/json", // AQUI indicamos el formato
+    }, // data can be `string` or {object}!
+  });
   let respuestaUltima = await dataDesdePHP.json();
+  fetchID();
   console.log(respuestaUltima);
   //window.location.assign('ObjetoCarrito.php');
 };
-pruebaOBJ.addEventListener("click", () => {
+/* pruebaOBJ.addEventListener("click", () => {
   mandarObjCarrito(carrito);
-});
+}); */
+
 
 const fethcData = async () => {
   try {
@@ -86,11 +77,14 @@ const PintarNullCard = () => {
   console.log(items);
 };
 
-const fetchID = async (id) => {
+const fetchID = async () => {
   /* const productosPintados = document.querySelectorAll(".producto");
   productosPintados.forEach((element) => {
     element.remove();
   }); */
+
+  let id = document.querySelector("#buscarID").value;
+
   items.innerHTML = "";
 
   try {
@@ -104,9 +98,8 @@ const fetchID = async (id) => {
   }
 };
 
-document.querySelector("#pruebaID").addEventListener("click", () => {
-  let ID = document.querySelector("#buscarID").value;
-  fetchID(ID);
+document.querySelector("#botonBuscarID").addEventListener("click", () => {
+  fetchID();
 });
 
 /*  */
@@ -125,18 +118,59 @@ const pintarCards = (data) => {
   console.log(items);
 };
 
+const cardDentroDeModal = (element) => {
+  document.querySelector("#cardenModal").innerHTML = "";
+  const clone = element.cloneNode(true);
+  fragment.appendChild(clone);
+  document.querySelector("#cardenModal").appendChild(fragment);
+  document.querySelector("#cardenModal").querySelector(".btn").remove();
+};
+
 items.addEventListener("click", (e) => {
   addCarrito(e);
 });
 
+const AñadirCompra = document.querySelector("#AñadirCompra");
+const inputCantidad = document.querySelector("#inputCantidad");
+const inputPrecio = document.querySelector("#inputPrecio");
 const addCarrito = (e) => {
   if (e.target.classList.contains("boton-card")) {
     modalComprar.classList.toggle("showModal");
-  contenidomodalComprar.classList.toggle("show");  
-    setCarrito(e.target.parentElement);
+
+    contenidomodalComprar.classList.toggle("show");
+    cardDentroDeModal(e.target.parentElement);
+    AñadirCompra.dataset.idproducto = e.target.dataset.codigo;
+    inputPrecio.value =
+      e.target.parentElement.querySelector("#precio").textContent;
+      inputCantidad.value = 1;
+    /*  */
+    console.log(e.target.parentElement);
+    //setCarrito(e.target.parentElement);
+
   }
   e.stopPropagation();
 };
+AñadirCompra.addEventListener("click", (e) => {
+  //let ID2 = document.querySelector("#buscarID").value;
+  console.log("debugger");
+  let producto =
+    e.target.parentElement.parentElement.parentElement.parentElement.querySelector(
+      ".producto"
+    );
+  console.log(producto);
+  //setCarrito(producto);
+  if (setCarrito(producto)) {
+    modalComprar.classList.toggle("showModal");
+    contenidomodalComprar.classList.toggle("show");
+    console.log("AGREGADOOOOOO");
+
+
+    inputCantidad.value = "";
+    inputPrecio.value = "";
+  } else {
+    alert("almacen insuficiente");
+  }
+});
 
 /* const setCarrito = (CardObj) => {
   const producto = {
@@ -155,35 +189,51 @@ const addCarrito = (e) => {
 
   console.log(carrito);
 }; */
+
+let carritoaBD={};
 const setCarrito = (CardObj) => {
   const producto = {
-    id: CardObj.querySelector(".boton-card").dataset.codigo,
+    id: parseInt(CardObj.querySelector("#codigo").textContent),
     nombre: CardObj.querySelector("h5").textContent,
-    precio: CardObj.querySelector("#precio").textContent,
+    precio: parseFloat(inputPrecio.value),
     Almacen: parseInt(CardObj.querySelector("#cantidad").textContent),
-    cantidad: 1,
+    cantidad: parseInt(inputCantidad.value),
   };
   console.log(producto);
-  if (!carrito.hasOwnProperty(producto.id)) {
+  if (
+    !carrito.hasOwnProperty(producto.id) &&
+    producto.cantidad <= producto.Almacen
+  ) {
     carrito[producto.id] = { ...producto };
+    carritoaBD = {...carrito[producto.id]}
+    mandarObjCarrito(carritoaBD);
+    //fetchID(ID2);
     pintarCarrito();
+
+
     return true;
   }
 
   if (
     carrito.hasOwnProperty(producto.id) &&
-    carrito[producto.id].cantidad < 6
+    carrito[producto.id].cantidad <= carrito[producto.id].Almacen
   ) {
-    producto.cantidad = carrito[producto.id].cantidad + 1;
+    producto.cantidad =
+      carrito[producto.id].cantidad + parseInt(inputCantidad.value);
+    /* producto.Almacen =
+      carrito[producto.id].Almacen - parseInt(inputCantidad.value); */
     carrito[producto.id] = { ...producto };
+    carritoaBD = {...carrito[producto.id]}
+    carritoaBD.cantidad = parseInt(inputCantidad.value)
+    mandarObjCarrito(carritoaBD);
+    //fetchID(ID2);
     pintarCarrito();
+
     return true;
   } else {
-    console.log("NO AGREGADO");
+    /* alert("almacen insuficiente"); */
     return false;
   }
-
-  pintarCarrito();
 };
 
 const pintarCarrito = () => {
@@ -195,8 +245,11 @@ const pintarCarrito = () => {
       producto.nombre;
     ElementosDentroCart.querySelector("#cantidadEnCart").textContent =
       producto.cantidad;
-    ElementosDentroCart.querySelector("#precioEnCart").textContent =
+
+    ElementosDentroCart.querySelector("#Subtotal").textContent =
       producto.precio * producto.cantidad;
+    ElementosDentroCart.querySelector("#precioEnCart").textContent =
+      producto.precio;
 
     ElementosDentroCart.querySelector("#boton-addCantidad").dataset.id =
       producto.id;
@@ -217,12 +270,14 @@ const pintarFooter = () => {
     templateFooterCarrito.innerHTML = `
       <th scope="row" colspan="6">Carrito vacío, comienza a comprar!</th>
       `;
-      confirmarCompra.disabled=true;
-      confirmarCompra.style.cursor = 'not-allowed';
+
+    confirmarCompra.disabled = true;
+    confirmarCompra.style.cursor = "not-allowed";
     return;
   }
-  confirmarCompra.disabled=false;
-      confirmarCompra.style.cursor = 'pointer';
+  confirmarCompra.disabled = false;
+  confirmarCompra.style.cursor = "pointer";
+
   // sumar cantidad y sumar totales
   const nCantidad = Object.values(carrito).reduce(
     (acc, { cantidad }) => acc + cantidad,
@@ -247,8 +302,6 @@ const pintarFooter = () => {
     carrito = {};
     pintarCarrito();
   });
-
-  
 
 };
 

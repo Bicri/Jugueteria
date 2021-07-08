@@ -5,7 +5,7 @@ class Conexion{
 
     /* */private $host = "localhost";
     private $user = "bicri";
-    private $password = "b1cr11999_"; /**/
+    private $password = "b1cr11999_";/* */
     //private $host = "localhost:3307";
     //private $user = "root";
     //private $password = "";
