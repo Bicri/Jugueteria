@@ -32,7 +32,7 @@ const pruebaOBJ = document.querySelector("#pruebaOBJ");
 
 const mandarObjCarrito = async (carritoOBJ) => {
   //PruebaMandar en  carpeta Modelo
-  let dataDesdePHP = await fetch("../../Controlador/ObjetoCarrito.php", {
+  let dataDesdePHP = await fetch("/Jugueteria/Controlador/ObjetoCarrito.php", {
     //Ten cuidado aqui Angel
     method: "POST", // or 'PUT'
     body: JSON.stringify(carritoOBJ),
@@ -110,17 +110,23 @@ const pintarCards = (data) => {
     templateCard.querySelector("#precio").textContent = element.venta;
     templateCard.querySelector("#cantidad").textContent = element.existencia;
     templateCard.querySelector("#codigo").textContent = element.codigo;
-    templateCard.querySelector(".boton-card").dataset.codigo = element.codigo;
+    templateCard.querySelector(".boton-card").dataset.codigo = element.codigo;        
     const clone = templateCard.cloneNode(true);
+    if(element.existencia === '0'){
+      //clone.querySelector('.producto').style.backgroundImage ="linear-gradient(120deg, #f6d46569 0% ,rgba(253, 159, 133, 0.493) 100%)";
+      clone.querySelector('.producto').style.boxShadow="0 0 9px 1px red";
+    }
     fragment.appendChild(clone);
+    
   });
   items.appendChild(fragment);
   console.log(items);
 };
 
 const cardDentroDeModal = (element) => {
-  document.querySelector("#cardenModal").innerHTML = "";
-  const clone = element.cloneNode(true);
+  document.querySelector("#cardenModal").innerHTML = "";  
+  const clone = element.cloneNode(true);  
+  clone.style.background = "white"
   fragment.appendChild(clone);
   document.querySelector("#cardenModal").appendChild(fragment);
   document.querySelector("#cardenModal").querySelector(".btn").remove();
@@ -216,7 +222,7 @@ const setCarrito = (CardObj) => {
 
   if (
     carrito.hasOwnProperty(producto.id) &&
-    carrito[producto.id].cantidad <= carrito[producto.id].Almacen
+    producto.cantidad <= producto.Almacen
   ) {
     producto.cantidad =
       carrito[producto.id].cantidad + parseInt(inputCantidad.value);
@@ -307,7 +313,7 @@ const pintarFooter = () => {
 
 const btnAumentarDisminuir = (e) => {
   // console.log(e.target.classList.contains('btn-info'))
-  if (e.target.classList.contains("btn-info")) {
+  if (e.target.classList.contains("btn-info") && confirm("are you shure?")) {
     const producto = carrito[e.target.dataset.id];
     producto.cantidad++;
     carrito[e.target.dataset.id] = { ...producto };
