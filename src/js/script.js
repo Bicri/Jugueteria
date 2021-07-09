@@ -203,6 +203,7 @@ AñadirCompra.addEventListener("click", (e) => {
 let carritoaBD = {};
 
 
+
 const setCarrito = (CardObj) => {
   const producto = {
     id: CardObj.querySelector("#codigo").textContent,
