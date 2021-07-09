@@ -201,9 +201,11 @@ AñadirCompra.addEventListener("click", (e) => {
 }; */
 
 let carritoaBD = {};
+
+
 const setCarrito = (CardObj) => {
   const producto = {
-    id: parseInt(CardObj.querySelector("#codigo").textContent),
+    id: CardObj.querySelector("#codigo").textContent,
     nombre: CardObj.querySelector("h5").textContent,
     precio: parseFloat(inputPrecio.value),
     Almacen: parseInt(CardObj.querySelector("#cantidad").textContent),

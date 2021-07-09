@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jugueteria</title>
+  <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo="> <!-- linea para quitar error favicon.i -->
   <link rel="stylesheet" href="src/css/estilos.css">
   <link rel="stylesheet" href="src/css/estilosInput.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
@@ -17,10 +18,10 @@
   <div class="contenedorFlex">
     <?php include_once("Layouts/header.php"); ?>
     <div class="MasterContainer">
-      <h1 class="Titulo-seccion" style="background: white; width:98.5%; margin: 0 20px; padding-top: 10px;">Ventas</h1>
+      <h1 class="Titulo-seccion" style="font-weight:400; letter-spacing: 2px; background: white; width:98.5%; margin: 0 20px; padding-top: 10px;">Ventas</h1>
       <div class="Header-seccion">
         <input type="text" name="buscarID" id="buscarID" class="inputText" id="">
-        <input type="button" value="Buscar" id="botonBuscarID" class="boton-primario">
+        <input type="button" value="Buscar 🔎" id="botonBuscarID" class="boton-primario">
         <input type="button" value="Ver carrito" id="verCarrito" class="boton-mini">
         <input type="button" value="Edit" id="pruebaOBJ" class="boton-mini" style="display:none">
         <!-- <input type="button" value="PruebaModal" id="pruebaModalInput" class="boton-aceptar"> -->
