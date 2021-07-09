@@ -22,8 +22,10 @@
     background: rgba(214, 214, 214, 0.603);
     
     box-shadow: -2px -1px 10px 4px rgba(0, 0, 0, 0.404);
-    border-right:2px solid white;
-    border-bottom:2px solid white;
+
+    border-left:1px solid white;
+    border-top:1px solid white;
+
     border-radius: 10px;
     
 
@@ -83,3 +85,33 @@
     border-radius: 15px;
       
 }
+.titulo{
+    font-weight: 400; font-size: 40px;    
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
