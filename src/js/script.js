@@ -49,7 +49,6 @@ const mandarObjCarrito = async (carritoOBJ) => {
   mandarObjCarrito(carrito);
 }); */
 
-
 const fethcData = async () => {
   try {
     const data = await (await fetch("Controlador/Productos.php")).json();
@@ -110,23 +109,22 @@ const pintarCards = (data) => {
     templateCard.querySelector("#precio").textContent = element.venta;
     templateCard.querySelector("#cantidad").textContent = element.existencia;
     templateCard.querySelector("#codigo").textContent = element.codigo;
-    templateCard.querySelector(".boton-card").dataset.codigo = element.codigo;        
+    templateCard.querySelector(".boton-card").dataset.codigo = element.codigo;
     const clone = templateCard.cloneNode(true);
-    if(element.existencia === '0'){
+    if (element.existencia === "0") {
       //clone.querySelector('.producto').style.backgroundImage ="linear-gradient(120deg, #f6d46569 0% ,rgba(253, 159, 133, 0.493) 100%)";
-      clone.querySelector('.producto').style.boxShadow="0 0 9px 1px red";
+      clone.querySelector(".producto").style.boxShadow = "0 0 9px 1px red";
     }
     fragment.appendChild(clone);
-    
   });
   items.appendChild(fragment);
   console.log(items);
 };
 
 const cardDentroDeModal = (element) => {
-  document.querySelector("#cardenModal").innerHTML = "";  
-  const clone = element.cloneNode(true);  
-  clone.style.background = "white"
+  document.querySelector("#cardenModal").innerHTML = "";
+  const clone = element.cloneNode(true);
+  clone.style.background = "white";
   fragment.appendChild(clone);
   document.querySelector("#cardenModal").appendChild(fragment);
   document.querySelector("#cardenModal").querySelector(".btn").remove();
@@ -140,7 +138,10 @@ const AñadirCompra = document.querySelector("#AñadirCompra");
 const inputCantidad = document.querySelector("#inputCantidad");
 const inputPrecio = document.querySelector("#inputPrecio");
 const addCarrito = (e) => {
-  if (e.target.classList.contains("boton-card")) {
+  if (
+    e.target.classList.contains("boton-card") &&
+    parseInt(e.target.parentElement.querySelector("#cantidad").textContent) > 0
+  ) {
     modalComprar.classList.toggle("showModal");
 
     contenidomodalComprar.classList.toggle("show");
@@ -148,11 +149,15 @@ const addCarrito = (e) => {
     AñadirCompra.dataset.idproducto = e.target.dataset.codigo;
     inputPrecio.value =
       e.target.parentElement.querySelector("#precio").textContent;
-      inputCantidad.value = 1;
+    inputCantidad.value = 1;
     /*  */
     console.log(e.target.parentElement);
     //setCarrito(e.target.parentElement);
-
+  } else if(
+    e.target.classList.contains("boton-card") &&
+    parseInt(e.target.parentElement.querySelector("#cantidad").textContent) <= 0
+  ){
+    alert("NO HAY STOCK");
   }
   e.stopPropagation();
 };
@@ -169,7 +174,6 @@ AñadirCompra.addEventListener("click", (e) => {
     modalComprar.classList.toggle("showModal");
     contenidomodalComprar.classList.toggle("show");
     console.log("AGREGADOOOOOO");
-
 
     inputCantidad.value = "";
     inputPrecio.value = "";
@@ -196,7 +200,7 @@ AñadirCompra.addEventListener("click", (e) => {
   console.log(carrito);
 }; */
 
-let carritoaBD={};
+let carritoaBD = {};
 const setCarrito = (CardObj) => {
   const producto = {
     id: parseInt(CardObj.querySelector("#codigo").textContent),
@@ -211,11 +215,10 @@ const setCarrito = (CardObj) => {
     producto.cantidad <= producto.Almacen
   ) {
     carrito[producto.id] = { ...producto };
-    carritoaBD = {...carrito[producto.id]}
+    carritoaBD = { ...carrito[producto.id] };
     mandarObjCarrito(carritoaBD);
     //fetchID(ID2);
     pintarCarrito();
-
 
     return true;
   }
@@ -229,8 +232,8 @@ const setCarrito = (CardObj) => {
     /* producto.Almacen =
       carrito[producto.id].Almacen - parseInt(inputCantidad.value); */
     carrito[producto.id] = { ...producto };
-    carritoaBD = {...carrito[producto.id]}
-    carritoaBD.cantidad = parseInt(inputCantidad.value)
+    carritoaBD = { ...carrito[producto.id] };
+    carritoaBD.cantidad = parseInt(inputCantidad.value);
     mandarObjCarrito(carritoaBD);
     //fetchID(ID2);
     pintarCarrito();
@@ -303,17 +306,46 @@ const pintarFooter = () => {
 
   templateFooterCarrito.appendChild(fragment);
 
+  const CancelaAgregaCarrito = async () => {
+    let objCancelarCarrito ={"Total":0} //0 para eliminar carrito
+    let permisoparaAccion = await fetch("/Jugueteria/Controlador/CancelaAgregaCarrito.php", {    
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(objCancelarCarrito),
+      headers: {
+        "Content-Type": "application/json", // AQUI indicamos el formato
+      }, // data can be `string` or {object}!
+    });
+    let respuestaUltima = await permisoparaAccion.text();  
+    console.log(respuestaUltima);
+  };
+
   const boton = document.querySelector("#vaciar-carrito");
   boton.addEventListener("click", () => {
+    CancelaAgregaCarrito();
     carrito = {};
     pintarCarrito();
   });
+};
 
+const aumentarCarritoConsultaBD = async (idparaAccion,accion) => {
+  let objetoparaAccion ={"id":idparaAccion,"accion":accion}
+  let permisoparaAccion = await fetch("/Jugueteria/Controlador/UnidadCarrito.php", {    
+    method: "POST", // or 'PUT'
+    body: JSON.stringify(objetoparaAccion),
+    headers: {
+      "Content-Type": "application/json", // AQUI indicamos el formato
+    }, // data can be `string` or {object}!
+  });
+  let respuestaUltima = await permisoparaAccion.text();  
+  console.log(respuestaUltima);
+//  return true;
 };
 
 const btnAumentarDisminuir = (e) => {
   // console.log(e.target.classList.contains('btn-info'))
-  if (e.target.classList.contains("btn-info") && confirm("are you shure?")) {
+  let idparaAccion =e.target.parentElement.parentElement.querySelector("#idEnCart").textContent;
+  if (e.target.classList.contains("btn-info") && aumentarCarritoConsultaBD(idparaAccion,1)) {
+    //if (e.target.classList.contains("btn-info")) {
     const producto = carrito[e.target.dataset.id];
     producto.cantidad++;
     carrito[e.target.dataset.id] = { ...producto };
@@ -322,9 +354,11 @@ const btnAumentarDisminuir = (e) => {
 
   if (e.target.classList.contains("btn-danger")) {
     const producto = carrito[e.target.dataset.id];
-    producto.cantidad--;
-    if (producto.cantidad === 0) {
-      delete carrito[e.target.dataset.id];
+    if (producto.cantidad > 1 && aumentarCarritoConsultaBD(idparaAccion,0)) producto.cantidad--;
+    else if (producto.cantidad <= 1 && confirm("are you shure?")) {
+      if(aumentarCarritoConsultaBD(idparaAccion,0)){
+        delete carrito[e.target.dataset.id];
+      }      
     } else {
       carrito[e.target.dataset.id] = { ...producto };
     }
