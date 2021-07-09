@@ -1,8 +1,8 @@
 <?php
 
 require_once("../Modelo/Juguete.php");
-
-$jugueteRecibido = '{"id":"2","accion":"0"}'; //Si accion = 1 -> inserta uno
+$jugueteRecibido =  file_get_contents('php://input');    
+//$jugueteRecibido = '{"id":"2","accion":"0"}'; //Si accion = 1 -> inserta uno
                                                //Si accion = 0 -> resta uno
 
 $jugueteRecibido=json_decode($jugueteRecibido);

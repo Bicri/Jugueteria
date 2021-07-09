@@ -4,7 +4,9 @@
 require_once ("../Modelo/Juguete.php");
 require_once ("../Modelo/Fecha.php");
 
-$accion = '{"Total":"21"}'; //Si total = 0 --> accion de eliminar carrito
+$accion =  file_get_contents('php://input'); 
+
+//$accion = '{"Total":"21"}'; //Si total = 0 --> accion de eliminar carrito
                            //Si total es mayor a 0 accion de efectuar venta
 
 
@@ -14,7 +16,7 @@ $accion = json_decode($accion);
 $objJuguete = new Juguete(); //instancia a juguete
 $resp = 1; //captura la respuesta
 
-if($accion->Total == '0')
+if($accion->Total == 0)
 {
     $resp = $objJuguete->rollbackCarrito();
 }
