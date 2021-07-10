@@ -399,7 +399,6 @@ class Juguete{
         }
     }
 
-
     public function ObtenerCostoBorrado($clave)
     {
         $item="";
@@ -468,7 +467,6 @@ class Juguete{
             return -1;
         }
     }
-
 
 }
 
