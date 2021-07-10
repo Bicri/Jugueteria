@@ -32,7 +32,7 @@ const pruebaOBJ = document.querySelector("#pruebaOBJ");
 
 const mandarObjCarrito = async (carritoOBJ) => {
   //PruebaMandar en  carpeta Modelo
-  let dataDesdePHP = await fetch("/Jugueteria/Controlador/ObjetoCarrito.php", {
+  let dataDesdePHP = await fetch("../../Controlador/ObjetoCarrito.php", {
     //Ten cuidado aqui Angel
     method: "POST", // or 'PUT'
     body: JSON.stringify(carritoOBJ),
@@ -311,7 +311,7 @@ const pintarFooter = () => {
 
   const CancelaAgregaCarrito = async () => {
     let objCancelarCarrito ={"Total":0} //0 para eliminar carrito
-    let permisoparaAccion = await fetch("/Jugueteria/Controlador/CancelaAgregaCarrito.php", {    
+    let permisoparaAccion = await fetch("../../Controlador/CancelaAgregaCarrito.php", {    
       method: "POST", // or 'PUT'
       body: JSON.stringify(objCancelarCarrito),
       headers: {
@@ -332,7 +332,7 @@ const pintarFooter = () => {
 
 const aumentarCarritoConsultaBD = async (idparaAccion,accion) => {
   let objetoparaAccion ={"id":idparaAccion,"accion":accion}
-  let permisoparaAccion = await fetch("/Jugueteria/Controlador/UnidadCarrito.php", {    
+  let permisoparaAccion = await fetch("../../Controlador/UnidadCarrito.php", {    
     method: "POST", // or 'PUT'
     body: JSON.stringify(objetoparaAccion),
     headers: {
