@@ -24,7 +24,7 @@ else
 {
     $hoy = new Fecha(0,0,0);
     $hoy = $hoy->getToday();
-    $resp = $objJuguete->efectuarVenta($hoy, $accion->Total);
+    $resp = $objJuguete->efectuarVenta($hoy);
 }
 
 echo $resp;

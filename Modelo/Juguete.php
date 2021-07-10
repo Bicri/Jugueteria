@@ -177,18 +177,17 @@ class Juguete{
         }
     }
 
-    public function efectuarVenta($hoy, $total)
+    public function efectuarVenta($hoy)
     {
         try
         {
             $this->conexion = new Conexion();
             $con = $this->conexion->conectar();
-            $sql = 'CALL pcd_efectua_venta(:_anioT, :_mesT, :_diaT, :_totalT)';
+            $sql = 'CALL pcd_efectua_venta(:_anioT, :_mesT, :_diaT)';
             $stmt = $con->prepare($sql);
             $stmt->bindParam(':_anioT',$hoy->getAnio(), PDO::PARAM_INT);
             $stmt->bindParam(':_mesT',$hoy->getMes(), PDO::PARAM_INT);
             $stmt->bindParam(':_diaT',$hoy->getDia(), PDO::PARAM_INT);
-            $stmt->bindParam(':_totalT',$total, PDO::PARAM_STR);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             
