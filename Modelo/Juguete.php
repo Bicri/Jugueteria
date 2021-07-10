@@ -400,6 +400,76 @@ class Juguete{
     }
 
 
+    public function ObtenerCostoBorrado($clave)
+    {
+        $item="";
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+
+            $sql = 'CALL pcd_Costo_borrar(:_clave)';
+        
+            $stmt = $con->prepare($sql);
+
+            $stmt->bindParam(':_clave',$clave, PDO::PARAM_STR);
+
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            while ($r = $stmt->fetch()){
+                $item = [
+                    'codigo' => $r['codigo'],
+                    'nombre' => $r['Nombre'],
+                    'existencia' => $r['Existencia'],
+                    'costo' => $r['Costo']
+                ];
+            }
+            $stmt=null;
+            $this->conexion->desconectar();
+            return $item;
+        }catch(Exception $e)
+        {
+            echo "Error en el servidor: ".$e->getMessage();
+            return -1;
+        }
+    }
+
+
+    public function BorraJuguete($juguete,$hoy)
+    {
+        $resp = null;
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+
+            $sql = 'CALL pcd_borra_Juguete(:clave,:bandera,:_anio,:_mes,:_dia)';
+        
+            $stmt = $con->prepare($sql);
+            
+            $stmt->bindParam(':clave',$juguete->idNuevo, PDO::PARAM_STR);
+            $stmt->bindParam(':bandera',$juguete->idViejo, PDO::PARAM_INT);
+            $stmt->bindParam(':_anio',$hoy->getAnio(), PDO::PARAM_INT);
+            $stmt->bindParam(':_mes',$hoy->getMes(), PDO::PARAM_INT);
+            $stmt->bindParam(':_dia',$hoy->getDia(), PDO::PARAM_INT);
+
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while ($r = $stmt->fetch()){
+                $resp =  $r['Resp'];
+            }
+            $stmt=null;
+            $this->conexion->desconectar();
+            return $resp;
+        }catch(Exception $e)
+        {
+            echo "Error en el servidor: ".$e->getMessage();
+            return -1;
+        }
+    }
+
+
 }
 
 ?>
