@@ -7,13 +7,18 @@ require_once ("../Modelo/Fecha.php");
 //accion 4 --> Edicion terminada
 //accion 5 --> Agregar a lista
 //accion 6 --> Deseo borrar (ya paso el modal que le pregunta si esta seguro) --> devuleve el costo de su juguete
-//accion 7 --> No desea agregar el costo del juguete borrado a utilidades
-//accion 8 --> desea agregar el costo del juguete borrado a utilidades
+
+//accion 7 --> Bandera 0 = No desea agregar el costo del juguete borrado a utilidades
+//             Bandera 1 = desea agregar el costo del juguete borrado a utilidades
 
 //Los datos en el objeto recibido dependen de la accion que se requiera, cuando no sea necesario
 //recibir algunos datos mandar sus atributos en vacio "" o simplemente no crear esa propiedad
-//$jugueteRecibido = '{"accion":"8","idNuevo":"10","idViejo":"9","nombre":"Batman","precio":"25.5","costo":"10","cantidad":2}';
-$jugueteRecibido = '{"accion":"5","idNuevo":"1","idViejo":"","nombre":"","precio":"","costo":"","cantidad":"2","anio":"","mes":"","dia":""}';
+//Verificar en cada if los atributos que solicita
+
+//Juguete Genérico:
+//              $jugueteRecibido = '{"accion":"7","idNuevo":"1","idViejo":"1","nombre":"","precio":"","costo":"","cantidad":"2","anio":"","mes":"","dia":""}';
+$jugueteRecibido = '{"accion":"6","idNuevo":"5","idViejo":"1","nombre":"","precio":"","costo":"","cantidad":"2","anio":"","mes":"","dia":""}';
+
 
 $jugueteRecibido = json_decode($jugueteRecibido);
 
@@ -22,12 +27,13 @@ $objJuguete = new Juguete();
 $hoy = new Fecha(0,0,0);
 $hoy = $hoy->getToday();
 
-$resp = 1; //captura la respuesta
+
+$resp = 5; //captura la respuesta
 
 //---------------------------------- Agregar Nuevo Juguete --------------------------------------------
 // Ejemplo de juguete recibido:
-// $jugueteRecibido = '{"accion":"1","idNuevo":"","idViejo":"","nombre":"Batman","precio":"25.5","costo":"10","cantidad":"2"}';
-// $jugueteRecibido = '{"accion":"1","idNuevo":"123","idViejo":"","nombre":"Batman","precio":"25.5","costo":"10","cantidad":"2"}';
+// $jugueteRecibido = '{"accion":"1","idNuevo":"","nombre":"Batman","precio":"25.5","costo":"10","cantidad":"2"}';
+// $jugueteRecibido = '{"accion":"1","idNuevo":"123","nombre":"Batman","precio":"25.5","costo":"10","cantidad":"2"}';
 if($jugueteRecibido->accion == "1")
 {
     $resp = $objJuguete->NuevoJuguete($jugueteRecibido,$hoy);
@@ -42,7 +48,7 @@ if($jugueteRecibido->accion == "1")
 
 //---------------------------------- Agregar Stock a Juguete --------------------------------------------
 // Ejemplo de juguete recibido:
-// $jugueteRecibido = '{"accion":"2","idNuevo":"123","idViejo":"","nombre":"","precio":"25.5","costo":"10","cantidad":"2"}';
+// $jugueteRecibido = '{"accion":"2","idNuevo":"123","precio":"25.5","costo":"10","cantidad":"2"}';
 else if($jugueteRecibido->accion == "2")
 {
     $resp = $objJuguete->AgregarStock($jugueteRecibido,$hoy);
@@ -56,12 +62,12 @@ else if($jugueteRecibido->accion == "2")
 
 //---------------------------------- Solicitar Edicion de  Juguete --------------------------------------------
 // Ejemplo de juguete recibido:
-// $jugueteRecibido = '{"accion":"3","idNuevo":"123","idViejo":"","nombre":"","precio":"","costo":"","cantidad":""}';
+// $jugueteRecibido = '{"accion":"3","idNuevo":"123"}';
 else if($jugueteRecibido->accion == "3")
 {
     $resp = $objJuguete->SolicitarEdicion($jugueteRecibido);
     print_r($resp);
-    //Si resp = 0 --> Array ( [codigo] => 1 [nombre] => Batman [precio] => 30.00 [existencia] => 4 [costo] => 10.00 [anio] => 2021 [mes] => 7 [dia] => 9 )
+    // resp = Array ( [codigo] => 1 [nombre] => Batman [precio] => 30.00 [existencia] => 4 [costo] => 10.00 [anio] => 2021 [mes] => 7 [dia] => 9 )
     //Si resp = -1 --> Error en bd
 }
 
@@ -87,7 +93,7 @@ else if($jugueteRecibido->accion == "4")
 
 //---------------------------------- Agregando Juguete a Lista --------------------------------------------
 // Ejemplo de juguete recibido:
-// $jugueteRecibido = '{"accion":"5","idNuevo":"123","idViejo":"","nombre":"","precio":"","costo":"","cantidad":"10","anio":"","mes":"","dia":""}';
+// $jugueteRecibido = '{"accion":"5","idNuevo":"123","cantidad":"10"}';
 else if($jugueteRecibido->accion == "5")
 {
     $resp = $objJuguete->AgregarLista($jugueteRecibido);
@@ -97,18 +103,41 @@ else if($jugueteRecibido->accion == "5")
 }
 
 
+
+
+//--------------------------- Obteniendo el costo del juguete a borrar --------------------------------------
+// Ejemplo de juguete recibido:
+// $jugueteRecibido = '{"accion":"6","idNuevo":"123"}';
 else if($jugueteRecibido->accion == "6")
 {
-    echo "Devolviendo el costo del juguete a borrar";
+    $resp = $objJuguete->ObtenerCostoBorrado($jugueteRecibido->idNuevo);
+    print_r($resp);
+    // resp = Array ( [codigo] => 1 [nombre] => carss [existencia] => 7 [costo] => 76.50 )
+    // NOTA: Si la existencia es igual a 0 EN LA TABLA, no ejecutar este paso, pasar a la accion 7 con bandera en 0
+    // En caso de haber mandado un producto con existencia 0, no imprime nada (Evitar incurrir en esta accion)
+    //Si resp = -1 --> Error en bd  
 }
+
+
+
+
+//--------------------------- Borrando Juguete --------------------------------------
+// Ejemplo de juguete recibido:
+// NOTA idViejo es la BANDERA, si Bandera = 0, no se agrega el costo. Si bandera = 1, se agrega su costo
+// La bandera se representa con el idViejo
+// $jugueteRecibido = '{"accion":"7","idNuevo":"123","idViejo":"0"}';
+// $jugueteRecibido = '{"accion":"7","idNuevo":"123","idViejo":"1"}';
 else if($jugueteRecibido->accion == "7")
 {
-    echo "No agregar costo de eliminacion a utilidades";
+    $resp = $objJuguete->BorraJuguete($jugueteRecibido,$hoy);
+    echo $resp;
+    //Si resp = 0 --> Eliminado con exito
+    //Si resp = -1 --> Error en bd
 }
-else if($jugueteRecibido->accion == "8")
-{
-    echo "Agregar costo de eliminacion a utilidades";
-}
+
+
+
+//Cualquier otra accion
 else
 {
     echo $resp = -2; //ERROR EN IF
