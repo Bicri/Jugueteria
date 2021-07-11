@@ -5,9 +5,9 @@ date_default_timezone_set('America/Mexico_City');
 
 
 class Fecha{
-    private $dia;
-    private $mes;
-    private $anio;
+    public $dia;
+    public $mes;
+    public $anio;
     private $semana;
     private $nombreMes;
 

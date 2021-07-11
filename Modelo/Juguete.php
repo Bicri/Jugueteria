@@ -1,6 +1,7 @@
 <?php
 
 require_once ("Conexion.php");
+require_once ("Fecha.php");
 
 class Juguete{
 
@@ -206,7 +207,7 @@ class Juguete{
 
     public function NuevoJuguete($juguete,$hoy)
     {
-        $resp = null;
+        $resp = null;        
         try
         {
             $this->conexion = new Conexion();
@@ -227,9 +228,9 @@ class Juguete{
             $stmt->bindParam(':_venta',$juguete->precio, PDO::PARAM_STR);
             $stmt->bindParam(':_costo',$juguete->costo, PDO::PARAM_STR);
             $stmt->bindParam(':_cantidad',$juguete->cantidad, PDO::PARAM_INT);
-            $stmt->bindParam(':_anio',$hoy->getAnio(), PDO::PARAM_INT);
-            $stmt->bindParam(':_mes',$hoy->getMes(), PDO::PARAM_INT);
-            $stmt->bindParam(':_dia',$hoy->getDia(), PDO::PARAM_INT);
+            $stmt->bindParam(':_anio',$hoy->anio, PDO::PARAM_INT);
+            $stmt->bindParam(':_mes',$hoy->mes, PDO::PARAM_INT);
+            $stmt->bindParam(':_dia',$hoy->dia, PDO::PARAM_INT);
 
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
