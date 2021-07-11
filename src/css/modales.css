@@ -1,117 +1,133 @@
-.containerModal{ /*estilos para la imagen del lightbox (contenedor/fondo)*/
-    position: fixed;
+.containerModal {
+  /*estilos para la imagen del lightbox (contenedor/fondo)*/
+  position: fixed;
 
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.356);
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.356);
 
-    width: 100%;
-    height: 100%;
-    top:0;
-    left:0;
-    display:flex;
-    justify-content: center; /*horizontal*/
-    align-items: center; /*vertical*/   
-    transform: translateY(-110%);
-    transition: transform .3s 0s ease-in-out;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center; /*horizontal*/
+  align-items: center; /*vertical*/
+  transform: translateY(-110%);
+  transition: transform 0.3s 0s ease-in-out;
 }
 
-.contenidoModal{ /*estilos para la imagen agregada */
-    width:70%;
+.contenidoModal {
+  /*estilos para la imagen agregada */
+  width: 70%;
 
-    /* background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); */
-    background: rgba(214, 214, 214, 0.603);
-    
-    box-shadow: -2px -1px 10px 4px rgba(0, 0, 0, 0.404);
+  /* background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); */
+  background: rgba(250, 250, 250, 0.479);
 
-    border-left:1px solid white;
-    border-top:1px solid white;
+  box-shadow: -2px -1px 10px 4px rgba(0, 0, 0, 0.404);
 
-    border-radius: 10px;
-    
+  border-left: 1px solid white;
+  border-top: 1px solid white;
 
-    padding: 0 12px ;
-    transform: scale(0.3);
-    transition: transform .3s 0s ease-in;
+  border-radius: 10px;
+
+  padding: 0 12px;
+  transform: scale(0.3);
+  transition: transform 0.3s 0s ease-in;
 }
-.modalComprar{
-    display:flex;
+.modalComprar {
+  display: flex;
 
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.container1{    
-    display: flex;
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.089);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin:20px;
-    padding:20px;
-    
-    border-radius: 15px;
-    width:50%;
-}
-.container2{
-    background:white;
-    border: 1px solid rgba(0, 0, 0, 0.089);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin:20px;
-    padding:20px;      
-    border-radius: 15px;
-    width:30%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.show{ /*clase para agregar*/
-    transform: scale(1);
+.container1 {
+  display: flex;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.089);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+
+  border-radius: 15px;
+  width: 50%;
+}
+.container2 {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.089);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  width: 30%;
 }
 
-.showModal{
-    transform: translate(0);
+.show {
+  /*clase para agregar*/
+  transform: scale(1);
+}
 
+.showModal {
+  transform: translate(0);
 }
-.close-icon{ /*estilos del icono X para cerrar*/
-    position: absolute;
-    cursor:pointer;
-    top: 15px;
-    right: 15px;
-    width: 50px;
-    background: rgb(184, 29, 29);
-    border-radius: 15px;
-      
+.close-icon {
+  /*estilos del icono X para cerrar*/
+  position: absolute;
+  cursor: pointer;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  background: rgb(184, 29, 29);
+  border-radius: 15px;
 }
-.titulo{
-    font-weight: 400; font-size: 40px;    
+.titulo {
+  font-weight: 400;
+  font-size: 40px;
 }
 
 /* Tooltip container */
 .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-  }
-  
-  /* Tooltip text */
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-   
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
-  }
-  
-  /* Show the tooltip text when you mouse over the tooltip container */
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.contenedorFormulario {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  width: 70%;
+  background: white;
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+

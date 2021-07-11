@@ -32,14 +32,17 @@ const pruebaOBJ = document.querySelector("#pruebaOBJ");
 
 const mandarObjCarrito = async (carritoOBJ) => {
   //PruebaMandar en  carpeta Modelo
-  let dataDesdePHP = await fetch("../../Controlador/ObjetoCarrito.php", {
-    //Ten cuidado aqui Angel
-    method: "POST", // or 'PUT'
-    body: JSON.stringify(carritoOBJ),
-    headers: {
-      "Content-Type": "application/json", // AQUI indicamos el formato
-    }, // data can be `string` or {object}!
-  });
+  let dataDesdePHP = await fetch(
+    "../../jugueteria/Controlador/ObjetoCarrito.php",
+    {
+      //Ten cuidado aqui Angel
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(carritoOBJ),
+      headers: {
+        "Content-Type": "application/json", // AQUI indicamos el formato
+      }, // data can be `string` or {object}!
+    }
+  );
   let respuestaUltima = await dataDesdePHP.json();
   fetchID();
   console.log(respuestaUltima);
@@ -153,10 +156,10 @@ const addCarrito = (e) => {
     /*  */
     console.log(e.target.parentElement);
     //setCarrito(e.target.parentElement);
-  } else if(
+  } else if (
     e.target.classList.contains("boton-card") &&
     parseInt(e.target.parentElement.querySelector("#cantidad").textContent) <= 0
-  ){
+  ) {
     alert("NO HAY STOCK");
   }
   e.stopPropagation();
@@ -201,8 +204,6 @@ AñadirCompra.addEventListener("click", (e) => {
 }; */
 
 let carritoaBD = {};
-
-
 
 const setCarrito = (CardObj) => {
   const producto = {
@@ -310,15 +311,18 @@ const pintarFooter = () => {
   templateFooterCarrito.appendChild(fragment);
 
   const CancelaAgregaCarrito = async () => {
-    let objCancelarCarrito ={"Total":0} //0 para eliminar carrito
-    let permisoparaAccion = await fetch("../../Controlador/CancelaAgregaCarrito.php", {    
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(objCancelarCarrito),
-      headers: {
-        "Content-Type": "application/json", // AQUI indicamos el formato
-      }, // data can be `string` or {object}!
-    });
-    let respuestaUltima = await permisoparaAccion.text();  
+    let objCancelarCarrito = { Total: 0 }; //0 para eliminar carrito
+    let permisoparaAccion = await fetch(
+      "../../jugueteria/Controlador/CancelaAgregaCarrito.php",
+      {
+        method: "POST", // or 'PUT'
+        body: JSON.stringify(objCancelarCarrito),
+        headers: {
+          "Content-Type": "application/json", // AQUI indicamos el formato
+        }, // data can be `string` or {object}!
+      }
+    );
+    let respuestaUltima = await permisoparaAccion.text();
     console.log(respuestaUltima);
   };
 
@@ -330,24 +334,31 @@ const pintarFooter = () => {
   });
 };
 
-const aumentarCarritoConsultaBD = async (idparaAccion,accion) => {
-  let objetoparaAccion ={"id":idparaAccion,"accion":accion}
-  let permisoparaAccion = await fetch("../../Controlador/UnidadCarrito.php", {    
-    method: "POST", // or 'PUT'
-    body: JSON.stringify(objetoparaAccion),
-    headers: {
-      "Content-Type": "application/json", // AQUI indicamos el formato
-    }, // data can be `string` or {object}!
-  });
-  let respuestaUltima = await permisoparaAccion.text();  
+const aumentarCarritoConsultaBD = async (idparaAccion, accion) => {
+  let objetoparaAccion = { id: idparaAccion, accion: accion };
+  let permisoparaAccion = await fetch(
+    "../../jugueteria/Controlador/UnidadCarrito.php",
+    {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(objetoparaAccion),
+      headers: {
+        "Content-Type": "application/json", // AQUI indicamos el formato
+      }, // data can be `string` or {object}!
+    }
+  );
+  let respuestaUltima = await permisoparaAccion.text();
   console.log(respuestaUltima);
-//  return true;
+  //  return true;
 };
 
 const btnAumentarDisminuir = (e) => {
   // console.log(e.target.classList.contains('btn-info'))
-  let idparaAccion =e.target.parentElement.parentElement.querySelector("#idEnCart").textContent;
-  if (e.target.classList.contains("btn-info") && aumentarCarritoConsultaBD(idparaAccion,1)) {
+  let idparaAccion =
+    e.target.parentElement.parentElement.querySelector("#idEnCart").textContent;
+  if (
+    e.target.classList.contains("btn-info") &&
+    aumentarCarritoConsultaBD(idparaAccion, 1)
+  ) {
     //if (e.target.classList.contains("btn-info")) {
     const producto = carrito[e.target.dataset.id];
     producto.cantidad++;
@@ -357,11 +368,12 @@ const btnAumentarDisminuir = (e) => {
 
   if (e.target.classList.contains("btn-danger")) {
     const producto = carrito[e.target.dataset.id];
-    if (producto.cantidad > 1 && aumentarCarritoConsultaBD(idparaAccion,0)) producto.cantidad--;
+    if (producto.cantidad > 1 && aumentarCarritoConsultaBD(idparaAccion, 0))
+      producto.cantidad--;
     else if (producto.cantidad <= 1 && confirm("are you shure?")) {
-      if(aumentarCarritoConsultaBD(idparaAccion,0)){
+      if (aumentarCarritoConsultaBD(idparaAccion, 0)) {
         delete carrito[e.target.dataset.id];
-      }      
+      }
     } else {
       carrito[e.target.dataset.id] = { ...producto };
     }

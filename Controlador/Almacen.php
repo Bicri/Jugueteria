@@ -17,8 +17,8 @@ require_once ("../Modelo/Fecha.php");
 
 //Juguete Genérico:
 //              $jugueteRecibido = '{"accion":"7","idNuevo":"1","idViejo":"1","nombre":"","precio":"","costo":"","cantidad":"2","anio":"","mes":"","dia":""}';
-$jugueteRecibido = '{"accion":"6","idNuevo":"5","idViejo":"1","nombre":"","precio":"","costo":"","cantidad":"2","anio":"","mes":"","dia":""}';
-
+//$jugueteRecibido = '{"accion":"6","idNuevo":"5","idViejo":"1","nombre":"","precio":"","costo":"","cantidad":"2","anio":"","mes":"","dia":""}';
+$jugueteRecibido = (file_get_contents('php://input')); 
 
 $jugueteRecibido = json_decode($jugueteRecibido);
 
