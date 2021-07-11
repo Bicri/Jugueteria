@@ -20,6 +20,7 @@ require_once ("../Modelo/Fecha.php");
 //$jugueteRecibido = '{"accion":"1","idNuevo":"5","nombre":"fase1","precio":"10","costo":"12","cantidad":"20"}';
 $jugueteRecibido = (file_get_contents('php://input'));
 
+
 $jugueteRecibido = json_decode($jugueteRecibido);
 
 
@@ -66,7 +67,7 @@ else if($jugueteRecibido->accion == "2")
 else if($jugueteRecibido->accion == "3")
 {
     $resp = $objJuguete->SolicitarEdicion($jugueteRecibido);
-    print_r($resp);
+    echo json_encode($resp);
     // resp = Array ( [codigo] => 1 [nombre] => Batman [precio] => 30.00 [existencia] => 4 [costo] => 10.00 [anio] => 2021 [mes] => 7 [dia] => 9 )
     //Si resp = -1 --> Error en bd
 }

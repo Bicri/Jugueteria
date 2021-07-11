@@ -67,8 +67,8 @@
     <!-- MODAL PARA TODOS -->
     <div class="containerModal  " id="modalUniversal">
         <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconUni">
-        <div class="contenidoModal  modalComprar" style="flex-direction:column;overflow-x:auto;  height:80%" id="contenidoModalUniversal">
-            <div style="position:absolute; top:16px;">
+        <div class="contenidoModal  modalComprar" style="flex-direction:column;overflow-x:auto;  height:85%" id="contenidoModalUniversal">
+            <div >
                 <h1 class="titulo" id="tituloModalAdmin">AGREGAR NUEVO PRODUCTO</h1>
             </div>
             <div class="contenedorFormulario" id="colorform">
@@ -78,7 +78,7 @@
                         <div class="form-group">
                             <label class="font-weight-bold">Código de producto</label>
                             <input type="text" class="form-control" id="idAdmin" placeholder="ID del producto">
-                            <small id="IDlHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <small id="IDlHelp" class="form-text text-muted"></small>
                         </div>
                         <!-- LABEL E INPUT PARA EL NOMBRE DEL PRODUCTO -->
                         <div class="form-group">
@@ -106,7 +106,7 @@
                 </form>
             
             </div>
-            <input type="button" id="BotonModalAccion" value="Agregar" class="boton-aceptar" style="margin: 12px;" target="_blank">    
+            <input type="button" id="BotonModalAccion" value="Agregar" class="boton-aceptar" style="margin:0;" target="_blank">    
         </div>
     </div>
 
