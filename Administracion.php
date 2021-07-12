@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo=">
     <title>Administracion</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+=======
+    <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>  
+>>>>>>> master
     <link rel="stylesheet" href="src/css/estilos.css">
     <link rel="stylesheet" href="src/css/estilosInput.css">
     <link rel="stylesheet" href="src/css/styles.css" />
