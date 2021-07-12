@@ -7,7 +7,7 @@
     //esta linea es la que tiene lo que le manda el js 7 el file_get_contents agarra lo que 
     //le mandan en este caso el objeto carrito
     $carritoRecibido =  file_get_contents('php://input');    
-    //$carritoRecibido =  '{id: "J2", nombre: "Angel", precio: 11, Almacen: 202, cantidad: 1}';    
+    
  
     //$carritoRecibido = '{"id":"10","nombre":"Batman","precio":"25.5","cantidad":2}';
     $carritoconDecode = json_decode($carritoRecibido);
