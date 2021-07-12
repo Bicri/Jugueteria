@@ -2,12 +2,14 @@ const ContenedorModal = document.querySelector("#modalUniversal");
 const contenidoModal = document.querySelector("#contenidoModalUniversal");
 
 
+
 const modalConfirm = document.querySelector("#modalConfirm");
 const cerrarModalConfirm = document.querySelector("#cerrarModalConfirm");
 const BTNconfirmacion1 = document.querySelector("#BTNconfirmacion1");
 const BTNconfirmacion2 = document.querySelector("#BTNconfirmacion2");
 
 const botonCerrarCarrito = document.querySelector("#close-iconUni");
+
 /* ELEMENTOS DEL MODAL JALADOS A JavaScript */
 //TITULO DEL MODAL
 const tituloModalAdmin = document.querySelector("#tituloModalAdmin");
@@ -21,6 +23,7 @@ const cantAdmin = document.querySelector("#cantAdmin");
 const BotonModalAccion = document.querySelector("#BotonModalAccion");
 
 
+
 const AgregarNuevobtn = document.querySelector("#agregarNuevo");
 const botonCerrar= document.querySelector("#agregarNuevo");
 const colorform = document.querySelector("#colorform");
@@ -28,6 +31,7 @@ let idViejolet = 0;
 let anio = "";
 let mes = "";
 let dia = "";
+
 
 
 
