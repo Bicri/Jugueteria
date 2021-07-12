@@ -8,6 +8,8 @@ const BTNconfirmacion1 = document.querySelector("#BTNconfirmacion1");
 const BTNconfirmacion2 = document.querySelector("#BTNconfirmacion2");
 
 const botonCerrarCarrito = document.querySelector("#close-iconUni");
+
+const botonCerrarCarrito = document.querySelector("#close-iconUni");
 /* ELEMENTOS DEL MODAL JALADOS A JavaScript */
 //TITULO DEL MODAL
 const tituloModalAdmin = document.querySelector("#tituloModalAdmin");
