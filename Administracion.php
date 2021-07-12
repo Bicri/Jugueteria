@@ -7,11 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo=">
     <title>Administracion</title>
-<<<<<<< HEAD
     <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-=======
-    <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>  
->>>>>>> master
     <link rel="stylesheet" href="src/css/estilos.css">
     <link rel="stylesheet" href="src/css/estilosInput.css">
     <link rel="stylesheet" href="src/css/styles.css" />
@@ -71,7 +67,7 @@
     </template>
 
     <!-- MODAL PARA TODOS -->
-    <div class="containerModal  " id="modalUniversal">
+    <div class="containerModal" id="modalUniversal">
         <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconUni">
 
         <div class="contenidoModal  modalComprar" style="flex-direction:column;overflow-x:auto;  height:85%" id="contenidoModalUniversal">
@@ -158,10 +154,11 @@
 
         </div>
     </div>
-    <div class="containerModal show" id="modalLista">
-        <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconLista">
+    
+    <div class="containerModal" id="modalLista">
+        <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="closeIconLista">
 
-        <div class="contenidoModal show modalComprar" style="flex-direction:column;overflow-x:auto;  height:85%" id="contenidoModalLista">
+        <div class="contenidoModal modalComprar" style="flex-direction:column;overflow-x:auto;  height:85%" id="contenidoModalLista">
             <div>
                 <h1 class="titulo">Lista de compras futuras</h1>
             </div>
@@ -192,7 +189,7 @@
                         <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Cantidad deseada</label>
-                            <input type="number" class="form-control" id="cantdeseadaLista" placeholder="Cantidad del producto">
+                            <input type="number" class="form-control" id="cantdeseadaLista" placeholder="Cantidad deseada">
                         </div>
                     </div>
                 </form>
