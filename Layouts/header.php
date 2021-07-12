@@ -8,8 +8,8 @@ $first_part = $components[2];
 ?>
     <nav class="nav">
 
-        <div class="Logo" style="margin-right: 150px;">
-            <a href="./Ventas.php" style="color:black; border:1px solid rgba(0,0,0,0.1); background: #fff;" > LOGO</a>
+        <div class="Logo" style="margin-left:90px;">
+            <a href="./Ventas.php" style="color:black; border:1px solid rgba(0,0,0,0.1); background: #fff;" > JUGUETERIA </a>
 
         </div>
         <div class="OpcMenu">

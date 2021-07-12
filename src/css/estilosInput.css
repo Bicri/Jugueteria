@@ -189,4 +189,5 @@
   }
   .boton-mini:focus{
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.534);
+    outline:0;box-shadow:0 0 0 .2rem rgba(0,123,255,.25);
   }

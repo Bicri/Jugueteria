@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo=">
     <title>Administracion</title>
+    <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>  
     <link rel="stylesheet" href="src/css/estilos.css">
     <link rel="stylesheet" href="src/css/estilosInput.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
     <link rel="stylesheet" href="src/css/styles.css" />
     <link rel="stylesheet" href="src/css/modales.css" />
 
@@ -126,14 +126,18 @@
                     <button type="button" class="btn btn-danger" id="cerrarModalConfirm">Cancelar</button>                    
                     </button>
                 </div>
-                <div class="modal-body">
-                    <p>¿Estás seguro que eseas borrar este producto?</p>
-                    <div style="width:100%; margin: 0; display:flex; justify-content: space-evenly; align-items: flex-start; flex-direction: row; text-align: left;">
+                <div>
+                <p style="margin:0 80px;">¿Estás seguro que deseas borrar este producto?</p>
+                <div class="modal-body" style="display:flex; justify-content: center; align-items:center; flex-direction: row; width:100%;">
+                    
+                    <div style=" width:50%; margin: 0; display:flex; justify-content: space-evenly; align-items: center; flex-direction: column;
+                    ">
                         <p>Id: <span id="idModalConfirm"> J123</span></p>
                         <p>Nombre: <span id="nomModalConfirm"> Batman</span></p>
                         <p>Cantidad: <span id="cantModalConfirm">500</span></p>
                     </div>
-                    <div style="width:100%; margin-left: 5px; display:flex; justify-content: space-evenly; align-items: flex-start; flex-direction: row; text-align: left;">
+                    <div style="width: 50%; margin-left: 5px; display:flex; justify-content: center; align-items: center; flex-direction: column;
+                    ">
                         <p>Precio: $<span id="precModalConfirm">30.02</span></p>
                         <p  style="font-weight: 600;">Costo: $<span id="costoModal">300.02</span></p>
                     </div>
