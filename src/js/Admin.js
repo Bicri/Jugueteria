@@ -7,7 +7,7 @@ const cerrarModalConfirm = document.querySelector("#cerrarModalConfirm");
 const BTNconfirmacion1 = document.querySelector("#BTNconfirmacion1");
 const BTNconfirmacion2 = document.querySelector("#BTNconfirmacion2");
 
-
+const botonCerrarCarrito = document.querySelector("#close-iconUni");
 /* ELEMENTOS DEL MODAL JALADOS A JavaScript */
 //TITULO DEL MODAL
 const tituloModalAdmin = document.querySelector("#tituloModalAdmin");
@@ -22,22 +22,14 @@ const BotonModalAccion = document.querySelector("#BotonModalAccion");
 
 
 const AgregarNuevobtn = document.querySelector("#agregarNuevo");
+const botonCerrar= document.querySelector("#agregarNuevo");
 const colorform = document.querySelector("#colorform");
 let idViejolet = 0;
 let anio = "";
 let mes = "";
 let dia = "";
-/* ELEMENTOS DEL MODAL JALADOS A JavaScript */
-//TITULO DEL MODAL
-const tituloModalAdmin = document.querySelector("#tituloModalAdmin");
-//INPUTS
-const idAdmin = document.querySelector("#idAdmin");
-const IDlHelp = document.querySelector("#IDlHelp");
-const nomAdmin = document.querySelector("#nomAdmin");
-const costoAdmin = document.querySelector("#costoAdmin");
-const precioAdmin = document.querySelector("#precioAdmin");
-const cantAdmin = document.querySelector("#cantAdmin");
-const BotonModalAccion = document.querySelector("#BotonModalAccion");
+
+
 
 /* ABRIR Y CERRAR MODAL */
 const toggleModal = (titulo) => {
