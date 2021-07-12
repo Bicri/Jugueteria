@@ -2,14 +2,14 @@ const ContenedorModal = document.querySelector("#modalUniversal");
 const contenidoModal = document.querySelector("#contenidoModalUniversal");
 
 
-
 const modalConfirm = document.querySelector("#modalConfirm");
 const cerrarModalConfirm = document.querySelector("#cerrarModalConfirm");
 const BTNconfirmacion1 = document.querySelector("#BTNconfirmacion1");
 const BTNconfirmacion2 = document.querySelector("#BTNconfirmacion2");
 
-const botonCerrarCarrito = document.querySelector("#close-iconUni");
+//const botonCerrarCarrito = document.querySelector("#close-iconUni");
 
+const botonCerrarCarrito = document.querySelector("#close-iconUni");
 /* ELEMENTOS DEL MODAL JALADOS A JavaScript */
 //TITULO DEL MODAL
 const tituloModalAdmin = document.querySelector("#tituloModalAdmin");
@@ -23,7 +23,6 @@ const cantAdmin = document.querySelector("#cantAdmin");
 const BotonModalAccion = document.querySelector("#BotonModalAccion");
 
 
-
 const AgregarNuevobtn = document.querySelector("#agregarNuevo");
 const botonCerrar= document.querySelector("#agregarNuevo");
 const colorform = document.querySelector("#colorform");
@@ -31,7 +30,6 @@ let idViejolet = 0;
 let anio = "";
 let mes = "";
 let dia = "";
-
 
 
 
@@ -116,9 +114,20 @@ const SolicitarObjeto = async (accion, id) => {
   }  */
 };
 
+const resetA4 = () => {
+  idAdmin.value = "";
+  if (idAdmin.hasAttribute("disabled")) {
+    idAdmin.removeAttribute("disabled");
+    idAdmin.style.cursor = "text";
+    nomAdmin.removeAttribute("disabled");
+    nomAdmin.style.cursor = "text";
+  }  
+};
+
 itemsAdmin.addEventListener("click", (e) => {
   elementoProducto = e.target.parentElement.parentElement;
   if (e.target.classList.contains("btn-success")) {
+    IDlHelp.textContent ="";
     toggleModal("AÑADIR STOCK A PRODUCTO");
     BotonModalAccion.dataset.accion = "2";
     //console.log(elementoProducto.querySelector("#idProdTabla").textContent);
@@ -135,6 +144,8 @@ itemsAdmin.addEventListener("click", (e) => {
     costoAdmin.value = "0.00";
   }
   if (e.target.classList.contains("btn-warning")) {
+    IDlHelp.textContent ="";
+    resetA4();
     toggleModal("EDITAR PRODUCTO");
     BotonModalAccion.dataset.accion = "3";
     idViejolet = elementoProducto.querySelector("#idProdTabla").textContent;
@@ -158,6 +169,7 @@ itemsAdmin.addEventListener("click", (e) => {
     });
   }
   if (e.target.classList.contains("btn-danger")) {
+    IDlHelp.textContent ="";
     modalConfirm.classList.toggle("show");
     BTNconfirmacion1.dataset.accion = "6";
     BTNconfirmacion2.dataset.accion = "6";
@@ -187,9 +199,7 @@ itemsAdmin.addEventListener("click", (e) => {
           console.log("tiene 0")        
           BTNconfirmacion2.style.display = "none";
           BTNconfirmacion1.textContent = "Si, borralo";
-        } 
-        
-                
+        }                         
       });
   }
 
@@ -205,7 +215,7 @@ itemsAdmin.addEventListener("click", (e) => {
 const MandarAccionYObj = async (obj, accion) => {
   let objetoparaAccion = { ...obj };
   let permisoparaAccion = await fetch(
-    "../../jugueteria/Controlador/Almacen.php",
+    "Controlador/Almacen.php",
     {
       method: "POST", // or 'PUT'
       body: JSON.stringify(objetoparaAccion),
@@ -214,7 +224,7 @@ const MandarAccionYObj = async (obj, accion) => {
       }, // data can be `string` or {object}!
     }
   );
-  let respuestaUltima = await permisoparaAccion.json();
+  let respuestaUltima = await permisoparaAccion.text();
   console.log(respuestaUltima);
   if (respuestaUltima == 0) {
     return true;
@@ -334,30 +344,37 @@ BTNconfirmacion1.addEventListener("click", (e) => {
     e.target.parentElement.parentElement.querySelector(
       "#idModalConfirm"
     ).textContent;
-    console.log(accionConfirm);
-    console.log(idConfirm);
-    console.log(BTNconfirmacion1.dataset.accion);
-    /* objAñadirNuevo = {
-      accion: accion,
-      idNuevo: idAdmin.value,
-      nombre: nomAdmin.value,
-      precio: parseFloat(precioAdmin.value),
-      costo: parseFloat(costoAdmin.value),
-      cantidad: parseInt(cantAdmin.value),
+    console.log(accionConfirm);    
+    //$jugueteRecibido = '{"accion":"7","idNuevo":"123","idViejo":"0"}'; 0 NO AGREGA
+    objAñadirNuevo = {
+      accion: accionConfirm,
+      idNuevo: idConfirm,
+      idViejo:0
     };
-    if (MandarAccionYObj(objAñadirNuevo, accion)) {
-      alert("OPERACIÓN EXITOSA");
+    if (MandarAccionYObj(objAñadirNuevo, accionConfirm)) {
+      alert("OPERACIÓN EXITOSA SIN AGREGAR COSTOS");
       fetchID();
-      toggleModal("");
+      modalConfirm.classList.toggle("show");
       return true;
-    } else console.log("Error en la BD"); */
+    } else console.log("Error en la BD");
 });
 BTNconfirmacion2.addEventListener("click", (e) => {
   let accionConfirm = e.target.dataset.accion;
-  let idConfrim =
+  let idConfirm =
     e.target.parentElement.parentElement.querySelector(
       "#idModalConfirm"
     ).textContent;
     console.log(BTNconfirmacion2.dataset.accion);
+    objAñadirNuevo = {
+      accion: accionConfirm,
+      idNuevo: idConfirm,
+      idViejo:1
+    };
+    if (MandarAccionYObj(objAñadirNuevo, accionConfirm)) {
+      alert("OPERACIÓN EXITOSA AGREGANDO COSTOS");
+      fetchID();
+      modalConfirm.classList.toggle("show");
+      return true;
+    } else console.log("Error en la BD");
 
 });
