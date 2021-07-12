@@ -12,7 +12,14 @@ const templateFooterCarrito = document.querySelector("#footer");
 const modalComprar = document.querySelector("#modalComprar");
 const contenidomodalComprar = document.querySelector("#contenidoModalComprar");
 const botonCerrarComprar = document.querySelector("#close-iconComprar");
+const botonCerrarCarrito2 = document.querySelector("#close-iconCarrito");
 
+botonCerrarComprar.addEventListener('click',()=>{
+  fetchID();
+})
+botonCerrarCarrito2.addEventListener('click',()=>{
+  fetchID();
+})
 /* pruebaModalInput.addEventListener("click", () => {
     console.log("hola modal");    
   modalComprar.classList.toggle("showModal");
@@ -310,8 +317,8 @@ const pintarFooter = () => {
 
   templateFooterCarrito.appendChild(fragment);
 
-  const CancelaAgregaCarrito = async () => {
-    let objCancelarCarrito = { Total: 0 }; //0 para eliminar carrito
+  const CancelaAgregaCarrito = async (accion) => {
+    let objCancelarCarrito = { Total: accion }; //0 para eliminar carrito
     let permisoparaAccion = await fetch(
       "Controlador/CancelaAgregaCarrito.php",
       {
@@ -326,12 +333,20 @@ const pintarFooter = () => {
     console.log(respuestaUltima);
   };
 
-  const boton = document.querySelector("#vaciar-carrito");
+  const boton = document.querySelector("#vaciar-carrito");  
+  //VACIAR CARRITO LISTENER CON FUNCIÓN A BD
   boton.addEventListener("click", () => {
-    CancelaAgregaCarrito();
+    CancelaAgregaCarrito(0);
     carrito = {};
     pintarCarrito();
   });
+
+  confirmarCompra.addEventListener('click',()=>{
+    CancelaAgregaCarrito(1);
+    carrito = {};
+    pintarCarrito();
+  })
+
 };
 
 const aumentarCarritoConsultaBD = async (idparaAccion, accion) => {
@@ -348,6 +363,12 @@ const aumentarCarritoConsultaBD = async (idparaAccion, accion) => {
   );
   let respuestaUltima = await permisoparaAccion.text();
   console.log(respuestaUltima);
+  if (respuestaUltima == '1') {
+    console.log("es uno")
+    //alert("NO HAY MÁS!!");
+    return false;
+  }
+  else{return true;}
   //  return true;
 };
 
@@ -356,16 +377,22 @@ const btnAumentarDisminuir = (e) => {
   let idparaAccion =
     e.target.parentElement.parentElement.querySelector("#idEnCart").textContent;
   if (
-    e.target.classList.contains("btn-info") &&
-    aumentarCarritoConsultaBD(idparaAccion, 1)
-  ) {
-    //if (e.target.classList.contains("btn-info")) {
-    const producto = carrito[e.target.dataset.id];
-    producto.cantidad++;
-    carrito[e.target.dataset.id] = { ...producto };
-    pintarCarrito();
-  }
+    e.target.classList.contains("btn-info")) {
+      aumentarCarritoConsultaBD(idparaAccion,1)
+      .then((resp) => {
+        if(resp){
+          const producto = carrito[e.target.dataset.id];
+          producto.cantidad++;
+          carrito[e.target.dataset.id] = { ...producto };
+          pintarCarrito();
+          return true;
+        }    
+        else{alert("No hay más");}
 
+      });
+    //if (e.target.classList.contains("btn-info")) {
+    
+  }  
   if (e.target.classList.contains("btn-danger")) {
     const producto = carrito[e.target.dataset.id];
     if (producto.cantidad > 1 && aumentarCarritoConsultaBD(idparaAccion, 0))
@@ -377,8 +404,11 @@ const btnAumentarDisminuir = (e) => {
     } else {
       carrito[e.target.dataset.id] = { ...producto };
     }
-    pintarCarrito();
+    pintarCarrito();    
   }
+  else{
+    return false;
+  } 
   e.stopPropagation();
 };
 

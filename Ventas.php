@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jugueteria</title>
   <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo="> <!-- linea para quitar error favicon.i -->
+  <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css"/> 
   <link rel="stylesheet" href="src/css/estilos.css">
-  <link rel="stylesheet" href="src/css/estilosInput.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+  <link rel="stylesheet" href="src/css/estilosInput.css">  
   <link rel="stylesheet" href="src/css/styles.css" />
   <link rel="stylesheet" href="src/css/modales.css" />
 </head>
