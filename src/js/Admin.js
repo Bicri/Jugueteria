@@ -94,7 +94,7 @@ const pintarCards = (data) => {
 const SolicitarObjeto = async (accion, id) => {
   let objetoparaAccion = { accion: accion, idNuevo: id };
   let permisoparaAccion = await fetch(
-    "../../jugueteria/Controlador/Almacen.php",
+    "Controlador/Almacen.php",
     {
       method: "POST", // or 'PUT'
       body: JSON.stringify(objetoparaAccion),

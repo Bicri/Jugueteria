@@ -13,7 +13,8 @@
 <body>
     <div class="contenedorFlex">
         <?php include_once("Layouts/header.php"); ?>
-        <div class="MasterContainer">    
+        <div class="MasterContainer">
+            <a href="Controlador/ImprimeLista.php" target="_blank">Imprimir</a>
         </div>
     </div>
 </body>
