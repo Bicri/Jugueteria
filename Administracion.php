@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo=">
     <title>Administracion</title>
     <link rel="stylesheet" href="src/css/estilos.css">
     <link rel="stylesheet" href="src/css/estilosInput.css">
@@ -23,7 +24,6 @@
                 <input type="text" name="buscarID" id="buscarIDAdmin" class="inputText" id="">
                 <input type="button" value="Buscar 🔎" id="botonBuscarIDAdmin" class="boton-primario" style="border-radius:50px;">
                 <input type="button" value="Agregar nuevo  ➕" id="agregarNuevo" class="boton-mini">
-                <input type="button" value="Edit" id="pruebaOBJ" class="boton-mini" style="display:none">
                 <!-- <input type="button" value="PruebaModal" id="pruebaModalInput" class="boton-aceptar"> -->
             </div>
 
@@ -38,19 +38,7 @@
                             <th scope="col">Acción</th>
                         </tr>
                     </thead>
-                    <tbody id="elementosAdmin">
-                        <tr>
-                            <td class="table-light" style="background: rgb(240, 248, 255);">123456789asdf</td>
-                            <td class="table-light">PistolaNerf G 240 Naranja 24mm</td>
-                            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-                            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-                            <td class="table-light">
-                                <button class="btn btn-info" title="Agregar nuevo">➕</button>
-                                <input type="button" value="✏️" alt="HOLAA" class="btn btn-success">
-                                <input type="button" value="🗑️" class="btn btn-danger">
-                                <input type="button" value="📑" class="btn btn-primary">
-                            </td>
-                        </tr>
+                    <tbody id="elementosAdmin">                        
                     </tbody>
                 </table>
 
@@ -63,15 +51,15 @@
     <!-- TEMPLATE PARA CADA PRODUCTO EN LA TABLA-->
     <template id="FilaElementoAdmin">
         <tr>
-            <td class="table-light" style="background: rgb(240, 248, 255);">123456789asdf</td>
-            <td class="table-light">PistolaNerf G 240 Naranja 24mm</td>
+            <td class="table-light" id="idProdTabla">123456789asdf</td>
+            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
             <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
             <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
             <td class="table-light">
-                <button class="btn btn-info" title="Agregar nuevo">➕</button>
-                <input type="button" value="✏️" alt="HOLAA" class="btn btn-success">
-                <input type="button" value="🗑️" class="btn btn-danger">
-                <input type="button" value="📑" class="btn btn-primary">
+                <button class="btn btn-success" title="Agregar stock">➕</button>
+                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
+                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
+                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
             </td>
         </tr>
     </template>
@@ -79,38 +67,46 @@
     <!-- MODAL PARA TODOS -->
     <div class="containerModal  " id="modalUniversal">
         <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconUni">
-        <div class="contenidoModal  modalComprar" style="flex-direction:column;overflow-x:auto; text-align: center; height:80%" id="contenidoModalUniversal">
-            <div style="position:absolute; top:3px;">
-                <h1 class="titulo">AGREGAR NUEVO PRODUCTO</h1>
+        <div class="contenidoModal  modalComprar" style="flex-direction:column;overflow-x:auto;  height:80%" id="contenidoModalUniversal">
+            <div style="position:absolute; top:16px;">
+                <h1 class="titulo" id="tituloModalAdmin">AGREGAR NUEVO PRODUCTO</h1>
             </div>
-            <div class="container1" style="width: auto; flex-direction: row;">
-                <div style="display: flex; flex-direction: column;">
-                    <div style="display:flex; flex-direction: column; margin-right: 20px; justify-content: center; align-items: start;">
-                        <label for="" style="margin:0;">Código</label>
-                        <input class="inputText" type="text" id="" placeholder="Ingrese el ID del producto">
+            <div class="contenedorFormulario" id="colorform">
+                <form  style="display:flex; flex-direction: row; padding:20px;">
+                    <div style="margin: 0 20px">
+                        <!-- LABEL E INPUT PARA EL CÓDIGO DEL PRODUCTO -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Código de producto</label>
+                            <input type="text" class="form-control" id="idAdmin" placeholder="ID del producto">
+                            <small id="IDlHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <!-- LABEL E INPUT PARA EL NOMBRE DEL PRODUCTO -->
+                        <div class="form-group">
+                        <label class="font-weight-bold">Nombre</label>
+                            <input type="text" class="form-control" id="nomAdmin" placeholder="Nombre del producto">
+                        </div>
+                        <!-- LABEL E INPUT PARA EL COSTO DEL PRODUCTO -->
+                        <div class="form-group">
+                        <label class="font-weight-bold"> Costo</label>
+                            <input type="number" class="form-control" id="costoAdmin" placeholder="Costo del producto">
+                        </div>
                     </div>
-                    <div style="display:flex; flex-direction: column; justify-content: center; align-items: start;">
-                        <label for="" style="margin:0;">Nombre</label>
-                        <input class="inputText" type="text" id="" placeholder="Ingrese el ID del producto">
-                    </div>
-                    <div style="display:flex; flex-direction: column; justify-content: center; align-items: start;">
-                        <label for="" style="margin:0;">Costo</label>
-                        <input class="inputText" type="text" id="" placeholder="Ingrese el ID del producto">
-                    </div>
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                    <div style="display:flex; flex-direction: column; justify-content: center; align-items: start;">
-                        <label for="" style="margin:0;">Precio de venta</label>
-                        <input class="inputText" type="text" id="" placeholder="Ingrese el ID del producto">
-                    </div>
-                    <div style="display:flex; flex-direction: column; justify-content: center; align-items: start;">
-                        <label for="" style="margin:0;">Cantidad</label>
-                        <input class="inputText" type="text" id="" placeholder="Ingrese el ID del producto">
-                    </div>
-                </div>
-                
+                    <div style="margin: 0 20px">
+                        <!-- LABEL E INPUT PARA EL PRECIO DEL PRODUCTO -->
+                        <div class="form-group">
+                        <label class="font-weight-bold">Precio de venta</label>
+                            <input type="number" class="form-control" id="precioAdmin" placeholder="Precio del producto">
+                        </div>
+                        <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
+                        <div class="form-group">
+                        <label class="font-weight-bold">Cantidad</label>
+                            <input type="number" class="form-control" id="cantAdmin" placeholder="Cantidad del producto">
+                        </div>    
+                    </div>          
+                </form>
+            
             </div>
-            <input type="button" value="Agregar" class="boton-aceptar">
+            <input type="button" id="BotonModalAccion" value="Agregar" class="boton-aceptar" style="margin: 12px;" target="_blank">    
         </div>
     </div>
 
