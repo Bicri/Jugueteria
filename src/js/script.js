@@ -110,6 +110,13 @@ const fetchID = async () => {
 document.querySelector("#botonBuscarID").addEventListener("click", () => {
   fetchID();
 });
+document.querySelector("#buscarID").addEventListener("keypress", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    fetchID();
+  }
+  
+});
 
 /*  */
 
