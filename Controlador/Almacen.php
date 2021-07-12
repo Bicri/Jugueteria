@@ -112,7 +112,7 @@ else if($jugueteRecibido->accion == "5")
 else if($jugueteRecibido->accion == "6")
 {
     $resp = $objJuguete->ObtenerCostoBorrado($jugueteRecibido->idNuevo);
-    print_r($resp);
+    echo json_encode($resp);
     // resp = Array ( [codigo] => 1 [nombre] => carss [existencia] => 7 [costo] => 76.50 )
     // NOTA: Si la existencia es igual a 0 EN LA TABLA, no ejecutar este paso, pasar a la accion 7 con bandera en 0
     // En caso de haber mandado un producto con existencia 0, no imprime nada (Evitar incurrir en esta accion)

@@ -1,14 +1,19 @@
 const ContenedorModal = document.querySelector("#modalUniversal");
 const contenidoModal = document.querySelector("#contenidoModalUniversal");
 
+const modalConfirm = document.querySelector("#modalConfirm");
+const cerrarModalConfirm = document.querySelector("#cerrarModalConfirm");
+const BTNconfirmacion1 = document.querySelector("#BTNconfirmacion1");
+const BTNconfirmacion2 = document.querySelector("#BTNconfirmacion2");
+
 const botonCerrarCarrito = document.querySelector("#close-iconUni");
 
 const AgregarNuevobtn = document.querySelector("#agregarNuevo");
 const colorform = document.querySelector("#colorform");
 let idViejolet = 0;
-let anio = '';
-let mes = '';
-let dia = '';
+let anio = "";
+let mes = "";
+let dia = "";
 /* ELEMENTOS DEL MODAL JALADOS A JavaScript */
 //TITULO DEL MODAL
 const tituloModalAdmin = document.querySelector("#tituloModalAdmin");
@@ -119,16 +124,12 @@ itemsAdmin.addEventListener("click", (e) => {
     cantAdmin.value = 1;
     precioAdmin.value = "0.00";
     costoAdmin.value = "0.00";
-    /* elementoProducto.querySelector("#nomProdTabla").textContent = element.nombre;
-    elementoProducto.querySelector("#cantidadTablaAdmin").textContent =
-      element.existencia;
-      elementoProducto.querySelector("#precioTablaAdmin").textContent = element.venta; */
   }
   if (e.target.classList.contains("btn-warning")) {
     toggleModal("EDITAR PRODUCTO");
     BotonModalAccion.dataset.accion = "3";
     idViejolet = elementoProducto.querySelector("#idProdTabla").textContent;
-    console.log(BotonModalAccion.dataset.accion)
+    console.log(BotonModalAccion.dataset.accion);
     SolicitarObjeto(
       BotonModalAccion.dataset.accion,
       elementoProducto.querySelector("#idProdTabla").textContent
@@ -143,14 +144,46 @@ itemsAdmin.addEventListener("click", (e) => {
       anio = objSolicitado.anio;
       mes = objSolicitado.mes;
       dia = objSolicitado.dia;
-      console.log(BotonModalAccion.dataset.accion)
-      /*
-      nomAdmin.value = elementoProducto.querySelector("#nomProdTabla").textContent; */
-    });    
+      console.log(BotonModalAccion.dataset.accion);
+      /*nomAdmin.value = elementoProducto.querySelector("#nomProdTabla").textContent; */
+    });
   }
   if (e.target.classList.contains("btn-danger")) {
-    toggleModal("BORRAR UN PRODUCTO");
+    modalConfirm.classList.toggle("show");
+    BTNconfirmacion1.dataset.accion = "6";
+    BTNconfirmacion2.dataset.accion = "6";
+    let fila = e.target.parentElement.parentElement;
+    document.querySelector("#idModalConfirm").textContent =
+      fila.querySelector("#idProdTabla").textContent;
+    document.querySelector("#nomModalConfirm").textContent =
+      fila.querySelector("#nomProdTabla").textContent;
+    document.querySelector("#cantModalConfirm").textContent =
+      fila.querySelector("#cantidadTablaAdmin").textContent;
+    document.querySelector("#precModalConfirm").textContent =
+      fila.querySelector("#precioTablaAdmin").textContent;
+      SolicitarObjeto(
+        "6",
+        fila.querySelector("#idProdTabla").textContent
+      ).then((objSolicitado) => {
+        console.log(objSolicitado);
+        document.querySelector("#costoModal").textContent = objSolicitado.costo;
+        BTNconfirmacion1.dataset.accion = "7";
+        BTNconfirmacion2.dataset.accion = "7";
+        if(objSolicitado.existencia >0){
+          BTNconfirmacion2.style.display = "block";
+          BTNconfirmacion1.textContent = "Si, borralo SIN agregar costos";
+          console.log("tiene más de 0")
+        }
+        else{
+          console.log("tiene 0")        
+          BTNconfirmacion2.style.display = "none";
+          BTNconfirmacion1.textContent = "Si, borralo";
+        } 
+        
+                
+      });
   }
+
   if (e.target.classList.contains("btn-primary")) {
     toggleModal("AÑADIR A LISTA");
   }
@@ -184,29 +217,27 @@ const MandarAccionYObj = async (obj, accion) => {
 
 /* ---------------------------------------------------------- */
 /* ---------------------------------------------------------- */
-const resetA1 = ()=>{
-  idAdmin.value="";
-  if(idAdmin.hasAttribute("disabled")){
-    idAdmin.removeAttribute("disabled");  
+const resetA1 = () => {
+  idAdmin.value = "";
+  if (idAdmin.hasAttribute("disabled")) {
+    idAdmin.removeAttribute("disabled");
     idAdmin.style.cursor = "text";
-    nomAdmin.removeAttribute("disabled");  
+    nomAdmin.removeAttribute("disabled");
     nomAdmin.style.cursor = "text";
-  }    
-  nomAdmin.value ="";
+  }
+  nomAdmin.value = "";
   cantAdmin.value = 1;
-  precioAdmin.value = '0.00';
-  costoAdmin.value = '0.00';
-    
-
-}
+  precioAdmin.value = "0.00";
+  costoAdmin.value = "0.00";
+};
 
 AgregarNuevobtn.addEventListener("click", (e) => {
   //colorform.style.background = "#90f1f171";
   BotonModalAccion.dataset.accion = "1";
-  IDlHelp.textContent = "**Puede dejar en blanco este campo y el sistema asignará un ID";
+  IDlHelp.textContent =
+    "**Puede dejar en blanco este campo y el sistema asignará un ID";
   toggleModal("AÑADIR NUEVO PRODUCTO");
   resetA1();
-  
 });
 
 BotonModalAccion.addEventListener("click", (e) => {
@@ -249,31 +280,29 @@ BotonModalAccion.addEventListener("click", (e) => {
     } else alert("Error en la BD");
   }
   if (accion === "4") {
-        console.log("ACCION 4")
-        //"anio":"2021","mes":"07","dia":"09"}
-        objAñadirNuevo = {
-          accion: accion,
-          idNuevo: idAdmin.value,
-          idViejo:idViejolet,
-          nombre: nomAdmin.value,
-          precio: parseFloat(precioAdmin.value),
-          costo: parseFloat(costoAdmin.value),
-          cantidad: parseInt(cantAdmin.value),
-          anio: anio,
-          mes:mes,
-          dia:dia
-        };
-        console.log(objAñadirNuevo);
-        if (MandarAccionYObj(objAñadirNuevo, accion)) {
-          alert("OPERACIÓN EXITOSA");
-          fetchID();
-          toggleModal("");
-          return true;
-        } else alert("Error en la BD");
-        return true;
-  }
-
-  else {
+    console.log("ACCION 4");
+    //"anio":"2021","mes":"07","dia":"09"}
+    objAñadirNuevo = {
+      accion: accion,
+      idNuevo: idAdmin.value,
+      idViejo: idViejolet,
+      nombre: nomAdmin.value,
+      precio: parseFloat(precioAdmin.value),
+      costo: parseFloat(costoAdmin.value),
+      cantidad: parseInt(cantAdmin.value),
+      anio: anio,
+      mes: mes,
+      dia: dia,
+    };
+    console.log(objAñadirNuevo);
+    if (MandarAccionYObj(objAñadirNuevo, accion)) {
+      alert("OPERACIÓN EXITOSA");
+      fetchID();
+      toggleModal("");
+      return true;
+    } else alert("Error en la BD");
+    return true;
+  } else {
     alert("Error interno,accion no especificada");
   }
 });
@@ -282,4 +311,41 @@ ContenedorModal.addEventListener("click", (e) => {
   if (e.target == botonCerrarCarrito) {
     toggleModal();
   }
+});
+
+cerrarModalConfirm.addEventListener("click", (e) => {
+  modalConfirm.classList.toggle("show");
+});
+
+BTNconfirmacion1.addEventListener("click", (e) => {
+  let accionConfirm = e.target.dataset.accion;
+  let idConfirm =
+    e.target.parentElement.parentElement.querySelector(
+      "#idModalConfirm"
+    ).textContent;
+    console.log(accionConfirm);
+    console.log(idConfirm);
+    console.log(BTNconfirmacion1.dataset.accion);
+    /* objAñadirNuevo = {
+      accion: accion,
+      idNuevo: idAdmin.value,
+      nombre: nomAdmin.value,
+      precio: parseFloat(precioAdmin.value),
+      costo: parseFloat(costoAdmin.value),
+      cantidad: parseInt(cantAdmin.value),
+    };
+    if (MandarAccionYObj(objAñadirNuevo, accion)) {
+      alert("OPERACIÓN EXITOSA");
+      fetchID();
+      toggleModal("");
+      return true;
+    } else console.log("Error en la BD"); */
+});
+BTNconfirmacion2.addEventListener("click", (e) => {
+  let accionConfirm = e.target.dataset.accion;
+  let idConfrim =
+    e.target.parentElement.parentElement.querySelector(
+      "#idModalConfirm"
+    ).textContent;
+    console.log(BTNconfirmacion2.dataset.accion);
 });
