@@ -261,9 +261,9 @@ class Juguete{
             $stmt = $con->prepare($sql);
             
             $stmt->bindParam(':_codigo',$juguete->idNuevo, PDO::PARAM_STR);
-            $stmt->bindParam(':_anio',$hoy->getAnio(), PDO::PARAM_INT);
-            $stmt->bindParam(':_mes',$hoy->getMes(), PDO::PARAM_INT);
-            $stmt->bindParam(':_dia',$hoy->getDia(), PDO::PARAM_INT);
+            $stmt->bindParam(':_anio',$hoy->anio, PDO::PARAM_INT);
+            $stmt->bindParam(':_mes',$hoy->mes, PDO::PARAM_INT);
+            $stmt->bindParam(':_dia',$hoy->dia, PDO::PARAM_INT);
             $stmt->bindParam(':_costo',$juguete->costo, PDO::PARAM_STR);
             $stmt->bindParam(':_cantidad',$juguete->cantidad, PDO::PARAM_INT);
             $stmt->bindParam(':_venta',$juguete->precio, PDO::PARAM_STR);

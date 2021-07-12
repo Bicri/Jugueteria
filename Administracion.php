@@ -38,7 +38,9 @@
                             <th scope="col">Acción</th>
                         </tr>
                     </thead>
-                    <tbody id="elementosAdmin">                        
+
+                    <tbody id="elementosAdmin">
+
                     </tbody>
                 </table>
 
@@ -67,47 +69,85 @@
     <!-- MODAL PARA TODOS -->
     <div class="containerModal  " id="modalUniversal">
         <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconUni">
-        <div class="contenidoModal  modalComprar" style="flex-direction:column;overflow-x:auto;  height:80%" id="contenidoModalUniversal">
-            <div style="position:absolute; top:16px;">
+
+        <div class="contenidoModal  modalComprar" style="flex-direction:column;overflow-x:auto;  height:85%" id="contenidoModalUniversal">
+            <div>
                 <h1 class="titulo" id="tituloModalAdmin">AGREGAR NUEVO PRODUCTO</h1>
             </div>
             <div class="contenedorFormulario" id="colorform">
-                <form  style="display:flex; flex-direction: row; padding:20px;">
+                <form style="display:flex; flex-direction: row; padding:20px;">
+
                     <div style="margin: 0 20px">
                         <!-- LABEL E INPUT PARA EL CÓDIGO DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Código de producto</label>
                             <input type="text" class="form-control" id="idAdmin" placeholder="ID del producto">
-                            <small id="IDlHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+                            <small id="IDlHelp" class="form-text text-muted"></small>
                         </div>
                         <!-- LABEL E INPUT PARA EL NOMBRE DEL PRODUCTO -->
                         <div class="form-group">
-                        <label class="font-weight-bold">Nombre</label>
+                            <label class="font-weight-bold">Nombre</label>
+
                             <input type="text" class="form-control" id="nomAdmin" placeholder="Nombre del producto">
                         </div>
                         <!-- LABEL E INPUT PARA EL COSTO DEL PRODUCTO -->
                         <div class="form-group">
-                        <label class="font-weight-bold"> Costo</label>
+
+                            <label class="font-weight-bold"> Costo</label>
                             <input type="number" class="form-control" id="costoAdmin" placeholder="Costo del producto">
                         </div>
                     </div>
                     <div style="margin: 0 20px">
                         <!-- LABEL E INPUT PARA EL PRECIO DEL PRODUCTO -->
                         <div class="form-group">
-                        <label class="font-weight-bold">Precio de venta</label>
+                            <label class="font-weight-bold">Precio de venta</label>
                             <input type="number" class="form-control" id="precioAdmin" placeholder="Precio del producto">
                         </div>
                         <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
                         <div class="form-group">
-                        <label class="font-weight-bold">Cantidad</label>
+                            <label class="font-weight-bold">Cantidad</label>
                             <input type="number" class="form-control" id="cantAdmin" placeholder="Cantidad del producto">
-                        </div>    
-                    </div>          
+                        </div>
+                    </div>
                 </form>
-            
+
             </div>
-            <input type="button" id="BotonModalAccion" value="Agregar" class="boton-aceptar" style="margin: 12px;" target="_blank">    
+            <input type="button" id="BotonModalAccion" value="Agregar" class="boton-aceptar" style="margin:0;" target="_blank">
         </div>
+    </div>
+
+    <!-- MODAL CONFIRMACIÓN -->
+    <div class="containerModal" style="background: rgba(0, 0, 120,0.2); align-items: flex-start;" id="modalConfirm">
+        <div class="modal-dialog" style="max-width:10000px; width:600px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmación</h5>
+                    <button type="button" class="btn btn-danger" id="cerrarModalConfirm">Cancelar</button>                    
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro que eseas borrar este producto?</p>
+                    <div style="width:100%; margin: 0; display:flex; justify-content: space-evenly; align-items: flex-start; flex-direction: row; text-align: left;">
+                        <p>Id: <span id="idModalConfirm"> J123</span></p>
+                        <p>Nombre: <span id="nomModalConfirm"> Batman</span></p>
+                        <p>Cantidad: <span id="cantModalConfirm">500</span></p>
+                    </div>
+                    <div style="width:100%; margin-left: 5px; display:flex; justify-content: space-evenly; align-items: flex-start; flex-direction: row; text-align: left;">
+                        <p>Precio: $<span id="precModalConfirm">30.02</span></p>
+                        <p  style="font-weight: 600;">Costo: $<span id="costoModal">300.02</span></p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="BTNconfirmacion1">Si, borralo y SIN agregar costos</button>
+                    <button type="button" class="btn btn-info" id="BTNconfirmacion2">Si, borralo y AGREGA costos</button>
+
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
     <script src="src/js/Admin.js"></script>
