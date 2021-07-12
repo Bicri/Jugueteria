@@ -38,7 +38,9 @@
                             <th scope="col">Acción</th>
                         </tr>
                     </thead>
+
                     <tbody id="elementosAdmin">
+
                     </tbody>
                 </table>
 
@@ -67,26 +69,31 @@
     <!-- MODAL PARA TODOS -->
     <div class="containerModal  " id="modalUniversal">
         <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconUni">
+
         <div class="contenidoModal  modalComprar" style="flex-direction:column;overflow-x:auto;  height:85%" id="contenidoModalUniversal">
             <div>
                 <h1 class="titulo" id="tituloModalAdmin">AGREGAR NUEVO PRODUCTO</h1>
             </div>
             <div class="contenedorFormulario" id="colorform">
                 <form style="display:flex; flex-direction: row; padding:20px;">
+
                     <div style="margin: 0 20px">
                         <!-- LABEL E INPUT PARA EL CÓDIGO DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Código de producto</label>
                             <input type="text" class="form-control" id="idAdmin" placeholder="ID del producto">
+
                             <small id="IDlHelp" class="form-text text-muted"></small>
                         </div>
                         <!-- LABEL E INPUT PARA EL NOMBRE DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Nombre</label>
+
                             <input type="text" class="form-control" id="nomAdmin" placeholder="Nombre del producto">
                         </div>
                         <!-- LABEL E INPUT PARA EL COSTO DEL PRODUCTO -->
                         <div class="form-group">
+
                             <label class="font-weight-bold"> Costo</label>
                             <input type="number" class="form-control" id="costoAdmin" placeholder="Costo del producto">
                         </div>
@@ -138,6 +145,7 @@
 
                 </div>
             </div>
+
         </div>
 
     </div>
