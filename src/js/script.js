@@ -70,7 +70,7 @@ const fethcData = async () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  fethcData();
+  fetchID();
 });
 
 /*  */
