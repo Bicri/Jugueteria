@@ -59,9 +59,9 @@ else if($jugueteRecibido->accion == "3")
     // resp = -1 --> error bd
 }
 
-//----------------------- Borra toda la lista --------------------------------------------
+//----------------------- Obtener toda la lista --------------------------------------------
 // Ejemplo de juguete recibido:
-// $jugueteRecibido = '{"accion":"3"}';
+// $jugueteRecibido = '{"accion":"4"}';
 else if($jugueteRecibido->accion == "4")
 {
     $resp = $objJuguete->ObtenerLista();
