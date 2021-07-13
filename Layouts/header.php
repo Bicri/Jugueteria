@@ -23,7 +23,7 @@ $first_part = $components[2];
             </div>
 
             <a href="./Utilidad.php" class="<?php echo ($first_part=="Utilidad.php") ? "active":""?>"> UTILIDAD </a>
-            <a href="./CostosIndirectos.php" class="<?php echo ($first_part=="CostosIndirectos.php") ? "active":""?>"> COSTOS INDIRECTOS</a>
+            <a href="./Alertas.php" class="<?php echo ($first_part=="Alertas.php") ? "active":""?>"> ALERTAS</a>
         </div>
     </nav>
 

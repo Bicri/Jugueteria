@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es" xml:lang="es">
 
 <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo=">
     <title>Administracion</title>
-    <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>  
+    <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="src/css/estilos.css">
     <link rel="stylesheet" href="src/css/estilosInput.css">
     <link rel="stylesheet" href="src/css/styles.css" />
@@ -67,7 +68,7 @@
     </template>
 
     <!-- MODAL PARA TODOS -->
-    <div class="containerModal  " id="modalUniversal">
+    <div class="containerModal" id="modalUniversal">
         <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="close-iconUni">
 
         <div class="contenidoModal  modalComprar" style="flex-direction:column;overflow-x:auto;  height:85%" id="contenidoModalUniversal">
@@ -123,36 +124,82 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Confirmación</h5>
-                    <button type="button" class="btn btn-danger" id="cerrarModalConfirm">Cancelar</button>                    
+                    <button type="button" class="btn btn-danger" id="cerrarModalConfirm">Cancelar</button>
                     </button>
                 </div>
                 <div>
-                <p style="margin:0 80px;">¿Estás seguro que deseas borrar este producto?</p>
-                <div class="modal-body" style="display:flex; justify-content: center; align-items:center; flex-direction: row; width:100%;">
-                    
-                    <div style=" width:50%; margin: 0; display:flex; justify-content: space-evenly; align-items: center; flex-direction: column;
-                    ">
-                        <p>Id: <span id="idModalConfirm"> J123</span></p>
-                        <p>Nombre: <span id="nomModalConfirm"> Batman</span></p>
-                        <p>Cantidad: <span id="cantModalConfirm">500</span></p>
-                    </div>
-                    <div style="width: 50%; margin-left: 5px; display:flex; justify-content: center; align-items: center; flex-direction: column;
-                    ">
-                        <p>Precio: $<span id="precModalConfirm">30.02</span></p>
-                        <p  style="font-weight: 600;">Costo: $<span id="costoModal">300.02</span></p>
-                    </div>
+                    <p style="margin:0 80px;">¿Estás seguro que deseas borrar este producto?</p>
+                    <div class="modal-body" style="display:flex; justify-content: center; align-items:center; flex-direction: row; width:100%;">
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="BTNconfirmacion1">Si, borralo y SIN agregar costos</button>
-                    <button type="button" class="btn btn-info" id="BTNconfirmacion2">Si, borralo y AGREGA costos</button>
+                        <div style=" width:50%; margin: 0; display:flex; justify-content: space-evenly; align-items: center; flex-direction: column;
+                    ">
+                            <p>Id: <span id="idModalConfirm"> J123</span></p>
+                            <p>Nombre: <span id="nomModalConfirm"> Batman</span></p>
+                            <p>Cantidad: <span id="cantModalConfirm">500</span></p>
+                        </div>
+                        <div style="width: 50%; margin-left: 5px; display:flex; justify-content: center; align-items: center; flex-direction: column;
+                    ">
+                            <p>Precio: $<span id="precModalConfirm">30.02</span></p>
+                            <p style="font-weight: 600;">Costo: $<span id="costoModal">300.02</span></p>
+                        </div>
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="BTNconfirmacion1">Si, borralo y SIN agregar costos</button>
+                        <button type="button" class="btn btn-info" id="BTNconfirmacion2">Si, borralo y AGREGA costos</button>
+
+                    </div>
                 </div>
+
             </div>
 
         </div>
-
     </div>
+    
+    <div class="containerModal" id="modalLista">
+        <img src="./src/img/bx-x.svg" alt="" class="close-icon" id="closeIconLista">
+
+        <div class="contenidoModal modalComprar" style="flex-direction:column;overflow-x:auto;  height:85%" id="contenidoModalLista">
+            <div>
+                <h1 class="titulo">Lista de compras futuras</h1>
+            </div>
+            <div class="contenedorFormulario">
+                <form style="display:flex; flex-direction: row; padding:20px;">
+
+                    <div style="margin: 0 20px">
+                        <!-- LABEL E INPUT PARA EL CÓDIGO DEL PRODUCTO -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Código de producto</label>
+                            <input type="text" class="form-control" style="cursor:not-allowed;" disabled id="idLista" placeholder="ID del producto">
+
+                            <small id="IDlHelp" class="form-text text-muted"></small>
+                        </div>
+                        <!-- LABEL E INPUT PARA EL NOMBRE DEL PRODUCTO -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Nombre</label>
+
+                            <input type="text" class="form-control" style="cursor:not-allowed;" disabled id="nomLista" placeholder="Nombre del producto">
+                        </div>
+                    </div>
+                    <div style="margin: 0 20px">
+                        <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Cantidad actual</label>
+                            <input type="number" class="form-control" style="cursor:not-allowed;" disabled id="cantLista" placeholder="Cantidad del producto">
+                        </div>
+                        <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
+                        <div class="form-group">
+                            <label class="font-weight-bold">Cantidad deseada</label>
+                            <input type="number" class="form-control" id="cantdeseadaLista" placeholder="Cantidad deseada">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <input type="button" id="BotonModalLista" value="Agregar" class="boton-aceptar" style="margin:0;" target="_blank">
+        </div>
+    </div>
+
 
     <script src="src/js/Admin.js"></script>
 </body>
