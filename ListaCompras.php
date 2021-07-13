@@ -37,7 +37,11 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Cantidad</label>
                             <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Cantidad deseada">
+<<<<<<< HEAD
+                        </div>
+=======
                         </div>                        
+>>>>>>> master
                         <button type="submit" class="btn btn-primary">Agregar</button>
                     </form>
                 </div>
@@ -49,6 +53,18 @@
                             <tr>
                                 <th scope="col">#ID</th>
                                 <th scope="col">Nombre</th>
+<<<<<<< HEAD
+                                <th scope="col">Cantidad Almacen</th>
+                                <th scope="col">Cantidad deseada</th>
+                                <th scope="col">Acción</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="elementosAdmin">
+
+                        </tbody>
+
+=======
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Cantidad deseada</th>
                                 <th scope="col">Columna#</th>
@@ -289,11 +305,15 @@
             </td>
         </tr>
                         </tbody>
+>>>>>>> master
                     </table>
                     <div class="justialignCenter" style=" width:100%;position: sticky; bottom: 2px; background: white;">
                         <a href="Controlador/ImprimeLista.php" style="margin:10px" class="btn btn-primary" target="_blank">Imprimir</a>
                         <input type="button" value="Borrar" class="btn btn-danger">
                     </div>
+<<<<<<< HEAD
+                </div>
+=======
 
 
 
@@ -302,6 +322,7 @@
 
 
 
+>>>>>>> master
             </div>
         </div>
 
