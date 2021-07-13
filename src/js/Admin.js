@@ -47,6 +47,7 @@ passwordAdmin.addEventListener("keyup", () => {
     })
     .then((contra2) => {
       console.log(contra2);
+    
       if (passwordAdmin.value == contra2) {
         flag = true;
         passwordAdmin.style.boxShadow = "0 0 1px 2px rgba(0,255,0,0.5)";

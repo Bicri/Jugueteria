@@ -39,6 +39,12 @@
                             <input type="number" class="form-control" id="cantLista" placeholder="Cantidad deseada">
                         </div>
                         <button type="submit" class="btn btn-primary" id="BtnAgregar">Agregar</button>
+
+                            <label for="exampleInputPassword1">Cantidad</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Cantidad deseada">
+
+                        </div>                        
+
                     </form>
                 </div>
 
@@ -49,8 +55,13 @@
                             <tr>
                                 <th scope="col">#ID</th>
                                 <th scope="col">Nombre</th>
+
                                 <th scope="col">Almacen</th>
                                 <th scope="col">Deseada</th>
+                                <th scope="col">Acción</th>
+
+                                <th scope="col">Cantidad Almacen</th>
+                                <th scope="col">Cantidad deseada</th>
                                 <th scope="col">Acción</th>
                             </tr>
                         </thead>
@@ -59,12 +70,32 @@
 
                         </tbody>
 
+
+                            </tr>
+                        </thead>
+
+                        <tbody id="elementosAdmin">
+
+                        </tbody>
+
+
                     </table>
                     <div class="justialignCenter" style=" width:100%;position: sticky; bottom: 2px; background: white;">
                         <a href="Controlador/ImprimeLista.php" style="margin:10px" class="btn btn-primary disabled" target="_blank" id="BtnImprimir">Imprimir</a>
                         <input type="button" value="Borrar" id="BtnBorrar" class="btn btn-danger" disabled>
                     </div>
                 </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
             </div>
         </div>
 
