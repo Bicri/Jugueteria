@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Cantidad</label>
                             <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Cantidad deseada">
-                        </div>                        
+                        </div>
                         <button type="submit" class="btn btn-primary">Agregar</button>
                     </form>
                 </div>
@@ -49,264 +49,24 @@
                             <tr>
                                 <th scope="col">#ID</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Cantidad</th>
+                                <th scope="col">Cantidad Almacen</th>
                                 <th scope="col">Cantidad deseada</th>
-                                <th scope="col">Columna#</th>
+                                <th scope="col">Acción</th>
                             </tr>
                         </thead>
 
-                        <tbody id="elementosAdmin" >
-                        <tr>
-            <td class="table-light" id="idProdTabla">primero</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr><tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
-            <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
-            <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
-            <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
-                <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
-            </td>
-        </tr>
+                        <tbody id="elementosAdmin">
+
                         </tbody>
+
                     </table>
                     <div class="justialignCenter" style=" width:100%;position: sticky; bottom: 2px; background: white;">
                         <a href="Controlador/ImprimeLista.php" style="margin:10px" class="btn btn-primary" target="_blank">Imprimir</a>
                         <input type="button" value="Borrar" class="btn btn-danger">
                     </div>
-
-
-
                 </div>
-
-
-
-
             </div>
         </div>
-
-
-
     </div>
 </body>
 

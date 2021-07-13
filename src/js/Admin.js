@@ -131,7 +131,7 @@ const resetA4 = () => {
     nomAdmin.style.cursor = "text";
   }  
 };
-
+let flag = false;
 itemsAdmin.addEventListener("click", (e) => {
   elementoProducto = e.target.parentElement.parentElement;
   if (e.target.classList.contains("btn-success")) {
@@ -151,7 +151,7 @@ itemsAdmin.addEventListener("click", (e) => {
     precioAdmin.value = "0.00";
     costoAdmin.value = "0.00";
   }
-  if (e.target.classList.contains("btn-warning")) {
+  if (e.target.classList.contains("btn-warning") && flag) {
     IDlHelp.textContent ="";
     resetA4();
     toggleModal("EDITAR PRODUCTO");
@@ -176,7 +176,7 @@ itemsAdmin.addEventListener("click", (e) => {
       /*nomAdmin.value = elementoProducto.querySelector("#nomProdTabla").textContent; */
     });
   }
-  if (e.target.classList.contains("btn-danger")) {
+  if (e.target.classList.contains("btn-danger") && flag) {
     IDlHelp.textContent ="";
     modalConfirm.classList.toggle("show");
     BTNconfirmacion1.dataset.accion = "6";
@@ -218,6 +218,16 @@ itemsAdmin.addEventListener("click", (e) => {
       elementoProducto.querySelector("#nomProdTabla").textContent;
     cantLista.value = 1;
     BotonModalLista.dataset.accion = "5";
+  }
+
+  if(!e.target.classList.contains("btn")){
+    return false;
+  }
+  else if(e.target.classList.contains("btn-danger") && !flag){
+    alert("contraseña necesaria");
+  }
+  else if(e.target.classList.contains("btn-warning") && !flag){
+    alert("contraseña necesaria");
   }
 });
 
