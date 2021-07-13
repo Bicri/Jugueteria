@@ -32,8 +32,8 @@ class Juguete{
             return $items;
         }catch(Exception $e)
         {
-            return null;
             echo "Error en el servidor: ".$e->getMessage();
+            return null;
         }
     }
 
@@ -63,8 +63,8 @@ class Juguete{
             return $items;
         }catch(Exception $e)
         {
-            return null;
             echo "Error en el servidor: ".$e->getMessage();
+            return null;
         }
     }
 
@@ -87,8 +87,8 @@ class Juguete{
             return 0;
         }catch(Exception $e)
         {
-            return 1;
             echo "Error en el servidor: ".$e->getMessage();
+            return 1;
         }
     }
 
@@ -152,8 +152,8 @@ class Juguete{
             return $items;
         }catch(Exception $e)
         {
-            return -1;
             echo "Error en el servidor: ".$e->getMessage();
+            return -1;
         }
     }
 
@@ -173,8 +173,8 @@ class Juguete{
             return 0;
         }catch(Exception $e)
         {
-            return -1;
             echo "Error en el servidor: ".$e->getMessage();
+            return -1;
         }
     }
 
@@ -553,8 +553,68 @@ class Juguete{
             return $items;
         }catch(Exception $e)
         {
-            return -1;
             echo "Error en el servidor: ".$e->getMessage();
+            return -1;
+        }
+    }
+
+    public function Top($flag)
+    {
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+            $sql = 'CALL pcd_top(:flag)';
+            $stmt = $con->prepare($sql);
+            $stmt->bindParam(':flag',$flag, PDO::PARAM_STR, 100);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $items=[];
+            while ($r = $stmt->fetch()){
+                $item = [
+                    'codigo' => $r['Codigo'],
+                    'nombre' => $r['Nombre'],
+                    'unidades'  => $r['Unidades Vendidas'],
+                    'ingreso' => $r['Total Ingreso']
+                ];
+                array_push($items,$item);
+            }
+            $stmt=null;
+            $this->conexion->desconectar();
+            return $items;
+        }catch(Exception $e)
+        {
+            echo "Error en el servidor: ".$e->getMessage();
+            return -1;
+        }
+    }
+
+    public function ObtenerVacio()
+    {
+        
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+            $sql = 'CALL pcd_Sin_Exist()';
+            $stmt = $con->query($sql);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $items=[];
+            while ($r = $stmt->fetch()){   
+                $item = [
+                    'codigo' => $r['codigo'],
+                    'nombre' => $r['nombre'],
+                    'existencia'  => $r['existencia']
+                ];
+                array_push($items,$item);
+            }
+            $this->conexion->desconectar();
+            $stmt=null;
+            return $items;
+        }catch(Exception $e)
+        {
+            echo "Error en el servidor: ".$e->getMessage();
+            return -1;
         }
     }
 
