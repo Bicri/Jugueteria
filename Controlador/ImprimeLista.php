@@ -28,7 +28,7 @@ foreach($items as $item)
 }
 $items = null;
 
-$pdf->Output();
+$pdf->Output('D','Lista de compras.pdf');
 
 
 

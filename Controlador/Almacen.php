@@ -7,7 +7,6 @@ require_once ("../Modelo/Fecha.php");
 //accion 4 --> Edicion terminada
 //accion 5 --> Agregar a lista
 //accion 6 --> Deseo borrar (ya paso el modal que le pregunta si esta seguro) --> devuleve el costo de su juguete
-
 //accion 7 --> Bandera 0 = No desea agregar el costo del juguete borrado a utilidades
 //             Bandera 1 = desea agregar el costo del juguete borrado a utilidades
 
@@ -27,7 +26,6 @@ $jugueteRecibido = json_decode($jugueteRecibido);
 $objJuguete = new Juguete();
 $hoy = new Fecha(0,0,0);
 $hoy = $hoy->getToday();
-
 
 $resp = 5; //captura la respuesta
 

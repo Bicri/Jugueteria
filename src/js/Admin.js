@@ -1,6 +1,8 @@
 const ContenedorModal = document.querySelector("#modalUniversal");
 const contenidoModal = document.querySelector("#contenidoModalUniversal");
 
+const modalLista = document.querySelector("#modalLista");
+const contenidoModalLista = document.querySelector("#contenidoModalLista");
 
 const modalConfirm = document.querySelector("#modalConfirm");
 const cerrarModalConfirm = document.querySelector("#cerrarModalConfirm");
@@ -10,6 +12,7 @@ const BTNconfirmacion2 = document.querySelector("#BTNconfirmacion2");
 //const botonCerrarCarrito = document.querySelector("#close-iconUni");
 
 const botonCerrarCarrito = document.querySelector("#close-iconUni");
+const closeIconLista = document.querySelector("#closeIconLista");
 /* ELEMENTOS DEL MODAL JALADOS A JavaScript */
 //TITULO DEL MODAL
 const tituloModalAdmin = document.querySelector("#tituloModalAdmin");
@@ -31,13 +34,18 @@ let anio = "";
 let mes = "";
 let dia = "";
 
-
+const BotonModalLista = document.querySelector("#BotonModalLista");
 
 /* ABRIR Y CERRAR MODAL */
 const toggleModal = (titulo) => {
   tituloModalAdmin.textContent = titulo;
   contenidoModal.classList.toggle("show");
   ContenedorModal.classList.toggle("showModal");
+};
+
+const toggleModalLista = () => {  
+  modalLista.classList.toggle("show");
+  contenidoModalLista.classList.toggle("showModal");
 };
 
 /* LÓGICA PARA PINTAR TODOS LOS PRODUCTOS EN LA TABLA */
@@ -204,7 +212,12 @@ itemsAdmin.addEventListener("click", (e) => {
   }
 
   if (e.target.classList.contains("btn-primary")) {
-    toggleModal("AÑADIR A LISTA");
+    toggleModalLista();
+    idLista.value = elementoProducto.querySelector("#idProdTabla").textContent;
+    nomLista.value =
+      elementoProducto.querySelector("#nomProdTabla").textContent;
+    cantLista.value = 1;
+    BotonModalLista.dataset.accion = "5";
   }
 });
 
@@ -330,6 +343,41 @@ BotonModalAccion.addEventListener("click", (e) => {
 ContenedorModal.addEventListener("click", (e) => {
   if (e.target == botonCerrarCarrito) {
     toggleModal();
+  }
+});
+
+//ACCION 5 AÑADIR A LISTA
+
+
+BotonModalLista.addEventListener('click',()=>{
+  let objAñadirLista = {};
+  let accion = BotonModalLista.dataset.accion;
+  console.log(accion);
+  //$jugueteRecibido = '{"accion":"5","idNuevo":"123","cantidad":"10"}';
+  if (accion === "5") {        
+    objAñadirLista = {
+      accion: accion,
+      idNuevo: idLista.value,
+      cantidad: parseInt(cantdeseadaLista.value),
+    };
+    console.log(objAñadirLista);
+    if (MandarAccionYObj(objAñadirLista, accion)) {
+      alert("OPERACIÓN EXITOSA");
+      fetchID();
+      toggleModalLista("");
+      return true;
+    } else console.log("Error en la BD");
+  } 
+})
+
+/* ----------------------- */
+
+
+
+
+modalLista.addEventListener("click", (e) => {
+  if (e.target == closeIconLista) {
+    toggleModalLista();
   }
 });
 
