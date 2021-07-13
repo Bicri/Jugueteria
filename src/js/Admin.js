@@ -25,9 +25,8 @@ const precioAdmin = document.querySelector("#precioAdmin");
 const cantAdmin = document.querySelector("#cantAdmin");
 const BotonModalAccion = document.querySelector("#BotonModalAccion");
 
-
 const AgregarNuevobtn = document.querySelector("#agregarNuevo");
-const botonCerrar= document.querySelector("#agregarNuevo");
+const botonCerrar = document.querySelector("#agregarNuevo");
 const colorform = document.querySelector("#colorform");
 let idViejolet = 0;
 let anio = "";
@@ -36,6 +35,31 @@ let dia = "";
 
 const BotonModalLista = document.querySelector("#BotonModalLista");
 
+let flag = false;
+
+const passwordAdmin = document.querySelector("#passwordAdmin");
+
+passwordAdmin.addEventListener("keyup", () => {
+  console.log(flag);  
+  fetch("Contrasena/Contrasena.php")
+    .then((contra) => {
+      return contra.json();
+    })
+    .then((contra2)=>{
+      console.log(contra2)
+      if (passwordAdmin.value == contra2) {
+        flag = true;
+        passwordAdmin.style.boxShadow = "0 0 1px 2px rgba(0,255,0,0.5)";
+      } else {
+        flag = false;
+        passwordAdmin.style.boxShadow = "0 0 1px 2px rgba(255,0,0,0.5)";
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 /* ABRIR Y CERRAR MODAL */
 const toggleModal = (titulo) => {
   tituloModalAdmin.textContent = titulo;
@@ -43,7 +67,7 @@ const toggleModal = (titulo) => {
   ContenedorModal.classList.toggle("showModal");
 };
 
-const toggleModalLista = () => {  
+const toggleModalLista = () => {
   modalLista.classList.toggle("show");
   contenidoModalLista.classList.toggle("showModal");
 };
@@ -101,16 +125,13 @@ const pintarCards = (data) => {
 
 const SolicitarObjeto = async (accion, id) => {
   let objetoparaAccion = { accion: accion, idNuevo: id };
-  let permisoparaAccion = await fetch(
-    "Controlador/Almacen.php",
-    {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(objetoparaAccion),
-      headers: {
-        "Content-Type": "application/json", // AQUI indicamos el formato
-      }, // data can be `string` or {object}!
-    }
-  );
+  let permisoparaAccion = await fetch("Controlador/Almacen.php", {
+    method: "POST", // or 'PUT'
+    body: JSON.stringify(objetoparaAccion),
+    headers: {
+      "Content-Type": "application/json", // AQUI indicamos el formato
+    }, // data can be `string` or {object}!
+  });
   let respuestaUltima = await permisoparaAccion.json();
   //console.log(respuestaUltima);
   return respuestaUltima;
@@ -129,13 +150,13 @@ const resetA4 = () => {
     idAdmin.style.cursor = "text";
     nomAdmin.removeAttribute("disabled");
     nomAdmin.style.cursor = "text";
-  }  
+  }
 };
-let flag = false;
+
 itemsAdmin.addEventListener("click", (e) => {
   elementoProducto = e.target.parentElement.parentElement;
   if (e.target.classList.contains("btn-success")) {
-    IDlHelp.textContent ="";
+    IDlHelp.textContent = "";
     toggleModal("AÑADIR STOCK A PRODUCTO");
     BotonModalAccion.dataset.accion = "2";
     //console.log(elementoProducto.querySelector("#idProdTabla").textContent);
@@ -152,7 +173,7 @@ itemsAdmin.addEventListener("click", (e) => {
     costoAdmin.value = "0.00";
   }
   if (e.target.classList.contains("btn-warning") && flag) {
-    IDlHelp.textContent ="";
+    IDlHelp.textContent = "";
     resetA4();
     toggleModal("EDITAR PRODUCTO");
     BotonModalAccion.dataset.accion = "3";
@@ -177,7 +198,7 @@ itemsAdmin.addEventListener("click", (e) => {
     });
   }
   if (e.target.classList.contains("btn-danger") && flag) {
-    IDlHelp.textContent ="";
+    IDlHelp.textContent = "";
     modalConfirm.classList.toggle("show");
     BTNconfirmacion1.dataset.accion = "6";
     BTNconfirmacion2.dataset.accion = "6";
@@ -190,25 +211,23 @@ itemsAdmin.addEventListener("click", (e) => {
       fila.querySelector("#cantidadTablaAdmin").textContent;
     document.querySelector("#precModalConfirm").textContent =
       fila.querySelector("#precioTablaAdmin").textContent;
-      SolicitarObjeto(
-        "6",
-        fila.querySelector("#idProdTabla").textContent
-      ).then((objSolicitado) => {
+    SolicitarObjeto("6", fila.querySelector("#idProdTabla").textContent).then(
+      (objSolicitado) => {
         console.log(objSolicitado);
         document.querySelector("#costoModal").textContent = objSolicitado.costo;
         BTNconfirmacion1.dataset.accion = "7";
         BTNconfirmacion2.dataset.accion = "7";
-        if(objSolicitado.existencia >0){
+        if (objSolicitado.existencia > 0) {
           BTNconfirmacion2.style.display = "block";
           BTNconfirmacion1.textContent = "Si, borralo SIN agregar costos";
-          console.log("tiene más de 0")
-        }
-        else{
-          console.log("tiene 0")        
+          console.log("tiene más de 0");
+        } else {
+          console.log("tiene 0");
           BTNconfirmacion2.style.display = "none";
           BTNconfirmacion1.textContent = "Si, borralo";
-        }                         
-      });
+        }
+      }
+    );
   }
 
   if (e.target.classList.contains("btn-primary")) {
@@ -220,13 +239,11 @@ itemsAdmin.addEventListener("click", (e) => {
     BotonModalLista.dataset.accion = "5";
   }
 
-  if(!e.target.classList.contains("btn")){
+  if (!e.target.classList.contains("btn")) {
     return false;
-  }
-  else if(e.target.classList.contains("btn-danger") && !flag){
+  } else if (e.target.classList.contains("btn-danger") && !flag) {
     alert("contraseña necesaria");
-  }
-  else if(e.target.classList.contains("btn-warning") && !flag){
+  } else if (e.target.classList.contains("btn-warning") && !flag) {
     alert("contraseña necesaria");
   }
 });
@@ -237,16 +254,13 @@ itemsAdmin.addEventListener("click", (e) => {
 
 const MandarAccionYObj = async (obj, accion) => {
   let objetoparaAccion = { ...obj };
-  let permisoparaAccion = await fetch(
-    "Controlador/Almacen.php",
-    {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(objetoparaAccion),
-      headers: {
-        "Content-Type": "application/json", // AQUI indicamos el formato
-      }, // data can be `string` or {object}!
-    }
-  );
+  let permisoparaAccion = await fetch("Controlador/Almacen.php", {
+    method: "POST", // or 'PUT'
+    body: JSON.stringify(objetoparaAccion),
+    headers: {
+      "Content-Type": "application/json", // AQUI indicamos el formato
+    }, // data can be `string` or {object}!
+  });
   let respuestaUltima = await permisoparaAccion.text();
   console.log(respuestaUltima);
   if (respuestaUltima == 0) {
@@ -347,7 +361,6 @@ BotonModalAccion.addEventListener("click", (e) => {
   } else {
     alert("Error interno,accion no especificada");
   }
-
 });
 
 ContenedorModal.addEventListener("click", (e) => {
@@ -358,13 +371,12 @@ ContenedorModal.addEventListener("click", (e) => {
 
 //ACCION 5 AÑADIR A LISTA
 
-
-BotonModalLista.addEventListener('click',()=>{
+BotonModalLista.addEventListener("click", () => {
   let objAñadirLista = {};
   let accion = BotonModalLista.dataset.accion;
   console.log(accion);
   //$jugueteRecibido = '{"accion":"5","idNuevo":"123","cantidad":"10"}';
-  if (accion === "5") {        
+  if (accion === "5") {
     objAñadirLista = {
       accion: accion,
       idNuevo: idLista.value,
@@ -377,20 +389,16 @@ BotonModalLista.addEventListener('click',()=>{
       toggleModalLista("");
       return true;
     } else console.log("Error en la BD");
-  } 
-})
+  }
+});
 
 /* ----------------------- */
-
-
-
 
 modalLista.addEventListener("click", (e) => {
   if (e.target == closeIconLista) {
     toggleModalLista();
   }
 });
-
 
 cerrarModalConfirm.addEventListener("click", (e) => {
   modalConfirm.classList.toggle("show");
@@ -402,19 +410,19 @@ BTNconfirmacion1.addEventListener("click", (e) => {
     e.target.parentElement.parentElement.querySelector(
       "#idModalConfirm"
     ).textContent;
-    console.log(accionConfirm);    
-    //$jugueteRecibido = '{"accion":"7","idNuevo":"123","idViejo":"0"}'; 0 NO AGREGA
-    objAñadirNuevo = {
-      accion: accionConfirm,
-      idNuevo: idConfirm,
-      idViejo:0
-    };
-    if (MandarAccionYObj(objAñadirNuevo, accionConfirm)) {
-      alert("OPERACIÓN EXITOSA SIN AGREGAR COSTOS");
-      fetchID();
-      modalConfirm.classList.toggle("show");
-      return true;
-    } else console.log("Error en la BD");
+  console.log(accionConfirm);
+  //$jugueteRecibido = '{"accion":"7","idNuevo":"123","idViejo":"0"}'; 0 NO AGREGA
+  objAñadirNuevo = {
+    accion: accionConfirm,
+    idNuevo: idConfirm,
+    idViejo: 0,
+  };
+  if (MandarAccionYObj(objAñadirNuevo, accionConfirm)) {
+    alert("OPERACIÓN EXITOSA SIN AGREGAR COSTOS");
+    fetchID();
+    modalConfirm.classList.toggle("show");
+    return true;
+  } else console.log("Error en la BD");
 });
 BTNconfirmacion2.addEventListener("click", (e) => {
   let accionConfirm = e.target.dataset.accion;
@@ -422,17 +430,16 @@ BTNconfirmacion2.addEventListener("click", (e) => {
     e.target.parentElement.parentElement.querySelector(
       "#idModalConfirm"
     ).textContent;
-    console.log(BTNconfirmacion2.dataset.accion);
-    objAñadirNuevo = {
-      accion: accionConfirm,
-      idNuevo: idConfirm,
-      idViejo:1
-    };
-    if (MandarAccionYObj(objAñadirNuevo, accionConfirm)) {
-      alert("OPERACIÓN EXITOSA AGREGANDO COSTOS");
-      fetchID();
-      modalConfirm.classList.toggle("show");
-      return true;
-    } else console.log("Error en la BD");
-
+  console.log(BTNconfirmacion2.dataset.accion);
+  objAñadirNuevo = {
+    accion: accionConfirm,
+    idNuevo: idConfirm,
+    idViejo: 1,
+  };
+  if (MandarAccionYObj(objAñadirNuevo, accionConfirm)) {
+    alert("OPERACIÓN EXITOSA AGREGANDO COSTOS");
+    fetchID();
+    modalConfirm.classList.toggle("show");
+    return true;
+  } else console.log("Error en la BD");
 });
