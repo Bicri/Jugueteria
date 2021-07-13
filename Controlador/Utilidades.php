@@ -5,7 +5,7 @@ require_once ("../Modelo/Fecha.php");
 
 
 //$UtilidadRecibida = '{"accion":"0","anioI":"0","mesI":"0","diaI":"10","anioF":"0","mesF":"0","diaF":"10"}';
-$UtilidadRecibida = '{"accion":"1","anioI":"2021","mesI":"06","diaI":"20","anioF":"2021","mesF":"07","diaF":"03"}';
+$UtilidadRecibida = '{"accion":"3","anioI":"2021","mesI":"06","diaI":"20","anioF":"2021","mesF":"07","diaF":"03"}';
 
 $UtilidadRecibida = json_decode($UtilidadRecibida);
 
@@ -57,6 +57,31 @@ else if($UtilidadRecibida->accion == "1")
     print_r($resp);
 }
 
+//----------------   Borrar Semana  ------------------------
+// Ejemplo de utilidad Recibida:
+// $UtilidadRecibida = '{"accion":"2"}';
+else if($UtilidadRecibida->accion == "2")
+{
+    $resp = $utilidad->borra_semana();
+    echo $resp;
+    //si resp = 0 --> borrado exitantemente
+    //si resp = -1 --> Error en b
+}
+
+//----------------   Borrar Anual  ------------------------
+// Ejemplo de utilidad Recibida:
+// $UtilidadRecibida = '{"accion":"3"}';
+else if($UtilidadRecibida->accion == "3")
+{
+    $resp = $utilidad->borra_anio();
+    echo $resp;
+    //si resp = 0 --> borrado exitantemente
+    //si resp = -1 --> Error en b
+}
+
+else{
+    echo "error en if";
+}
 
 
 ?>

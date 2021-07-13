@@ -112,6 +112,54 @@ class Utilidad{
             return -1;
         }
     }
+
+    public function borra_semana()
+    {
+        $resp = null;
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+
+            $sql = 'CALL pcd_fin_semana()';
+            
+            $stmt = $con->prepare($sql);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            $stmt=null;
+            $this->conexion->desconectar();
+            return 0;
+        }catch(Exception $e)
+        {
+            echo "Error en el servidor: ".$e->getMessage();
+            return -1;
+        }
+    }
+
+    public function borra_anio()
+    {
+        $resp = null;
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+
+            $sql = 'CALL pcd_fin_anual()';
+            
+            $stmt = $con->prepare($sql);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            $stmt=null;
+            $this->conexion->desconectar();
+            return 0;
+        }catch(Exception $e)
+        {
+            echo "Error en el servidor: ".$e->getMessage();
+            return -1;
+        }
+    }
 }
 
 
