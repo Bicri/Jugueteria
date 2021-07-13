@@ -324,21 +324,7 @@ const pintarFooter = () => {
 
   templateFooterCarrito.appendChild(fragment);
 
-  const CancelaAgregaCarrito = async (accion) => {
-    let objCancelarCarrito = { Total: accion }; //0 para eliminar carrito
-    let permisoparaAccion = await fetch(
-      "Controlador/CancelaAgregaCarrito.php",
-      {
-        method: "POST", // or 'PUT'
-        body: JSON.stringify(objCancelarCarrito),
-        headers: {
-          "Content-Type": "application/json", // AQUI indicamos el formato
-        }, // data can be `string` or {object}!
-      }
-    );
-    let respuestaUltima = await permisoparaAccion.text();
-    console.log(respuestaUltima);
-  };
+  
 
   const boton = document.querySelector("#vaciar-carrito");  
   //VACIAR CARRITO LISTENER CON FUNCIÓN A BD
@@ -348,13 +334,30 @@ const pintarFooter = () => {
     pintarCarrito();
   });
 
-  confirmarCompra.addEventListener('click',()=>{
-    CancelaAgregaCarrito(1);
-    carrito = {};
-    pintarCarrito();
-  })
+ 
 
 };
+
+const CancelaAgregaCarrito = async (accion) => {
+  let objCancelarCarrito = { Total: accion }; //0 para eliminar carrito
+  let permisoparaAccion = await fetch(
+    "Controlador/CancelaAgregaCarrito.php",
+    {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(objCancelarCarrito),
+      headers: {
+        "Content-Type": "application/json", // AQUI indicamos el formato
+      }, // data can be `string` or {object}!
+    }
+  );
+  let respuestaUltima = await permisoparaAccion.text();
+  console.log(respuestaUltima);
+};
+confirmarCompra.addEventListener('click',()=>{
+  CancelaAgregaCarrito(1);
+  carrito = {};
+  pintarCarrito();
+})
 
 const aumentarCarritoConsultaBD = async (idparaAccion, accion) => {
   let objetoparaAccion = { id: idparaAccion, accion: accion };
