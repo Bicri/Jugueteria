@@ -25,6 +25,11 @@
                 <input type="text" name="buscarID" id="buscarIDAdmin" class="inputText" id="">
                 <input type="button" value="Buscar 🔎" id="botonBuscarIDAdmin" class="boton-primario" style="border-radius:50px;">
                 <input type="button" value="Agregar nuevo  ➕" id="agregarNuevo" class="boton-mini">
+
+                <div style="margin-left:400px;">
+
+                    <input type="password" id="passwordAdmin" placeholder="Contraseña" class="inputText" style="width:200px;">
+                </div>
                 <!-- <input type="button" value="PruebaModal" id="pruebaModalInput" class="boton-aceptar"> -->
             </div>
 

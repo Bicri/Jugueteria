@@ -15,6 +15,6 @@ while(!feof($archivo)){
 fclose($archivo);
 
 
-echo $password;
+echo json_encode($password);
 
 ?>

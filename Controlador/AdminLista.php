@@ -13,8 +13,8 @@ require_once("../Modelo/Juguete.php");
 //$jugueteRecibido = '{"accion":"7","idNuevo":"1","Bandera":"1","nombre":"Lorem","cantidad":"2"}';
 // si flag = 1 --> Aumenta en uno
 // Si flag = 0 --> Disminuye en 1
-$jugueteRecibido = '{"accion":"1","idNuevo":"","nombre":"Lorem","cantidad":"2","flag":"0"}';
-
+//$jugueteRecibido = '{"accion":"1","idNuevo":"","nombre":"Lorem","cantidad":"2","flag":"0"}';
+$jugueteRecibido = (file_get_contents('php://input'));
 $jugueteRecibido = json_decode($jugueteRecibido);
 
 $objJuguete = new Juguete();
@@ -59,13 +59,13 @@ else if($jugueteRecibido->accion == "3")
     // resp = -1 --> error bd
 }
 
-//----------------------- Obtener toda la lista --------------------------------------------
+//----------------------- Recibe toda la lista --------------------------------------------
 // Ejemplo de juguete recibido:
 // $jugueteRecibido = '{"accion":"4"}';
 else if($jugueteRecibido->accion == "4")
 {
     $resp = $objJuguete->ObtenerLista();
-    print_r($resp);
+    echo json_encode($resp);
     // resp =  Array ( [0] => Array ( [codigo] => Sin codigo [nombre] => Lorem [existencia] => 0 [deseado] => 2 ) )
     // resp = Array ( ) --> Sin juguetes en Lista
     // resp = -1 --> error bd
