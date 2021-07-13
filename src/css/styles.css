@@ -64,3 +64,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.disabledlink{  
+    pointer-events: none;
+    cursor: default;
+    background: lightgray;  
+}
