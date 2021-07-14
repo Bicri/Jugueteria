@@ -4,7 +4,8 @@ require_once("../Modelo/Utilidad.php");
 require_once ("../Modelo/Fecha.php");
 
 //$indirectoRecibido = '{"vigilancia":"50","comida":"100","otros":"0"}';
-$indirectoRecibido = '{"vigilancia":"0","comida":"0","otros":"10"}';
+//$indirectoRecibido = '{"vigilancia":"0","comida":"0","otros":"10"}';
+$indirectoRecibido = (file_get_contents('php://input'));
 
 
 $indirectoRecibido = json_decode($indirectoRecibido);
@@ -22,7 +23,12 @@ if($indirectoRecibido->vigilancia == 0 && $indirectoRecibido->comida == 0 && $in
 }else
 {
     $resp = $utilidad->InsertaIndirecto($indirectoRecibido, $hoy);
-    echo $resp;
+    if($resp == 0){
+        echo "Gastos ingresados correctamente";
+    }
+    else{
+        echo $resp;
+    }
     // si resp = -1 --> Error en la BD
     // si resp = 0 --> insertado
 }
