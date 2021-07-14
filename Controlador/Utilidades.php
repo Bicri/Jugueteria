@@ -4,8 +4,8 @@ require_once("../Modelo/Utilidad.php");
 require_once ("../Modelo/Fecha.php");
 
 
-//$UtilidadRecibida = '{"accion":"0","anioI":"0","mesI":"0","diaI":"10","anioF":"0","mesF":"0","diaF":"10"}';
-$UtilidadRecibida = '{"accion":"3","anioI":"2021","mesI":"06","diaI":"20","anioF":"2021","mesF":"07","diaF":"03"}';
+//$UtilidadRecibida = '{"accion":"","anioI":"0","mesI":"0","diaI":"10","anioF":"0","mesF":"0","diaF":"10"}';
+$UtilidadRecibida = '{"accion":"0","anioI":"2021","mesI":"07","diaI":"12","anioF":"2021","mesF":"07","diaF":"14"}';
 
 $UtilidadRecibida = json_decode($UtilidadRecibida);
 
@@ -26,7 +26,7 @@ if($UtilidadRecibida->accion == "0")
     $lunes = $fecha->getMonday();
 
     $resp = $utilidad->UtilidadSemanal($hoy, $lunes);
-    print_r($resp);
+    echo json_encode($resp);
 
     //Atencion --> Los datos que recibe a continuacion son los siguientes:
     echo "<br><br><br> Interpretacion de los datos <br><br>";
@@ -54,7 +54,7 @@ if($UtilidadRecibida->accion == "0")
 else if($UtilidadRecibida->accion == "1")
 {
     $resp = $utilidad->UtilidadPeriodo($UtilidadRecibida);
-    print_r($resp);
+    echo json_encode($resp);
 }
 
 //----------------   Borrar Semana  ------------------------
