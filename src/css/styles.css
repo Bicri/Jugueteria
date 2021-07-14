@@ -70,3 +70,16 @@
     cursor: default;
     background: lightgray;  
 }
+
+.botonTop{  
+  border-radius:50px;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.botonTop:hover{
+  box-shadow: 0 0 10px 5px rgba(19, 255, 235, 0.315);
+}  
+
+.botonTop:focus{
+  outline:0;
+  border:2px solid rgba(0, 0, 0, 0.315);
+}  

@@ -205,8 +205,10 @@
         </div>
     </div>
 
+    <?php include_once("Layouts/modalGastos.php"); ?>
 
     <script src="src/js/Admin.js"></script>
+    <script src="src/js/gastos.js"></script>
 </body>
 
 </html>
