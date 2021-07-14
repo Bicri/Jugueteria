@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jugueteria</title>
   <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo="> <!-- linea para quitar error favicon.i -->
-  <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css"/> 
+  <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="src/css/estilos.css">
-  <link rel="stylesheet" href="src/css/estilosInput.css">  
+  <link rel="stylesheet" href="src/css/estilosInput.css">
   <link rel="stylesheet" href="src/css/styles.css" />
   <link rel="stylesheet" href="src/css/modales.css" />
 </head>
@@ -109,7 +109,7 @@
 
   <hr />
   <!-- FIN TABLA EN CEROS DE CARRITO -->
-  </div>
+
   <!-- TEMPLATES PARA ELEMENTOS DEL CARRITO -->
   <template id="template-elementos-carrito">
     <tr>
@@ -170,19 +170,16 @@
       </div>
 
     </div>
-
-
   </div>
-
-  </div>
-
-
-
+  
+  <?php include_once("Layouts/modalGastos.php"); ?>
 
 
 
   <script src="src/js/modales.js"></script>
   <script src="src/js/script.js"></script>
+  <script src="src/js/gastos.js"></script>
+  <script src="src/js/gastos.js"></script>
 
 </body>
 
