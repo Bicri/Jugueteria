@@ -9,7 +9,9 @@ $first_part = $components[2];
     <nav class="nav">
 
         <div class="Logo" style="margin-left:90px;">
-            <a href="./Ventas.php" style="color:black; border:1px solid rgba(0,0,0,0.1); background: #fff;" > JUGUETERIA </a>
+
+            
+
 
         </div>
         <div class="OpcMenu">
@@ -24,6 +26,7 @@ $first_part = $components[2];
 
             <a href="./Utilidad.php" class="<?php echo ($first_part=="Utilidad.php") ? "active":""?>"> UTILIDAD </a>
             <a href="./Alertas.php" class="<?php echo ($first_part=="Alertas.php") ? "active":""?>"> ALERTAS</a>
+            <a href="" id="gastos"> GASTOS</a>
         </div>
     </nav>
 
