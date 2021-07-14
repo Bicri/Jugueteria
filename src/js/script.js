@@ -274,7 +274,7 @@ const pintarCarrito = () => {
       producto.cantidad;
 
     ElementosDentroCart.querySelector("#Subtotal").textContent =
-      producto.precio * producto.cantidad;
+      (producto.precio * producto.cantidad).toFixed(2);
     ElementosDentroCart.querySelector("#precioEnCart").textContent =
       producto.precio;
 
@@ -311,7 +311,7 @@ const pintarFooter = () => {
     0
   );
   const nPrecio = Object.values(carrito).reduce(
-    (acc, { cantidad, precio }) => acc + cantidad * precio,
+    (acc, { cantidad, precio }) => (acc + cantidad * precio).toFixed(2),
     0
   );
   // console.log(nPrecio)

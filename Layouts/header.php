@@ -9,7 +9,7 @@ $first_part = $components[2];
     <nav class="nav">
 
         <div class="Logo" style="margin-left:90px;">
-            <a href="./Ventas.php" style="color:black;  background: #fff;" >  </a>
+            
 
         </div>
         <div class="OpcMenu">
