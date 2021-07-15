@@ -45,14 +45,14 @@ const MandarObj = async (obj,mensaje,color) => {
 
 const Btntop = document.querySelector("#BtnTop");
 Btntop.addEventListener("click",()=>{
-    MandarObj({accion:"1"},"más vendidos","lightgreen");
+    MandarObj({accion:"1"},"más vendidos","#8BCCFD");
 });
 
 const Btnbottom = document.querySelector("#bottom");
 Btnbottom.addEventListener("click",()=>{
-    MandarObj({accion:"0"},"menos vendidos","#FF5353");
+    MandarObj({accion:"0"},"menos vendidos","#CBABFF");
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    MandarObj({accion:"1"},"más vendidos","lightgreen");
+    MandarObj({accion:"1"},"más vendidos","#8BCCFD");
   });

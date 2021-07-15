@@ -61,26 +61,21 @@ const MandarAccionYObj2 = async (obj) => {
 };
 
 const ponerDatos = (response) => {
-  lblIngresos.textContent = response[0].Ingresos;
-  lblCDirectos.textContent = response[0].Costos;
-  vigilancia.textContent = response[1].Ingresos;
-  comida.textContent = response[1].Costos;
-  otros.textContent = response[1].Indirecto;
-  lblCIndirectos.textContent = response[0].Indirecto;
-  if (response[0].Utilidad < 0) {
-    tituloUtilidad.textContent = "Perdida";
-    tituloUtilidad.style.color = "red";
-  } else {
-    tituloUtilidad.style.color = "green";
-    tituloUtilidad.textContent = "Utilidad";
-  }
+  lblIngresos.textContent = "";
+  lblCDirectos.textContent = "";
+  vigilancia.textContent = "";
+  comida.textContent = "";
+  otros.textContent = "";
+  lblCIndirectos.textContent = "";  
+    tituloUtilidad.textContent = "Perdida/Utilidad";    
+    
 
-  utilidad.textContent = response[0].Utilidad;
-  almacen.textContent = response[1].Utilidad;
+  utilidad.textContent = "";
+  almacen.textContent = "";
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  MandarAccionYObj({ accion: "0" });
+  ponerDatos();
 });
 
 /* BtnPeriodo.addEventListener("click", () => {

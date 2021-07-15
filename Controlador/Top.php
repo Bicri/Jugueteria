@@ -4,7 +4,7 @@ require_once("../Modelo/Juguete.php");
 
 // $jugueteRecibido = '{"accion":"1"}'; --> Los mas vendidos
 // $jugueteRecibido = '{"accion":"0"}'; --> Los menos vendidos
-$jugueteRecibido = '{"accion":"1"}';
+$jugueteRecibido = (file_get_contents('php://input'));
 
 
 $jugueteRecibido = json_decode($jugueteRecibido);

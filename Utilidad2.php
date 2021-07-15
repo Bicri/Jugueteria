@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" xml:lang="es">
 
@@ -22,21 +21,21 @@
         <div class="MasterContainer">
 
             <div class="Header-seccion" style=" flex-direction: row; justify-content: space-between; align-items: center;">
-                <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad semanal</h1>
+                <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad por periodo</h1>                
             </div>
             <div class="utilidadCont">
 
                 <div class="datos justialignCenter" style="width:50% ;">
                     <div style= " margin-top:20px;display:flex; justify-content: center; align-items: center; flex-direction: row; width:95%;">
-                        <div id="dateInicio" class="noneObj">
+                        <div id="dateInicio" class="">
                             <label for="fechaInicio">Inicio</label>
                             <input type="date" class="inputText" style="margin:0!important; width: 190px; cursor:text;" id="fechaInicio">
                         </div>
-                        <div id="dateFin" class="noneObj">
+                        <div id="dateFin" class="">
                             <label for="fechaInicio" style="margin-left: 10px;">Fin</label>
                             <input type="date" class="inputText" style="margin:0; width: 190px; cursor:text;" id="fechaFin">                            
                         </div>                        
-                        <div id="botonFechasMostrar" class="noneObj">
+                        <div id="botonFechasMostrar" class="">
                             <input type="button" value="Mostrar" class="btn boton-primario mb-1 ml-2" id="BtnFechas">
                         </div>
                     </div>
@@ -108,7 +107,7 @@
 
     <?php include_once("Layouts/modalGastos.php"); ?>
     <script src="src/js/gastos.js"></script>
-    <script src="src/js/Utilidad.js"></script>
+    <script src="src/js/Utilidad2.js"></script>
 </body>
 
 </html>

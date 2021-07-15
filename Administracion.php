@@ -119,7 +119,7 @@
                 </form>
 
             </div>
-            <input type="button" id="BotonModalAccion" value="Agregar" class="boton-aceptar" style="margin:0;" target="_blank">
+            <input type="button" id="BotonModalAccion" value="Agregar" class="btn btn-success" style="margin:0;" target="_blank">
         </div>
     </div>
 
@@ -201,7 +201,7 @@
                 </form>
 
             </div>
-            <input type="button" id="BotonModalLista" value="Agregar" class="boton-aceptar" style="margin:0;" target="_blank">
+            <input type="button" id="BotonModalLista" value="Agregar" class="btn btn-success" style="margin:0;" target="_blank">
         </div>
     </div>
 

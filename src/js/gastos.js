@@ -1,4 +1,5 @@
-const modalGastos = document.querySelector("#modalGastos");
+
+const modalGastosF = document.querySelector("#modalGastosF");
 const cerrarModalGastos = document.querySelector("#cerrarModalGastos");
 const botonGastos = document.querySelector("#gastos");
 
@@ -8,16 +9,17 @@ const comidanput = document.querySelector("#comidanput");
 const otrosInput = document.querySelector("#otrosInput");
 
 botonGastos.addEventListener("click", (e) => {
-  modalGastos.classList.toggle("show");
+  modalGastosF.classList.toggle("show");
   vigilanciaInput.value="";
   comidanput.value="";
   otrosInput.value="";
   e.preventDefault();
 });
 
-modalGastos.addEventListener("click", (e) => {
+
+modalGastosF.addEventListener("click", (e) => {
   if (e.target == cerrarModalGastos) {
-    modalGastos.classList.toggle("show");
+    modalGastosF.classList.toggle("show");
   }
 });
 
@@ -40,7 +42,8 @@ const MandarObjGastos = async () => {
     let data = await resp.text();    
     alert(data);
     if(data =="Gastos ingresados correctamente"){
-        modalGastos.classList.toggle("show");
+
+        modalGastosF.classList.toggle("show");
     }
     //FetchData();
   } catch (error) {
