@@ -21,29 +21,47 @@
         <div class="MasterContainer">
 
             <div class="Header-seccion" style=" flex-direction: row; justify-content: space-between; align-items: center;">
-                <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad por periodo</h1>                
+                <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad por periodo</h1>
             </div>
             <div class="utilidadCont">
 
                 <div class="datos justialignCenter" style="width:50% ;">
-                    <div style= " margin-top:20px;display:flex; justify-content: center; align-items: center; flex-direction: row; width:95%;">
+                    <div style=" margin-top:20px;display:flex; justify-content: center; align-items: center; flex-direction: row; width:95%;">
                         <div id="dateInicio" class="">
                             <label for="fechaInicio">Inicio</label>
-                            <input type="date" class="inputText" style="margin:0!important; width: 190px; cursor:text;" id="fechaInicio">
+                            <!-- <input type="date" class="inputText" style="margin:0!important; width: 190px; cursor:text;" id="fechaInicio"> -->
+                            <input type="date" class="inputText" style="margin:0!important; width: 190px; cursor:text;" id="fechaInicio"
+                            max="<?php require_once("Modelo/Fecha.php");
+                            $fechas = new Fecha(0, 0, 0);
+                            $hoy = $fechas->getToday();
+                            echo $hoy->anio . "-" . $hoy->mes . "-" . $hoy->dia; ?>"
+                            value="<?php require_once("Modelo/Fecha.php");
+                            $fechas = new Fecha(0, 0, 0);
+                            $hoy = $fechas->getToday();
+                            echo $hoy->anio . "-" . $hoy->mes . "-" . $hoy->dia; ?>">
                         </div>
                         <div id="dateFin" class="">
                             <label for="fechaInicio" style="margin-left: 10px;">Fin</label>
-                            <input type="date" class="inputText" style="margin:0; width: 190px; cursor:text;" id="fechaFin">                            
-                        </div>                        
+                            <!-- <input type="date" class="inputText" style="margin:0; width: 190px; cursor:text;" id="fechaFin"> -->
+                            <input type="date" class="inputText" style="margin:0!important; width: 190px; cursor:text;" id="fechaFin"
+                            max="<?php require_once("Modelo/Fecha.php");
+                            $fechas = new Fecha(0, 0, 0);
+                            $hoy = $fechas->getToday();
+                            echo $hoy->anio . "-" . $hoy->mes . "-" . $hoy->dia; ?>"
+                            value="<?php require_once("Modelo/Fecha.php");
+                            $fechas = new Fecha(0, 0, 0);
+                            $hoy = $fechas->getToday();
+                            echo $hoy->anio . "-" . $hoy->mes . "-" . $hoy->dia; ?>">
+                        </div>
                         <div id="botonFechasMostrar" class="">
                             <input type="button" value="Mostrar" class="btn boton-primario mb-1 ml-2" id="BtnFechas">
                         </div>
                     </div>
-                    <div id="TODOS" style="width:100%;"class="datos justialignCenter">
+                    <div id="TODOS" style="width:100%;" class="datos justialignCenter">
 
                         <div class="renglonLabel">
                             <!-- style="display:none" -->
-                            <div  class="etiquetas">
+                            <div class="etiquetas">
                                 <h5 style="font-weight: 600; margin:0;">Ingresos</h5>
                                 <h6 style="margin:0;" id="lblIngresos">$500.00</h6>
                             </div>
@@ -52,20 +70,20 @@
                             <!-- style="display:none" -->
                             <div class="etiquetas">
                                 <h5 style="font-weight: 600; margin:0;">Costos directos</h5>
-                                <h6 style="margin:0;"id="lblCDirectos">$500.00</h6>
+                                <h6 style="margin:0;" id="lblCDirectos">$500.00</h6>
                             </div>
                             <div id="gastosporcentaje" style="margin:0; width:100%;">
                                 <div class="etiquetas">
                                     <h6 style="font-weight: 600; margin:0;">Vigilancia</h5>
-                                    <h6 style="margin:0;">% <span id="vigilancia">90</span></h6>
+                                        <h6 style="margin:0;">% <span id="vigilancia">90</span></h6>
                                 </div>
                                 <div class="etiquetas">
                                     <h6 style="font-weight: 600; margin:0;">Comida</h5>
-                                    <h6 style="margin:0;">% <span id="comida"> 9</span></h6>
+                                        <h6 style="margin:0;">% <span id="comida"> 9</span></h6>
                                 </div>
                                 <div class="etiquetas">
                                     <h6 style="font-weight: 600; margin:0;">Otros</h5>
-                                    <h6 style="margin:0;">% <span id="otros"> 1</span></h6>
+                                        <h6 style="margin:0;">% <span id="otros"> 1</span></h6>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +118,7 @@
                     </div>
                 </div>
             </div>
-        </div>                           
+        </div>
 
     </div>
 

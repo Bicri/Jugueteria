@@ -57,7 +57,7 @@ const MandarAccionYObj2 = async (obj) => {
     }, // data can be `string` or {object}!
   });
   //let respuestaUltima = await permisoparaAccion.json();
-  return permisoparaAccion;  
+  return permisoparaAccion;
 };
 
 const ponerDatos = (response) => {
@@ -77,6 +77,18 @@ const ponerDatos = (response) => {
 
   utilidad.textContent = response[0].Utilidad;
   almacen.textContent = response[1].Utilidad;
+};
+
+const Limpiar = () => {
+  lblIngresos.textContent = "";
+  lblCDirectos.textContent = "";
+  vigilancia.textContent = "";
+  comida.textContent = "";
+  otros.textContent = "";
+  lblCIndirectos.textContent = "";
+  tituloUtilidad.textContent = "Utilidad/Perdida";
+  utilidad.textContent = "";
+  almacen.textContent = "";
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -138,7 +150,7 @@ BtnFechas.addEventListener("click", () => {
       })
       .then((response) => {
         lblIngresos.textContent = response.Ingresos;
-        lblCDirectos.textContent = response.Costos;                
+        lblCDirectos.textContent = response.Costos;
         lblCIndirectos.textContent = response.Indirecto;
         if (response.Utilidad < 0) {
           tituloUtilidad.textContent = "Perdida";
@@ -152,22 +164,34 @@ BtnFechas.addEventListener("click", () => {
       })
       .catch((e) => {
         console.log(e);
-      });   
-
+      });
     //{"accion":"1","anioI":"2021","mesI":"06","diaI":"20","anioF":"2021","mesF":"07","diaF":"03"}
   }
   console.log();
   console.log(fechaF);
 });
 
-finSemana.addEventListener("click",()=>{
-  if(confirm("Seguro que quieres finalizar la semana?"))
-  MandarAccionYObj2({accion:"2"}).then(alert("Semana finalizada"));
-  else return false;
+finSemana.addEventListener("click", () => {
+  if (confirm("Seguro que quieres finalizar la semana?")) {
+    //Limpiar();
+    MandarAccionYObj2({ accion: "2" }).then(() => {
+      MandarAccionYObj({ accion: "0" });
+      alert("Semana finalizada");
+
+    });
+  } else return false;
 });
 
-finAnio.addEventListener("click",()=>{
-  if(confirm("Seguro que quieres finalizar el año?"))
-  MandarAccionYObj2({accion:"3"}).then(alert("Año finalizada"));
-  else return false;
+finAnio.addEventListener("click", () => {
+  if (confirm("Seguro que quieres finalizar el año?")) {
+    Limpiar();
+    MandarAccionYObj2({ accion: "3" })
+      .then(() => {
+        MandarAccionYObj({ accion: "0" });
+        alert("Año finalizado finalizada");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  } else return false;
 });

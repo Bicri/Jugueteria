@@ -21,9 +21,82 @@ modalGastosF.addEventListener("click", (e) => {
   }
 });
 
+/* -----------EVENTOS DE VALIDACION---------------- */
 
+//Si permite la entrada del punto decimal mas de una vez
+const solodecimal2 =
+  /[a-z|A-Z|/*+ \\|°!#\\"\\'\\$\\^/&\\(\\)=><?¡¿¸}{~\\¨\\´;:_\\-\\,¬@·½\\`\\-\\%\\-⨪|-·|\\-]/g;
+
+//Se encargará de verificar cuantos puntos decimales ingresa
+
+//Permite ingreso de punto decimal mas de una vez
+vigilanciaInput.addEventListener("input", (e) => {
+  cuentaPuntos = 0; //Se debe inicializar en cero en cada listener
+
+  fnCuentaNumeros(vigilanciaInput.value); //Invoca al metodo que cuenta las repeticiones y
+  //requiere de argumento la propia caja de texto
+
+  if (vigilanciaInput.value == ".") {
+    vigilanciaInput.value = "0."; //Si al inicio es un . cambia a 0.
+  } else if (cuentaPuntos > 1) {
+    //Si se encontró mas de un punto
+    vigilanciaInput.value = vigilanciaInput.value.slice(0, -1); //Quita el ultimo caracter, es decir el punto
+  }
+  vigilanciaInput.value = vigilanciaInput.value.replace(solodecimal2, ""); //Manten la expresion regular
+});
+comidanput.addEventListener("input", (e) => {
+  cuentaPuntos = 0; //Se debe inicializar en cero en cada listener
+
+  fnCuentaNumeros(comidanput.value); //Invoca al metodo que cuenta las repeticiones y
+  //requiere de argumento la propia caja de texto
+
+  if (comidanput.value == ".") {
+    comidanput.value = "0."; //Si al inicio es un . cambia a 0.
+  } else if (cuentaPuntos > 1) {
+    //Si se encontró mas de un punto
+    comidanput.value = comidanput.value.slice(0, -1); //Quita el ultimo caracter, es decir el punto
+  }
+  comidanput.value = comidanput.value.replace(solodecimal2, ""); //Manten la expresion regular
+});
+otrosInput.addEventListener("input", (e) => {
+  cuentaPuntos = 0; //Se debe inicializar en cero en cada listener
+
+  fnCuentaNumeros(otrosInput.value); //Invoca al metodo que cuenta las repeticiones y
+  //requiere de argumento la propia caja de texto
+
+  if (otrosInput.value == ".") {
+    otrosInput.value = "0."; //Si al inicio es un . cambia a 0.
+  } else if (cuentaPuntos > 1) {
+    //Si se encontró mas de un punto
+    otrosInput.value = otrosInput.value.slice(0, -1); //Quita el ultimo caracter, es decir el punto
+  }
+  otrosInput.value = otrosInput.value.replace(solodecimal2, ""); //Manten la expresion regular
+});
+
+function fnCuentaNumeros(texto) {
+  for (
+    let i = 0;
+    i < texto.length;
+    i++ //Recorre la cadena
+  ) {
+    if (texto[i] == ".") {
+      //Si encuentras u punto, suma 1 a cuentaPuntos
+      cuentaPuntos++;
+    }
+    if (cuentaPuntos > 1) {
+      //En caso de encontrar mas de un punto (contado) rompe ciclo
+      break; //No tiene casos seguir contando, el objetivo esta hecho
+    }
+  }
+}
+
+/* -------------------EVENTOS DE VALIDACION----------------------------- */
 
 const MandarObjGastos = async () => {
+  if(vigilanciaInput.value=="" && otrosInput.value=="" && comidanput==""){
+    alert("Ingrese al menos un gasto; debe ser diferente de 0");
+    return;
+  }
   let objetoparaAccion = {
     vigilancia: vigilanciaInput.value ==""? 0 : parseInt(vigilanciaInput.value),
     comida: comidanput.value ==""? 0 : parseInt(comidanput.value),
