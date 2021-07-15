@@ -138,13 +138,16 @@ class Juguete{
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $items=[];
             while ($r = $stmt->fetch()){   
-                $item = [
-                    'codigo' => $r['clave'],
-                    'nombre' => $r['Nombre'],
+                $item = [$r['clave'] => ['id' => $r['clave'],
+                'nombre' => $r['Nombre'],
+                'precio' => $r['precio'],
+                'cantidad'  => $r['cantidad']]];
+                    
+                    /* 'nombre' => $r['Nombre'],
                     'cantidad'  => $r['cantidad'],
                     'precio' => $r['precio'],
-                    'subtotal' => $r['Subtotal']
-                ];
+                    'subtotal' => $r['Subtotal']  */                   
+                    
                 array_push($items,$item);
             }
             $this->conexion->desconectar();
