@@ -48,7 +48,7 @@ if($UtilidadRecibida->accion == "0")
     echo "<br>Inversion en almacen: ".$resp[1]->Utilidad." en la posicion [1][3] del array <br><br>";
 }
 
-//----------------   Utilidad Anual ------------------------
+//----------------   Utilidad Periodo ------------------------
 // Ejemplo de utilidad Recibida:
 // $UtilidadRecibida = '{"accion":"1","anioI":"2021","mesI":"06","diaI":"20","anioF":"2021","mesF":"07","diaF":"03"}';
 else if($UtilidadRecibida->accion == "1")

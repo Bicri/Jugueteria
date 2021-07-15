@@ -21,26 +21,27 @@
         <div class="MasterContainer">
 
             <div class="Header-seccion" style=" flex-direction: row; justify-content: space-between; align-items: center;">
-                <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad</h1>
+                <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad semanal</h1>
                 <div>
+                    <label >Cambiar a utilidad</label>
                     <input class="btn btn-primary" type="button" value="POR PERIODO" id="BtnPeriodo">
-                    <input class="btn btn-info" type="button" value="SEMANAL" id="BtnSemana">
+                    <input class="btn btn-info noneObj" type="button" value="SEMANAL" id="BtnSemana">
                 </div>
             </div>
             <div class="utilidadCont">
 
                 <div class="datos justialignCenter" style="width:50% ;">
                     <div style= " margin-top:20px;display:flex; justify-content: center; align-items: center; flex-direction: row; width:95%;">
-                        <div id="dateInicio">
+                        <div id="dateInicio" class="noneObj">
                             <label for="fechaInicio">Inicio</label>
                             <input type="date" class="inputText" style="margin:0!important; width: 190px; cursor:text;" id="fechaInicio">
                         </div>
-                        <div id="dateFin">
+                        <div id="dateFin" class="noneObj">
                             <label for="fechaInicio" style="margin-left: 10px;">Fin</label>
                             <input type="date" class="inputText" style="margin:0; width: 190px; cursor:text;" id="fechaFin">                            
                         </div>                        
-                        <div id="botonFechasMostrar">
-                            <input type="button" value="Mostrar" class="btn boton-primario mb-1 ml-2" id="botonPeriodo">
+                        <div id="botonFechasMostrar" class="noneObj">
+                            <input type="button" value="Mostrar" class="btn boton-primario mb-1 ml-2" id="BtnFechas">
                         </div>
                     </div>
                     <div id="TODOS" style="width:100%;"class="datos justialignCenter">
@@ -111,6 +112,7 @@
 
     <?php include_once("Layouts/modalGastos.php"); ?>
     <script src="src/js/gastos.js"></script>
+    <script src="src/js/Utilidad.js"></script>
 </body>
 
 </html>

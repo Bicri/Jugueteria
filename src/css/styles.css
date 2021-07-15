@@ -128,3 +128,25 @@ h6 {
 .noneObj{
   display:none;
 }
+
+@media screen and (max-width: 1400px) {
+
+  .datos {
+    width:60%!important;
+
+  }
+  .grafica{
+    width:40%!important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  .datos {
+    width:65%!important;
+
+  }
+  .grafica{
+    width:35%!important;
+  }
+}
