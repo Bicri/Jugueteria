@@ -160,6 +160,47 @@ class Utilidad{
             return -1;
         }
     }
+    public function PrimeraUtilidad()
+    {
+        try
+        {
+            $this->conexion = new Conexion();
+            $con = $this->conexion->conectar();
+
+            $sql = 'CALL pcd_primera_utilidad()';
+        
+            $stmt = $con->prepare($sql);
+            
+
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while ($r = $stmt->fetch()){   
+                $item = [
+                    'fecha' => $r['fecha']
+                ];
+            }
+
+            $stmt=null;
+            $this->conexion->desconectar();
+
+            $ultima = json_encode($item);
+            $ultima = json_decode($ultima);
+            if($ultima->fecha=="")
+            {
+                $fechas = new Fecha(0,0,0);
+                $hoy = $fechas->getToday();
+                return $hoy->anio."-".$hoy->mes."-".$hoy->dia;
+            }
+            else
+            {
+                return $ultima->fecha;
+            }
+        }catch(Exception $e)
+        {
+            echo "Error en el servidor: ".$e->getMessage();
+            return -1;
+        }
+    }
 }
 
 
