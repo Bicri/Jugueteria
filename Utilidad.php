@@ -21,6 +21,7 @@
         <div class="MasterContainer">
 
             <div class="Header-seccion" style=" flex-direction: row; justify-content: space-between; align-items: center;">
+
                 <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad semanal</h1>
                 <div>
                     <label >Cambiar a utilidad</label>
@@ -113,6 +114,7 @@
     <?php include_once("Layouts/modalGastos.php"); ?>
     <script src="src/js/gastos.js"></script>
     <script src="src/js/Utilidad.js"></script>
+
 </body>
 
 </html>
