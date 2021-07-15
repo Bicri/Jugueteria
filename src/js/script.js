@@ -66,8 +66,28 @@ const fethcData = async () => {
   }
 };
 
+const fetchCarrito = async () => {
+  try {
+    const resp = await fetch("Controlador/ObtenerCarrito.php");
+    let response = await resp.text();
+    let stringR = JSON.parse(response);
+    console.log(stringR);
+
+    stringR.forEach((element) => {
+      console.log(element);
+      let idJson = Object.keys(element);
+      carrito[idJson[0]] = { ...element[idJson] };
+      console.log(carrito)      
+    });    
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   fetchID();
+  fetchCarrito().then(()=>{pintarCarrito()});
 });
 
 /*  */
@@ -367,7 +387,7 @@ const pintarFooter = () => {
 
   // sumar cantidad y sumar totales
   const nCantidad = Object.values(carrito).reduce(
-    (acc, { cantidad }) => acc + cantidad,
+    (acc, { cantidad }) => acc + parseInt(cantidad),
     0
   );
   const nPrecio = Object.values(carrito).reduce((acc, { cantidad, precio }) => (acc + cantidad * precio),0);
