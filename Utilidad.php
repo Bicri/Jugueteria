@@ -21,14 +21,100 @@
         <div class="MasterContainer">
 
             <div class="Header-seccion" style=" flex-direction: row; justify-content: space-between; align-items: center;">
-                <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad</h1>
+
+                <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad semanal</h1>
+                <div>
+                    <label >Cambiar a utilidad</label>
+                    <input class="btn btn-primary" type="button" value="POR PERIODO" id="BtnPeriodo">
+                    <input class="btn btn-info noneObj" type="button" value="SEMANAL" id="BtnSemana">
+                </div>
             </div>
-        </div>
+            <div class="utilidadCont">
+
+                <div class="datos justialignCenter" style="width:50% ;">
+                    <div style= " margin-top:20px;display:flex; justify-content: center; align-items: center; flex-direction: row; width:95%;">
+                        <div id="dateInicio" class="noneObj">
+                            <label for="fechaInicio">Inicio</label>
+                            <input type="date" class="inputText" style="margin:0!important; width: 190px; cursor:text;" id="fechaInicio">
+                        </div>
+                        <div id="dateFin" class="noneObj">
+                            <label for="fechaInicio" style="margin-left: 10px;">Fin</label>
+                            <input type="date" class="inputText" style="margin:0; width: 190px; cursor:text;" id="fechaFin">                            
+                        </div>                        
+                        <div id="botonFechasMostrar" class="noneObj">
+                            <input type="button" value="Mostrar" class="btn boton-primario mb-1 ml-2" id="BtnFechas">
+                        </div>
+                    </div>
+                    <div id="TODOS" style="width:100%;"class="datos justialignCenter">
+
+                        <div class="renglonLabel">
+                            <!-- style="display:none" -->
+                            <div  class="etiquetas">
+                                <h5 style="font-weight: 600; margin:0;">Ingresos</h5>
+                                <h6 style="margin:0;">$500.00</h6>
+                            </div>
+                        </div>
+                        <div class="renglonLabel">
+                            <!-- style="display:none" -->
+                            <div class="etiquetas">
+                                <h5 style="font-weight: 600; margin:0;">Costos directos</h5>
+                                <h6 style="margin:0;">$500.00</h6>
+                            </div>
+                            <div id="gastosporcentaje" style="margin:0; width:100%;">
+                                <div class="etiquetas">
+                                    <h6 style="font-weight: 600; margin:0;">Vigilancia</h5>
+                                    <h6 style="margin:0;">%<span id="vigilancia">90</span></h6>
+                                </div>
+                                <div class="etiquetas">
+                                    <h6 style="font-weight: 600; margin:0;">Comida</h5>
+                                    <h6 style="margin:0;">% <span id="vigilancia"> 9</span></h6>
+                                </div>
+                                <div class="etiquetas">
+                                    <h6 style="font-weight: 600; margin:0;">Otros</h5>
+                                    <h6 style="margin:0;">% <span id="vigilancia"> 1</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="renglonLabel">
+                            <!-- style="display:none" -->
+                            <div style="margin:0;" class="etiquetas">
+                                <h5 style="font-weight: 600; margin:0;">Costos indirectos</h5>
+                                <h6 style="margin:0;">$500.00</h6>
+                            </div>
+                        </div>
+                        <div class="renglonLabel">
+                            <!-- style="display:none" -->
+                            <div style="margin:0;" class="etiquetas">
+                                <h5 style="font-weight: 600; margin:0;">Utilidad/Perdida</h5>
+                                <h6 style="margin:0;">$500.00</h6>
+                            </div>
+                        </div>
+                        <div class="renglonLabel">
+                            <!-- style="display:none" -->
+                            <div style="margin:0;" class="etiquetas">
+                                <h5 style="font-weight: 600; margin:0;">Almacen</h5>
+                                <h6 style="margin:0;">$500.00</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grafica" style="width:50%; display:flex;align-items: flex-end; justify-content: flex-end;">
+
+                    <div class="justialignCenter" style="display:flex; width:100%;">
+                        <input type="button" value="Finalizar semana" class="btn boton-mini">
+                        <input type="button" value="Finalizar año" class="btn boton-aceptar">
+                    </div>
+                </div>
+            </div>
+        </div>                           
+
     </div>
 
 
     <?php include_once("Layouts/modalGastos.php"); ?>
     <script src="src/js/gastos.js"></script>
+    <script src="src/js/Utilidad.js"></script>
+
 </body>
 
 </html>

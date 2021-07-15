@@ -310,14 +310,11 @@ const pintarFooter = () => {
     (acc, { cantidad }) => acc + cantidad,
     0
   );
-  const nPrecio = Object.values(carrito).reduce(
-    (acc, { cantidad, precio }) => (acc + cantidad * precio).toFixed(2),
-    0
-  );
+  const nPrecio = Object.values(carrito).reduce((acc, { cantidad, precio }) => (acc + cantidad * precio),0);
   // console.log(nPrecio)
 
   ElementosDebajoCart.querySelectorAll("td")[0].textContent = nCantidad;
-  ElementosDebajoCart.querySelector("span").textContent = nPrecio;
+  ElementosDebajoCart.querySelector("span").textContent = nPrecio.toFixed(2);
 
   const clone = ElementosDebajoCart.cloneNode(true);
   fragment.appendChild(clone);

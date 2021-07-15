@@ -10,8 +10,6 @@ $first_part = $components[2];
 
         <div class="Logo" style="margin-left:90px;">
 
-            
-
 
         </div>
         <div class="OpcMenu">

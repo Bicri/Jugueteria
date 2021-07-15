@@ -25,6 +25,7 @@
             </div>
 
 
+
             <div class="Container-Elements" id="itemsAdministracion">
                 <table class="table table-hover">
                     <thead style="position:sticky; top:78px; background: rgba(240, 248, 255,0.7); backdrop-filter:blur(25px);" id="thead">
@@ -57,7 +58,6 @@
     <?php include_once("Layouts/modalGastos.php"); ?>
 
     <script src="src/js/gastos.js"></script>
-
     <script src="src/js/alertas.js"></script>
 
 </body>
