@@ -95,25 +95,25 @@
                         <div class="form-group">
                             <label class="font-weight-bold">Nombre</label>
 
-                            <input type="text" class="form-control" id="nomAdmin" placeholder="Nombre del producto">
+                            <input type="text" maxlength="30" class="form-control" id="nomAdmin" placeholder="Nombre del producto">
                         </div>
                         <!-- LABEL E INPUT PARA EL COSTO DEL PRODUCTO -->
                         <div class="form-group">
 
                             <label class="font-weight-bold"> Costo</label>
-                            <input type="number" class="form-control" id="costoAdmin" placeholder="Costo del producto">
+                            <input type="text" maxlength="6" class="form-control" id="costoAdmin" placeholder="Costo del producto">
                         </div>
                     </div>
                     <div style="margin: 0 20px">
                         <!-- LABEL E INPUT PARA EL PRECIO DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Precio de venta</label>
-                            <input type="number" class="form-control" id="precioAdmin" placeholder="Precio del producto">
+                            <input type="text" maxlength="6" class="form-control" id="precioAdmin" placeholder="Precio del producto">
                         </div>
                         <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Cantidad</label>
-                            <input type="number" class="form-control" id="cantAdmin" placeholder="Cantidad del producto">
+                            <input type="text" maxlength="6" class="form-control" id="cantAdmin" placeholder="Cantidad del producto">
                         </div>
                     </div>
                 </form>
@@ -189,7 +189,7 @@
                     <div style="margin: 0 20px">
                         <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
                         <div class="form-group">
-                            <label class="font-weight-bold">Cantidad actual</label>
+                            <label class="font-weight-bold">Cantidad en Almacen</label>
                             <input type="number" class="form-control" style="cursor:not-allowed;" disabled id="cantLista" placeholder="Cantidad del producto">
                         </div>
                         <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->

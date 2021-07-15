@@ -14,12 +14,12 @@ const contenidomodalComprar = document.querySelector("#contenidoModalComprar");
 const botonCerrarComprar = document.querySelector("#close-iconComprar");
 const botonCerrarCarrito2 = document.querySelector("#close-iconCarrito");
 
-botonCerrarComprar.addEventListener('click',()=>{
+botonCerrarComprar.addEventListener("click", () => {
   fetchID();
-})
-botonCerrarCarrito2.addEventListener('click',()=>{
+});
+botonCerrarCarrito2.addEventListener("click", () => {
   fetchID();
-})
+});
 /* pruebaModalInput.addEventListener("click", () => {
     console.log("hola modal");    
   modalComprar.classList.toggle("showModal");
@@ -39,17 +39,14 @@ const pruebaOBJ = document.querySelector("#pruebaOBJ");
 
 const mandarObjCarrito = async (carritoOBJ) => {
   //PruebaMandar en  carpeta Modelo
-  let dataDesdePHP = await fetch(
-    "Controlador/ObjetoCarrito.php",
-    {
-      //Ten cuidado aqui Angel
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(carritoOBJ),
-      headers: {
-        "Content-Type": "application/json", // AQUI indicamos el formato
-      }, // data can be `string` or {object}!
-    }
-  );
+  let dataDesdePHP = await fetch("Controlador/ObjetoCarrito.php", {
+    //Ten cuidado aqui Angel
+    method: "POST", // or 'PUT'
+    body: JSON.stringify(carritoOBJ),
+    headers: {
+      "Content-Type": "application/json", // AQUI indicamos el formato
+    }, // data can be `string` or {object}!
+  });
   let respuestaUltima = await dataDesdePHP.json();
   fetchID();
   console.log(respuestaUltima);
@@ -115,7 +112,6 @@ document.querySelector("#buscarID").addEventListener("keypress", (e) => {
     e.preventDefault();
     fetchID();
   }
-  
 });
 
 /*  */
@@ -154,6 +150,57 @@ items.addEventListener("click", (e) => {
 const AñadirCompra = document.querySelector("#AñadirCompra");
 const inputCantidad = document.querySelector("#inputCantidad");
 const inputPrecio = document.querySelector("#inputPrecio");
+/* -----------EVENTOS DE VALIDACION---------------- */
+//No permite el ingreso de el punto decimal
+const solonumeros =
+  /[a-z|A-Z|/*+ \\|°!#\\"\\'\\$\\^/&\\(\\)=><?¡¿¸}{~\\¨\\´;:_\\-\\,¬@·½\\`\\-\\%\\-⨪|-·\\.|\\-]/g;
+
+//Si permite la entrada del punto decimal mas de una vez
+const solodecimal =
+  /[a-z|A-Z|/*+ \\|°!#\\"\\'\\$\\^/&\\(\\)=><?¡¿¸}{~\\¨\\´;:_\\-\\,¬@·½\\`\\-\\%\\-⨪|-·|\\-]/g;
+
+//Se encargará de verificar cuantos puntos decimales ingresa
+let cuentaPuntos = 0;
+
+//Como solo acepta numeros, no hay ningun cambio
+inputCantidad.addEventListener("input", (e) => {
+  inputCantidad.value = inputCantidad.value.replace(solonumeros, "");
+});
+
+//Permite ingreso de punto decimal mas de una vez
+inputPrecio.addEventListener("input", (e) => {
+  cuentaPuntos = 0; //Se debe inicializar en cero en cada listener
+
+  fnCuentaNumeros(inputPrecio.value); //Invoca al metodo que cuenta las repeticiones y
+  //requiere de argumento la propia caja de texto
+
+  if (inputPrecio.value == ".") {
+    inputPrecio.value = "0."; //Si al inicio es un . cambia a 0.
+  } else if (cuentaPuntos > 1) {
+    //Si se encontró mas de un punto
+    inputPrecio.value = inputPrecio.value.slice(0, -1); //Quita el ultimo caracter, es decir el punto
+  }
+  inputPrecio.value = inputPrecio.value.replace(solodecimal, ""); //Manten la expresion regular
+});
+
+function fnCuentaNumeros(texto) {
+  for (
+    let i = 0;
+    i < texto.length;
+    i++ //Recorre la cadena
+  ) {
+    if (texto[i] == ".") {
+      //Si encuentras u punto, suma 1 a cuentaPuntos
+      cuentaPuntos++;
+    }
+    if (cuentaPuntos > 1) {
+      //En caso de encontrar mas de un punto (contado) rompe ciclo
+      break; //No tiene casos seguir contando, el objetivo esta hecho
+    }
+  }
+}
+
+/* -------------------EVENTOS DE VALIDACION----------------------------- */
 const addCarrito = (e) => {
   if (
     e.target.classList.contains("boton-card") &&
@@ -187,14 +234,19 @@ AñadirCompra.addEventListener("click", (e) => {
     );
   //console.log(producto);
   //setCarrito(producto);
-  if(inputPrecio.value=="" || inputCantidad.value =="" ||
-   inputPrecio.value == "0" || inputCantidad.value =="0" ||
-   inputPrecio.value < 0 || inputCantidad.value <0
-   ){
-    alert("Introduzca una cantidad y un precio, diferentes de 0 y numeros positivos")
+  if (
+    inputPrecio.value == "" ||
+    inputCantidad.value == "" ||
+    inputPrecio.value == "0" ||
+    inputCantidad.value == "0" ||
+    inputPrecio.value <= 0 ||
+    inputCantidad.value <= 0
+  ) {
+    alert(
+      "Introduzca una cantidad y un precio; deben ser diferentes de 0"
+    );
     return false;
-  }
-  else if (setCarrito(producto)) {
+  } else if (setCarrito(producto)) {
     modalComprar.classList.toggle("showModal");
     contenidomodalComprar.classList.toggle("show");
     console.log("AGREGADOOOOOO");
@@ -280,8 +332,9 @@ const pintarCarrito = () => {
     ElementosDentroCart.querySelector("#cantidadEnCart").textContent =
       producto.cantidad;
 
-    ElementosDentroCart.querySelector("#Subtotal").textContent =
-      (producto.precio * producto.cantidad).toFixed(2);
+    ElementosDentroCart.querySelector("#Subtotal").textContent = (
+      producto.precio * producto.cantidad
+    ).toFixed(2);
     ElementosDentroCart.querySelector("#precioEnCart").textContent =
       producto.precio;
 
@@ -317,7 +370,10 @@ const pintarFooter = () => {
     (acc, { cantidad }) => acc + cantidad,
     0
   );
-  const nPrecio = Object.values(carrito).reduce((acc, { cantidad, precio }) => (acc + cantidad * precio),0);
+  const nPrecio = Object.values(carrito).reduce(
+    (acc, { cantidad, precio }) => acc + cantidad * precio,
+    0
+  );
   // console.log(nPrecio)
 
   ElementosDebajoCart.querySelectorAll("td")[0].textContent = nCantidad;
@@ -328,61 +384,51 @@ const pintarFooter = () => {
 
   templateFooterCarrito.appendChild(fragment);
 
-  
-
-  const boton = document.querySelector("#vaciar-carrito");  
+  const boton = document.querySelector("#vaciar-carrito");
   //VACIAR CARRITO LISTENER CON FUNCIÓN A BD
   boton.addEventListener("click", () => {
     CancelaAgregaCarrito(0);
     carrito = {};
     pintarCarrito();
   });
-
- 
-
 };
 
 const CancelaAgregaCarrito = async (accion) => {
   let objCancelarCarrito = { Total: accion }; //0 para eliminar carrito
-  let permisoparaAccion = await fetch(
-    "Controlador/CancelaAgregaCarrito.php",
-    {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(objCancelarCarrito),
-      headers: {
-        "Content-Type": "application/json", // AQUI indicamos el formato
-      }, // data can be `string` or {object}!
-    }
-  );
+  let permisoparaAccion = await fetch("Controlador/CancelaAgregaCarrito.php", {
+    method: "POST", // or 'PUT'
+    body: JSON.stringify(objCancelarCarrito),
+    headers: {
+      "Content-Type": "application/json", // AQUI indicamos el formato
+    }, // data can be `string` or {object}!
+  });
   let respuestaUltima = await permisoparaAccion.text();
   console.log(respuestaUltima);
 };
-confirmarCompra.addEventListener('click',()=>{
+confirmarCompra.addEventListener("click", () => {
   CancelaAgregaCarrito(1);
   carrito = {};
   pintarCarrito();
-})
+});
 
 const aumentarCarritoConsultaBD = async (idparaAccion, accion) => {
   let objetoparaAccion = { id: idparaAccion, accion: accion };
-  let permisoparaAccion = await fetch(
-    "Controlador/UnidadCarrito.php",
-    {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(objetoparaAccion),
-      headers: {
-        "Content-Type": "application/json", // AQUI indicamos el formato
-      }, // data can be `string` or {object}!
-    }
-  );
+  let permisoparaAccion = await fetch("Controlador/UnidadCarrito.php", {
+    method: "POST", // or 'PUT'
+    body: JSON.stringify(objetoparaAccion),
+    headers: {
+      "Content-Type": "application/json", // AQUI indicamos el formato
+    }, // data can be `string` or {object}!
+  });
   let respuestaUltima = await permisoparaAccion.text();
   console.log(respuestaUltima);
-  if (respuestaUltima == '1') {
-    console.log("es uno")
+  if (respuestaUltima == "1") {
+    console.log("es uno");
     //alert("NO HAY MÁS!!");
     return false;
+  } else {
+    return true;
   }
-  else{return true;}
   //  return true;
 };
 
@@ -390,23 +436,20 @@ const btnAumentarDisminuir = (e) => {
   // console.log(e.target.classList.contains('btn-info'))
   let idparaAccion =
     e.target.parentElement.parentElement.querySelector("#idEnCart").textContent;
-  if (
-    e.target.classList.contains("btn-info")) {
-      aumentarCarritoConsultaBD(idparaAccion,1)
-      .then((resp) => {
-        if(resp){
-          const producto = carrito[e.target.dataset.id];
-          producto.cantidad++;
-          carrito[e.target.dataset.id] = { ...producto };
-          pintarCarrito();
-          return true;
-        }    
-        else{alert("No hay más");}
-
-      });
+  if (e.target.classList.contains("btn-info")) {
+    aumentarCarritoConsultaBD(idparaAccion, 1).then((resp) => {
+      if (resp) {
+        const producto = carrito[e.target.dataset.id];
+        producto.cantidad++;
+        carrito[e.target.dataset.id] = { ...producto };
+        pintarCarrito();
+        return true;
+      } else {
+        alert("No hay más");
+      }
+    });
     //if (e.target.classList.contains("btn-info")) {
-    
-  }  
+  }
   if (e.target.classList.contains("btn-danger")) {
     const producto = carrito[e.target.dataset.id];
     if (producto.cantidad > 1 && aumentarCarritoConsultaBD(idparaAccion, 0))
@@ -418,11 +461,10 @@ const btnAumentarDisminuir = (e) => {
     } else {
       carrito[e.target.dataset.id] = { ...producto };
     }
-    pintarCarrito();    
-  }
-  else{
+    pintarCarrito();
+  } else {
     return false;
-  } 
+  }
   e.stopPropagation();
 };
 

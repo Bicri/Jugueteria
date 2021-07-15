@@ -152,11 +152,11 @@
         <h1>Añadir a carrito</h1><br>
         <div>
           <label>Cantidad a añadir</label><br>
-          <input type="number" name="inputCantidad" maxlength="6" id="inputCantidad" class="inputText"><br><br>
+          <input type="text" name="inputCantidad" maxlength="6" id="inputCantidad" class="inputText"><br><br>
         </div>
         <div>
           <label>Precio de venta</label><br>
-          <input type="number" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
+          <input type="text" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
           <div style="display:flex; justify-content:center; align-items: center;">
             <input type="button" value="Añadir" class="btn btn-success" id="AñadirCompra">
           </div>
