@@ -25,6 +25,79 @@ const precioAdmin = document.querySelector("#precioAdmin");
 const cantAdmin = document.querySelector("#cantAdmin");
 const BotonModalAccion = document.querySelector("#BotonModalAccion");
 
+
+const cantdeseadaLista = document.querySelector("#cantdeseadaLista");
+
+
+/* -----------EVENTOS DE VALIDACION---------------- */
+//No permite el ingreso de el punto decimal
+const solonumeros =
+  /[a-z|A-Z|/*+ \\|°!#\\"\\'\\$\\^/&\\(\\)=><?¡¿¸}{~\\¨\\´;:_\\-\\,¬@·½\\`\\-\\%\\-⨪|-·\\.|\\-]/g;
+
+//Si permite la entrada del punto decimal mas de una vez
+const solodecimal =
+  /[a-z|A-Z|/*+ \\|°!#\\"\\'\\$\\^/&\\(\\)=><?¡¿¸}{~\\¨\\´;:_\\-\\,¬@·½\\`\\-\\%\\-⨪|-·|\\-]/g;
+
+//Se encargará de verificar cuantos puntos decimales ingresa
+let cuentaPuntos = 0;
+
+//Como solo acepta numeros, no hay ningun cambio
+cantAdmin.addEventListener("input", (e) => {
+  cantAdmin.value = cantAdmin.value.replace(solonumeros, "");
+});
+cantdeseadaLista.addEventListener("input", (e) => {
+  cantdeseadaLista.value = cantdeseadaLista.value.replace(solonumeros, "");
+});
+
+//Permite ingreso de punto decimal mas de una vez
+costoAdmin.addEventListener("input", (e) => {
+  cuentaPuntos = 0; //Se debe inicializar en cero en cada listener
+
+  fnCuentaNumeros(costoAdmin.value); //Invoca al metodo que cuenta las repeticiones y
+  //requiere de argumento la propia caja de texto
+
+  if (costoAdmin.value == ".") {
+    costoAdmin.value = "0."; //Si al inicio es un . cambia a 0.
+  } else if (cuentaPuntos > 1) {
+    //Si se encontró mas de un punto
+    costoAdmin.value = costoAdmin.value.slice(0, -1); //Quita el ultimo caracter, es decir el punto
+  }
+  costoAdmin.value = costoAdmin.value.replace(solodecimal, ""); //Manten la expresion regular
+});
+precioAdmin.addEventListener("input", (e) => {
+  cuentaPuntos = 0; //Se debe inicializar en cero en cada listener
+
+  fnCuentaNumeros(precioAdmin.value); //Invoca al metodo que cuenta las repeticiones y
+  //requiere de argumento la propia caja de texto
+
+  if (precioAdmin.value == ".") {
+    precioAdmin.value = "0."; //Si al inicio es un . cambia a 0.
+  } else if (cuentaPuntos > 1) {
+    //Si se encontró mas de un punto
+    precioAdmin.value = precioAdmin.value.slice(0, -1); //Quita el ultimo caracter, es decir el punto
+  }
+  precioAdmin.value = precioAdmin.value.replace(solodecimal, ""); //Manten la expresion regular
+});
+
+function fnCuentaNumeros(texto) {
+  for (
+    let i = 0;
+    i < texto.length;
+    i++ //Recorre la cadena
+  ) {
+    if (texto[i] == ".") {
+      //Si encuentras u punto, suma 1 a cuentaPuntos
+      cuentaPuntos++;
+    }
+    if (cuentaPuntos > 1) {
+      //En caso de encontrar mas de un punto (contado) rompe ciclo
+      break; //No tiene casos seguir contando, el objetivo esta hecho
+    }
+  }
+}
+
+/* -------------------EVENTOS DE VALIDACION----------------------------- */
+
 const AgregarNuevobtn = document.querySelector("#agregarNuevo");
 const botonCerrar = document.querySelector("#agregarNuevo");
 const colorform = document.querySelector("#colorform");
@@ -47,7 +120,7 @@ passwordAdmin.addEventListener("keyup", () => {
     })
     .then((contra2) => {
       console.log(contra2);
-    
+
       if (passwordAdmin.value == contra2) {
         flag = true;
         passwordAdmin.style.boxShadow = "0 0 1px 2px rgba(0,255,0,0.5)";
@@ -108,6 +181,12 @@ document
 
 document.addEventListener("DOMContentLoaded", () => {
   fethcData();
+});
+document.querySelector("#buscarIDAdmin").addEventListener("keypress", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    fetchID();
+  }
 });
 
 const pintarCards = (data) => {
@@ -184,20 +263,32 @@ itemsAdmin.addEventListener("click", (e) => {
     SolicitarObjeto(
       BotonModalAccion.dataset.accion,
       elementoProducto.querySelector("#idProdTabla").textContent
-    ).then((objSolicitado) => {
-      console.log(objSolicitado);
-      idAdmin.value = objSolicitado.codigo;
-      nomAdmin.value = objSolicitado.nombre;
-      costoAdmin.value = objSolicitado.costo;
-      precioAdmin.value = objSolicitado.precio;
-      cantAdmin.value = objSolicitado.existencia;
-      BotonModalAccion.dataset.accion = "4";
-      anio = objSolicitado.anio;
-      mes = objSolicitado.mes;
-      dia = objSolicitado.dia;
-      console.log(BotonModalAccion.dataset.accion);
-      /*nomAdmin.value = elementoProducto.querySelector("#nomProdTabla").textContent; */
-    });
+    )
+      .then((objSolicitado) => {
+        console.log(objSolicitado);
+        idAdmin.value = objSolicitado.codigo;
+        nomAdmin.value = objSolicitado.nombre;
+        costoAdmin.value = objSolicitado.costo;
+        precioAdmin.value = objSolicitado.precio;
+        cantAdmin.value = objSolicitado.existencia;
+        cantAdmin.setAttribute(
+          "title",
+          `${objSolicitado.dia}/${objSolicitado.mes}/${objSolicitado.anio}`
+        );
+        costoAdmin.setAttribute(
+          "title",
+          `${objSolicitado.dia}/${objSolicitado.mes}/${objSolicitado.anio}`
+        );
+        BotonModalAccion.dataset.accion = "4";
+        anio = objSolicitado.anio;
+        mes = objSolicitado.mes;
+        dia = objSolicitado.dia;
+        console.log(BotonModalAccion.dataset.accion);
+        /*nomAdmin.value = elementoProducto.querySelector("#nomProdTabla").textContent; */
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   }
   if (e.target.classList.contains("btn-danger") && flag) {
     IDlHelp.textContent = "";
@@ -238,6 +329,7 @@ itemsAdmin.addEventListener("click", (e) => {
     nomLista.value =
       elementoProducto.querySelector("#nomProdTabla").textContent;
     cantLista.value = 1;
+    cantdeseadaLista.value = 1;
     BotonModalLista.dataset.accion = "5";
   }
 
@@ -299,6 +391,18 @@ AgregarNuevobtn.addEventListener("click", (e) => {
 });
 
 BotonModalAccion.addEventListener("click", (e) => {
+  if (
+    nomAdmin == "" ||
+    precioAdmin.value <= 0 ||
+    precioAdmin == "" ||
+    costoAdmin.value <= 0 ||
+    costoAdmin == "" ||
+    cantAdmin.value <= 0 ||
+    cantAdmin == ""
+  ) {
+    alert("Error en los datos introducidos; deben ser diferentes de 0");
+    return;
+  }
   let objAñadirNuevo = {};
   let accion = BotonModalAccion.dataset.accion;
   console.log(accion);
@@ -374,6 +478,10 @@ ContenedorModal.addEventListener("click", (e) => {
 //ACCION 5 AÑADIR A LISTA
 
 BotonModalLista.addEventListener("click", () => {
+  if(cantdeseadaLista.value =="" || cantdeseadaLista.value<=0){
+    alert("Introduce la cantidad deseada; debe ser diferente de 0");
+    return;
+  }
   let objAñadirLista = {};
   let accion = BotonModalLista.dataset.accion;
   console.log(accion);

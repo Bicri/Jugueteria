@@ -20,7 +20,7 @@
     <div class="MasterContainer">
       <h1 class="Titulo-seccion" style="font-weight:400; letter-spacing: 2px; background: white; width:98.5%; margin: 0 20px; padding-top: 10px;">Ventas</h1>
       <div class="Header-seccion">
-        <input type="text" name="buscarID" id="buscarID" class="inputText" id="">
+        <input type="text" name="buscarID" id="buscarID" maxlength="30" class="inputText" id="">
         <input type="button" value="Buscar 🔎" id="botonBuscarID" class="boton-primario">
         <input type="button" value="Ver carrito" id="verCarrito" class="boton-mini">
         <input type="button" value="Edit" id="pruebaOBJ" class="boton-mini" style="display:none">
@@ -151,12 +151,12 @@
       <div class="container1">
         <h1>Añadir a carrito</h1><br>
         <div>
-          <label for="inputCantidad">Cantidad a añadir</label><br>
-          <input type="number" name="inputCantidad" maxlength="6" id="inputCantidad" class="inputText"><br><br>
+          <label>Cantidad a añadir</label><br>
+          <input type="text" name="inputCantidad" maxlength="6" id="inputCantidad" class="inputText"><br><br>
         </div>
         <div>
-          <label for="inputPrecio">Precio de venta</label><br>
-          <input type="number" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
+          <label>Precio de venta</label><br>
+          <input type="text" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
           <div style="display:flex; justify-content:center; align-items: center;">
             <input type="button" value="Añadir" class="btn btn-success" id="AñadirCompra">
           </div>
@@ -164,7 +164,7 @@
       </div>
 
       <div class="container2">
-        <h2>PRODUCTO</h2>
+        <h1>Producto</h1>
         <div id="cardenModal"></div>
 
       </div>
