@@ -109,6 +109,13 @@ document
 document.addEventListener("DOMContentLoaded", () => {
   fethcData();
 });
+document.querySelector("#buscarIDAdmin").addEventListener("keypress", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    fetchID();
+  }
+  
+});
 
 const pintarCards = (data) => {
   data.items.forEach((element) => {
@@ -191,13 +198,15 @@ itemsAdmin.addEventListener("click", (e) => {
       costoAdmin.value = objSolicitado.costo;
       precioAdmin.value = objSolicitado.precio;
       cantAdmin.value = objSolicitado.existencia;
+      cantAdmin.setAttribute("title", `${objSolicitado.dia}/${objSolicitado.mes}/${objSolicitado.anio}`);
+      costoAdmin.setAttribute("title", `${objSolicitado.dia}/${objSolicitado.mes}/${objSolicitado.anio}`);
       BotonModalAccion.dataset.accion = "4";
       anio = objSolicitado.anio;
       mes = objSolicitado.mes;
       dia = objSolicitado.dia;
       console.log(BotonModalAccion.dataset.accion);
       /*nomAdmin.value = elementoProducto.querySelector("#nomProdTabla").textContent; */
-    });
+    }).catch((e)=>{console.error(e)});
   }
   if (e.target.classList.contains("btn-danger") && flag) {
     IDlHelp.textContent = "";

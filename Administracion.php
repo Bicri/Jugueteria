@@ -28,7 +28,7 @@
 
                 <div style="margin-left:400px;">
 
-                    <input type="password" id="passwordAdmin" placeholder="Contraseña" class="inputText" style="width:200px;">
+                    <input type="password" id="passwordAdmin" placeholder="Contraseña" oncopy="return false"class="inputText" style="width:200px;">
                 </div>
                 <!-- <input type="button" value="PruebaModal" id="pruebaModalInput" class="boton-aceptar"> -->
             </div>
@@ -87,7 +87,7 @@
                         <!-- LABEL E INPUT PARA EL CÓDIGO DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Código de producto</label>
-                            <input type="text" class="form-control" id="idAdmin" placeholder="ID del producto">
+                            <input type="text" class="form-control" maxlength="14" id="idAdmin" placeholder="ID del producto">
 
                             <small id="IDlHelp" class="form-text text-muted"></small>
                         </div>

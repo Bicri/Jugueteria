@@ -180,14 +180,21 @@ const addCarrito = (e) => {
 };
 AñadirCompra.addEventListener("click", (e) => {
   //let ID2 = document.querySelector("#buscarID").value;
-  console.log("debugger");
+  //console.log("debugger");
   let producto =
     e.target.parentElement.parentElement.parentElement.parentElement.querySelector(
       ".producto"
     );
-  console.log(producto);
+  //console.log(producto);
   //setCarrito(producto);
-  if (setCarrito(producto)) {
+  if(inputPrecio.value=="" || inputCantidad.value =="" ||
+   inputPrecio.value == "0" || inputCantidad.value =="0" ||
+   inputPrecio.value < 0 || inputCantidad.value <0
+   ){
+    alert("Introduzca una cantidad y un precio, diferentes de 0 y numeros positivos")
+    return false;
+  }
+  else if (setCarrito(producto)) {
     modalComprar.classList.toggle("showModal");
     contenidomodalComprar.classList.toggle("show");
     console.log("AGREGADOOOOOO");
