@@ -1,3 +1,4 @@
+
 const modalGastosF = document.querySelector("#modalGastosF");
 const cerrarModalGastos = document.querySelector("#cerrarModalGastos");
 const botonGastos = document.querySelector("#gastos");
@@ -14,6 +15,7 @@ botonGastos.addEventListener("click", (e) => {
   otrosInput.value="";
   e.preventDefault();
 });
+
 
 modalGastosF.addEventListener("click", (e) => {
   if (e.target == cerrarModalGastos) {
@@ -40,6 +42,7 @@ const MandarObjGastos = async () => {
     let data = await resp.text();    
     alert(data);
     if(data =="Gastos ingresados correctamente"){
+
         modalGastosF.classList.toggle("show");
     }
     //FetchData();
