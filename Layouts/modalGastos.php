@@ -1,4 +1,4 @@
-<div class="containerModal " style="align-items: flex-start; background: rgba(0, 0, 0, 0.5);" id="modalGastos">
+<div class="containerModal " style="align-items: flex-start; background: rgba(0, 0, 0, 0.5);" id="modalGastosF">
     <div class="modal-dialog" style="max-width:10000px; width:400px;" role="document">
         <div class="modal-content">
             <div class="modal-header">

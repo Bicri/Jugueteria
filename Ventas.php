@@ -158,7 +158,7 @@
           <label for="inputPrecio">Precio de venta</label><br>
           <input type="number" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
           <div style="display:flex; justify-content:center; align-items: center;">
-            <input type="button" value="Añadir" class="boton-aceptar" id="AñadirCompra">
+            <input type="button" value="Añadir" class="btn btn-success" id="AñadirCompra">
           </div>
         </div>
       </div>
@@ -178,8 +178,7 @@
 
   <script src="src/js/modales.js"></script>
   <script src="src/js/script.js"></script>
-  <script src="src/js/gastos.js"></script>
-  <script src="src/js/gastos.js"></script>
+  <script src="src/js/gastos.js"></script> 
 
 </body>
 

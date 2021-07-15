@@ -292,8 +292,8 @@ const resetA1 = () => {
 AgregarNuevobtn.addEventListener("click", (e) => {
   //colorform.style.background = "#90f1f171";
   BotonModalAccion.dataset.accion = "1";
-  IDlHelp.textContent =
-    "**Puede dejar en blanco este campo y el sistema asignará un ID";
+  /* IDlHelp.textContent =
+    "**Puede dejar en blanco este campo y el sistema asignará un ID"; */
   toggleModal("AÑADIR NUEVO PRODUCTO");
   resetA1();
 });

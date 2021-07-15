@@ -161,9 +161,13 @@ BtnFechas.addEventListener("click", () => {
 });
 
 finSemana.addEventListener("click",()=>{
+  if(confirm("Seguro que quieres finalizar la semana?"))
   MandarAccionYObj2({accion:"2"}).then(alert("Semana finalizada"));
+  else return false;
 });
 
 finAnio.addEventListener("click",()=>{
+  if(confirm("Seguro que quieres finalizar el año?"))
   MandarAccionYObj2({accion:"3"}).then(alert("Año finalizada"));
+  else return false;
 });
