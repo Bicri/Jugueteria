@@ -22,11 +22,6 @@
 
             <div class="Header-seccion" style=" flex-direction: row; justify-content: space-between; align-items: center;">
                 <h1 class="Titulo-seccion" id="tituloH" style=" margin:0;">Utilidad semanal</h1>
-                <div>
-                    <label >Cambiar a utilidad</label>
-                    <input class="btn btn-primary" type="button" value="POR PERIODO" id="BtnPeriodo">
-                    <input class="btn btn-info noneObj" type="button" value="SEMANAL" id="BtnSemana">
-                </div>
             </div>
             <div class="utilidadCont">
 
@@ -50,27 +45,27 @@
                             <!-- style="display:none" -->
                             <div  class="etiquetas">
                                 <h5 style="font-weight: 600; margin:0;">Ingresos</h5>
-                                <h6 style="margin:0;">$500.00</h6>
+                                <h6 style="margin:0;" id="lblIngresos">$500.00</h6>
                             </div>
                         </div>
                         <div class="renglonLabel">
                             <!-- style="display:none" -->
                             <div class="etiquetas">
                                 <h5 style="font-weight: 600; margin:0;">Costos directos</h5>
-                                <h6 style="margin:0;">$500.00</h6>
+                                <h6 style="margin:0;"id="lblCDirectos">$500.00</h6>
                             </div>
                             <div id="gastosporcentaje" style="margin:0; width:100%;">
                                 <div class="etiquetas">
                                     <h6 style="font-weight: 600; margin:0;">Vigilancia</h5>
-                                    <h6 style="margin:0;">%<span id="vigilancia">90</span></h6>
+                                    <h6 style="margin:0;">% <span id="vigilancia">90</span></h6>
                                 </div>
                                 <div class="etiquetas">
                                     <h6 style="font-weight: 600; margin:0;">Comida</h5>
-                                    <h6 style="margin:0;">% <span id="vigilancia"> 9</span></h6>
+                                    <h6 style="margin:0;">% <span id="comida"> 9</span></h6>
                                 </div>
                                 <div class="etiquetas">
                                     <h6 style="font-weight: 600; margin:0;">Otros</h5>
-                                    <h6 style="margin:0;">% <span id="vigilancia"> 1</span></h6>
+                                    <h6 style="margin:0;">% <span id="otros"> 1</span></h6>
                                 </div>
                             </div>
                         </div>
@@ -78,30 +73,30 @@
                             <!-- style="display:none" -->
                             <div style="margin:0;" class="etiquetas">
                                 <h5 style="font-weight: 600; margin:0;">Costos indirectos</h5>
-                                <h6 style="margin:0;">$500.00</h6>
+                                <h6 style="margin:0;" id="lblCIndirectos">$500.00</h6>
                             </div>
                         </div>
                         <div class="renglonLabel">
                             <!-- style="display:none" -->
                             <div style="margin:0;" class="etiquetas">
-                                <h5 style="font-weight: 600; margin:0;">Utilidad/Perdida</h5>
-                                <h6 style="margin:0;">$500.00</h6>
+                                <h5 style="font-weight: 600; margin:0;" id="tituloUtilidad">Utilidad/Perdida</h5>
+                                <h6 style="margin:0;" id="utilidad">$500.00</h6>
                             </div>
                         </div>
                         <div class="renglonLabel">
                             <!-- style="display:none" -->
                             <div style="margin:0;" class="etiquetas">
                                 <h5 style="font-weight: 600; margin:0;">Almacen</h5>
-                                <h6 style="margin:0;">$500.00</h6>
+                                <h6 style="margin:0;" id="almacen">$500.00</h6>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="grafica" style="width:50%; display:flex;align-items: flex-end; justify-content: flex-end;">
+                <div class="grafica" style="width:50%; display:flex;align-items: center; justify-content: flex-end;">
 
                     <div class="justialignCenter" style="display:flex; width:100%;">
-                        <input type="button" value="Finalizar semana" class="btn boton-mini">
-                        <input type="button" value="Finalizar año" class="btn boton-aceptar">
+                        <input type="button" value="Finalizar semana" id="finSemana" class="btn boton-mini">
+                        <input type="button" value="Finalizar año" id="finAnio" class="btn boton-aceptar">
                     </div>
                 </div>
             </div>

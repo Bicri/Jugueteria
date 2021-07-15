@@ -5,7 +5,7 @@ require_once ("../Modelo/Fecha.php");
 
 
 //$UtilidadRecibida = '{"accion":"","anioI":"0","mesI":"0","diaI":"10","anioF":"0","mesF":"0","diaF":"10"}';
-$UtilidadRecibida = '{"accion":"0","anioI":"2021","mesI":"07","diaI":"12","anioF":"2021","mesF":"07","diaF":"14"}';
+$UtilidadRecibida = (file_get_contents('php://input'));
 
 $UtilidadRecibida = json_decode($UtilidadRecibida);
 
@@ -29,7 +29,7 @@ if($UtilidadRecibida->accion == "0")
     echo json_encode($resp);
 
     //Atencion --> Los datos que recibe a continuacion son los siguientes:
-    echo "<br><br><br> Interpretacion de los datos <br><br>";
+    /* echo "<br><br><br> Interpretacion de los datos <br><br>";
     $resp = json_encode($resp);
     $resp = json_decode($resp);
     echo "Ingresos de la semana: ".$resp[0]->Ingresos." en la posicion [0][0] del array <br><br>";
@@ -45,7 +45,7 @@ if($UtilidadRecibida->accion == "0")
     {
         echo "Perdida de la semana: ".$resp[0]->Utilidad." en la posicion [0][3] del array <br>";
     }
-    echo "<br>Inversion en almacen: ".$resp[1]->Utilidad." en la posicion [1][3] del array <br><br>";
+    echo "<br>Inversion en almacen: ".$resp[1]->Utilidad." en la posicion [1][3] del array <br><br>"; */
 }
 
 //----------------   Utilidad Periodo ------------------------
@@ -63,7 +63,7 @@ else if($UtilidadRecibida->accion == "1")
 else if($UtilidadRecibida->accion == "2")
 {
     $resp = $utilidad->borra_semana();
-    echo $resp;
+    echo json_encode($resp);
     //si resp = 0 --> borrado exitantemente
     //si resp = -1 --> Error en b
 }
@@ -74,7 +74,7 @@ else if($UtilidadRecibida->accion == "2")
 else if($UtilidadRecibida->accion == "3")
 {
     $resp = $utilidad->borra_anio();
-    echo $resp;
+    echo json_encode($resp);
     //si resp = 0 --> borrado exitantemente
     //si resp = -1 --> Error en b
 }
