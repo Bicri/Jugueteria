@@ -370,10 +370,7 @@ const pintarFooter = () => {
     (acc, { cantidad }) => acc + cantidad,
     0
   );
-  const nPrecio = Object.values(carrito).reduce(
-    (acc, { cantidad, precio }) => acc + cantidad * precio,
-    0
-  );
+  const nPrecio = Object.values(carrito).reduce((acc, { cantidad, precio }) => (acc + cantidad * precio),0);
   // console.log(nPrecio)
 
   ElementosDebajoCart.querySelectorAll("td")[0].textContent = nCantidad;

@@ -165,7 +165,6 @@ BtnFechas.addEventListener("click", () => {
       .catch((e) => {
         console.log(e);
       });
-
     //{"accion":"1","anioI":"2021","mesI":"06","diaI":"20","anioF":"2021","mesF":"07","diaF":"03"}
   }
   console.log();
