@@ -51,28 +51,28 @@
                         <div class="renglonLabel">
                             <!-- style="display:none" -->
                             <div class="etiquetas">
-                                <h5 style="font-weight: 600; margin:0;">Costos directos</h5>
+                                <h5 style="font-weight: 600; margin:0;">Costos Indirectos</h5>
                                 <h6 style="margin:0;"id="lblCDirectos">$500.00</h6>
                             </div>
                             <div id="gastosporcentaje" style="margin:0; width:100%;">
                                 <div class="etiquetas">
                                     <h6 style="font-weight: 600; margin:0;">Vigilancia</h5>
-                                    <h6 style="margin:0;">% <span id="vigilancia">90</span></h6>
+                                    <h6 style="margin:0;"><span id="vigilancia">90</span> %</h6>
                                 </div>
                                 <div class="etiquetas">
                                     <h6 style="font-weight: 600; margin:0;">Comida</h5>
-                                    <h6 style="margin:0;">% <span id="comida"> 9</span></h6>
+                                    <h6 style="margin:0;"><span id="comida"> 9</span> %</h6>
                                 </div>
                                 <div class="etiquetas">
                                     <h6 style="font-weight: 600; margin:0;">Otros</h5>
-                                    <h6 style="margin:0;">% <span id="otros"> 1</span></h6>
+                                    <h6 style="margin:0;"><span id="otros"> 1</span> %</h6>
                                 </div>
                             </div>
                         </div>
                         <div class="renglonLabel">
                             <!-- style="display:none" -->
                             <div style="margin:0;" class="etiquetas">
-                                <h5 style="font-weight: 600; margin:0;">Costos indirectos</h5>
+                                <h5 style="font-weight: 600; margin:0;">Costos directos</h5>
                                 <h6 style="margin:0;" id="lblCIndirectos">$500.00</h6>
                             </div>
                         </div>

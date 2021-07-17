@@ -9,6 +9,7 @@ const cerrarModalConfirm = document.querySelector("#cerrarModalConfirm");
 const BTNconfirmacion1 = document.querySelector("#BTNconfirmacion1");
 const BTNconfirmacion2 = document.querySelector("#BTNconfirmacion2");
 
+let auxiliar=false;
 //const botonCerrarCarrito = document.querySelector("#close-iconUni");
 
 const botonCerrarCarrito = document.querySelector("#close-iconUni");
@@ -233,10 +234,19 @@ const resetA4 = () => {
     nomAdmin.style.cursor = "text";
   }
 };
+const resetB = () => {  
+  if (cantAdmin.hasAttribute("disabled")) {
+    cantAdmin.removeAttribute("disabled");
+    cantAdmin.style.cursor = "text";
+    costoAdmin.removeAttribute("disabled");
+    costoAdmin.style.cursor = "text";
+  }
+};
 
 itemsAdmin.addEventListener("click", (e) => {
   elementoProducto = e.target.parentElement.parentElement;
   if (e.target.classList.contains("btn-success")) {
+    resetB();
     IDlHelp.textContent = "";
     toggleModal("AÑADIR STOCK A PRODUCTO");
     BotonModalAccion.dataset.accion = "2";
@@ -250,16 +260,33 @@ itemsAdmin.addEventListener("click", (e) => {
     nomAdmin.value =
       elementoProducto.querySelector("#nomProdTabla").textContent;
     cantAdmin.value = 1;
-    precioAdmin.value = "0.00";
+    precioAdmin.value = elementoProducto.querySelector("#precioTablaAdmin").textContent;
     costoAdmin.value = "0.00";
   }
   if (e.target.classList.contains("btn-warning") && flag) {
     IDlHelp.textContent = "";
     resetA4();
+    auxiliar = false;
     toggleModal("EDITAR PRODUCTO");
     BotonModalAccion.dataset.accion = "3";
     idViejolet = elementoProducto.querySelector("#idProdTabla").textContent;
     console.log(BotonModalAccion.dataset.accion);
+    if(parseInt(elementoProducto.querySelector("#cantidadTablaAdmin").textContent) <=0){
+      BotonModalAccion.dataset.accion = "4";
+      auxiliar = true;
+      idAdmin.value = elementoProducto.querySelector("#idProdTabla").textContent;
+    nomAdmin.value =
+      elementoProducto.querySelector("#nomProdTabla").textContent;
+    cantAdmin.value = "No aplica";
+    precioAdmin.value = elementoProducto.querySelector("#precioTablaAdmin").textContent;
+    costoAdmin.value = "No aplica";
+    cantAdmin.setAttribute("disabled", "");
+    cantAdmin.style.cursor = "not-allowed";
+    costoAdmin.setAttribute("disabled", "");
+    costoAdmin.style.cursor = "not-allowed";
+    return;
+    }
+    resetB();
     SolicitarObjeto(
       BotonModalAccion.dataset.accion,
       elementoProducto.querySelector("#idProdTabla").textContent
@@ -323,12 +350,12 @@ itemsAdmin.addEventListener("click", (e) => {
     );
   }
 
-  if (e.target.classList.contains("btn-primary")) {
+  if (e.target.classList.contains("btn-primary")) {    
     toggleModalLista();
     idLista.value = elementoProducto.querySelector("#idProdTabla").textContent;
     nomLista.value =
       elementoProducto.querySelector("#nomProdTabla").textContent;
-    cantLista.value = 1;
+    cantLista.value = elementoProducto.querySelector("#cantidadTablaAdmin").textContent;
     cantdeseadaLista.value = 1;
     BotonModalLista.dataset.accion = "5";
   }
@@ -464,7 +491,33 @@ BotonModalAccion.addEventListener("click", (e) => {
       return true;
     } else alert("Error en la BD");
     return true;
-  } else {
+  }
+  if (accion === "4" && auxiliar) {
+    console.log("ACCION 4 aux");
+    //"anio":"2021","mes":"07","dia":"09"}
+    objAñadirNuevo = {
+      accion: accion,
+      idNuevo: idAdmin.value,
+      idViejo: idViejolet,
+      nombre: nomAdmin.value,
+      precio: parseFloat(precioAdmin.value),
+      costo: parseFloat(costoAdmin.value),
+      cantidad: parseInt(cantAdmin.value),
+      anio: anio,
+      mes: mes,
+      dia: dia,
+    };
+    console.log(objAñadirNuevo);
+    if (MandarAccionYObj(objAñadirNuevo, accion)) {
+      alert("OPERACIÓN EXITOSA");
+      fetchID();
+      toggleModal("");
+      return true;
+    } else alert("Error en la BD");
+    return true;
+  }
+  
+  else {
     alert("Error interno,accion no especificada");
   }
 });

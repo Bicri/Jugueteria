@@ -38,12 +38,12 @@
           <div class="producto">
             <h5 class="tituloCard">Nombre</h5>
             <p>ID: <span id="codigo"></span></p>
-            <p>Precio: $<span id="precio"></span></p>
-            <p>Almacen: <span id="cantidad"></span> unidades</p>
+            <p>Precio sugerido: $<span id="precio"></span></p>
+            <p>Almacén: <span id="cantidad"></span> unidades</p>
 
             <button class="btn btn-dark boton-card" style=" border:none;
         backdrop-filter: blur(25px);
-        ">Comprar</button>
+        ">Agregar a carrito</button>
           </div>
         </template>
         <!-- ------------------------------------ -->
@@ -113,7 +113,7 @@
   <!-- TEMPLATES PARA ELEMENTOS DEL CARRITO -->
   <template id="template-elementos-carrito">
     <tr>
-      <th scope="row" id="idEnCart">id</th>
+      <th scope="row" id="idEnCart">Id</th>
       <td id="nombreEnCart">Café</td>
       <td id="cantidadEnCart">1</td>
       <td>
@@ -130,7 +130,7 @@
   </template>
 
   <template id="template-footer">
-    <th scope="row" colspan="3">Total productos</th>
+    <th scope="row" colspan="2">Total productos</th>
     <td>10</td>
     <td>
       <button class="btn btn-danger btn-sm" id="vaciar-carrito">
@@ -138,7 +138,7 @@
       </button>
     </td>
 
-    <td class="font-weight-bold">TOTAL $ <span>5000</span></td>
+    <td class="font-weight-bold" style="text-align: right;" colspan="2">TOTAL $ <span>5000</span></td>
 
   </template>
   <!-- TEMPLATES PARA ELEMENTOS DEL CARRITO -->
@@ -155,7 +155,7 @@
           <input type="text" name="inputCantidad" maxlength="6" id="inputCantidad" class="inputText"><br><br>
         </div>
         <div>
-          <label>Precio de venta</label><br>
+          <label>Precio final de venta</label><br>
           <input type="text" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
           <div style="display:flex; justify-content:center; align-items: center;">
             <input type="button" value="Añadir" class="btn btn-success" id="AñadirCompra">

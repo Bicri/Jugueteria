@@ -167,23 +167,23 @@ BtnFechas.addEventListener("click", () => {
 });
 
 finSemana.addEventListener("click", () => {
-  if (confirm("Seguro que quieres finalizar la semana?")) {
+  if (confirm("¿Estás seguro que quieres finalizar la semana?")) {
     //Limpiar();
     MandarAccionYObj2({ accion: "2" }).then(() => {
       MandarAccionYObj({ accion: "0" });
-      alert("Semana finalizada");
+      //alert("Semana finalizada");
 
     });
   } else return false;
 });
 
 finAnio.addEventListener("click", () => {
-  if (confirm("Seguro que quieres finalizar el año?")) {
+  if (confirm("¿Estás seguro que quieres finalizar el año?")) {
     Limpiar();
     MandarAccionYObj2({ accion: "3" })
       .then(() => {
         MandarAccionYObj({ accion: "0" });
-        alert("Año finalizado finalizada");
+        //alert("Año finalizado finalizada");
       })
       .catch((e) => {
         console.log(e);

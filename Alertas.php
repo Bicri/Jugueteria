@@ -28,9 +28,9 @@
                 <table class="table table-hover">
                     <thead style="position:sticky; top:78px; background: rgba(240, 248, 255,0.7); backdrop-filter:blur(25px);" id="thead">
                         <tr>
-                            <th scope="col">#ID</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Existencia</th>
+                            <th scope="col">Unidades en almacén</th>
                         </tr>
                     </thead>
 
