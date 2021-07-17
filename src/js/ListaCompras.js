@@ -13,6 +13,12 @@ const elementosAdmin = document.querySelector("#elementosAdmin");
 const FilaElementoLista = document.querySelector("#FilaElementoLista").content;
 const fragment = document.createDocumentFragment();
 
+const solonumeros =
+  /[a-z|A-Z|/*+ \\|°!#\\"\\'\\$\\^/&\\(\\)=><?¡¿¸}{~\\¨\\´;:_\\-\\,¬@·½\\`\\-\\%\\-⨪|-·\\.|\\-]/g;
+cantLista.addEventListener("input", (e) => {
+  cantLista.value = cantLista.value.replace(solonumeros, "");
+});
+
 const FetchData = async () => {  
     elementosAdmin.innerHTML = "";
     try {
@@ -21,9 +27,15 @@ const FetchData = async () => {
       ).json();
       console.log(data)
       pintarCards(data);
-      if (data.length > 0){
+      if (data.length > 0){        
         BtnImprimir.classList.toggle("disabled");
         BtnBorrar.removeAttribute("disabled");
+      }
+      else{        
+        if(!BtnImprimir.classList.contains("disabled")){
+          BtnImprimir.classList.toggle("disabled");
+        }
+        BtnBorrar.setAttribute("disabled","");
       }
       //else pintarCards(data);
     } catch (error) {
@@ -101,7 +113,11 @@ const btnAumentarDisminuir = (e) => {
             if(cant >1){
                 cant -=1;
                 elementoFilaO.querySelector("#cantidadDeseadaLista").textContent = cant;            
-            }else(e.target.parentElement.parentElement.remove());
+            }else{
+              FetchData();
+                //(e.target.parentElement.parentElement.remove());
+              
+            }
         });
       
     }      
@@ -117,6 +133,10 @@ elementosAdmin.addEventListener("click", (e) => {
 
 
 BtnAgregar.addEventListener("click",()=>{
+  if(nomLista.value=="" || cantLista==""){
+    alert("Por favor introduce un nombre y una cantidad deseada.");    
+    return;
+  }
     let objetoaccion1 = {accion:"1",idNuevo:"",nombre:nomLista.value,cantidad:parseInt(cantLista.value)};    
     MandarObj(objetoaccion1).then(()=>{
         alert("Producto agregado");

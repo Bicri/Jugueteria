@@ -250,7 +250,7 @@ itemsAdmin.addEventListener("click", (e) => {
     nomAdmin.value =
       elementoProducto.querySelector("#nomProdTabla").textContent;
     cantAdmin.value = 1;
-    precioAdmin.value = "0.00";
+    precioAdmin.value = elementoProducto.querySelector("#precioTablaAdmin").textContent;
     costoAdmin.value = "0.00";
   }
   if (e.target.classList.contains("btn-warning") && flag) {

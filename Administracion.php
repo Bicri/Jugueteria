@@ -37,7 +37,7 @@
                 <table class="table table-hover">
                     <thead style="position:sticky; top:78px; background: rgba(240, 248, 255,0.7); backdrop-filter:blur(25px);">
                         <tr>
-                            <th scope="col">#ID</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Cantidad</th>
                             <th scope="col">Precio</th>
@@ -61,7 +61,7 @@
         <tr>
             <td class="table-light" id="idProdTabla">123456789asdf</td>
             <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
-            <td class="table-light">Disponible (<span id="cantidadTablaAdmin">100</span>)</td>
+            <td class="table-light">Disponible <span id="cantidadTablaAdmin">100</span></td>
             <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
             <td class="table-light">
                 <button class="btn btn-success" title="Agregar stock">➕</button>
@@ -87,7 +87,7 @@
                         <!-- LABEL E INPUT PARA EL CÓDIGO DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Código de producto</label>
-                            <input type="text" class="form-control" maxlength="14" id="idAdmin" placeholder="ID del producto">
+                            <input type="text" class="form-control" maxlength="14" id="idAdmin">
 
                             <small id="IDlHelp" class="form-text text-muted"></small>
                         </div>
@@ -95,25 +95,25 @@
                         <div class="form-group">
                             <label class="font-weight-bold">Nombre</label>
 
-                            <input type="text" maxlength="30" class="form-control" id="nomAdmin" placeholder="Nombre del producto">
+                            <input type="text" maxlength="30" class="form-control" id="nomAdmin" >
                         </div>
                         <!-- LABEL E INPUT PARA EL COSTO DEL PRODUCTO -->
                         <div class="form-group">
 
                             <label class="font-weight-bold"> Costo</label>
-                            <input type="text" maxlength="6" class="form-control" id="costoAdmin" placeholder="Costo del producto">
+                            <input type="text" maxlength="6" class="form-control" id="costoAdmin">
                         </div>
                     </div>
                     <div style="margin: 0 20px">
                         <!-- LABEL E INPUT PARA EL PRECIO DEL PRODUCTO -->
                         <div class="form-group">
-                            <label class="font-weight-bold">Precio de venta</label>
-                            <input type="text" maxlength="6" class="form-control" id="precioAdmin" placeholder="Precio del producto">
+                            <label class="font-weight-bold">Precio sugerido</label>
+                            <input type="text" maxlength="6" class="form-control" id="precioAdmin">
                         </div>
                         <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Cantidad</label>
-                            <input type="text" maxlength="6" class="form-control" id="cantAdmin" placeholder="Cantidad del producto">
+                            <input type="text" maxlength="6" class="form-control" id="cantAdmin" >
                         </div>
                     </div>
                 </form>
@@ -189,13 +189,13 @@
                     <div style="margin: 0 20px">
                         <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
                         <div class="form-group">
-                            <label class="font-weight-bold">Cantidad en Almacen</label>
-                            <input type="number" class="form-control" style="cursor:not-allowed;" disabled id="cantLista" placeholder="Cantidad del producto">
+                            <label class="font-weight-bold">Cantidad en Almacén</label>
+                            <input type="text" class="form-control" style="cursor:not-allowed;" disabled id="cantLista" placeholder="Cantidad del producto">
                         </div>
                         <!-- LABEL E INPUT PARA LA CANTIDAD DEL PRODUCTO -->
                         <div class="form-group">
                             <label class="font-weight-bold">Cantidad deseada</label>
-                            <input type="number" class="form-control" id="cantdeseadaLista" placeholder="Cantidad deseada">
+                            <input type="text" class="form-control" id="cantdeseadaLista" placeholder="Cantidad deseada">
                         </div>
                     </div>
                 </form>

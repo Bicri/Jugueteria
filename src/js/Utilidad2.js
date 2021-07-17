@@ -167,7 +167,7 @@ BtnFechas.addEventListener("click", () => {
 });
 
 finSemana.addEventListener("click", () => {
-  if (confirm("Seguro que quieres finalizar la semana?")) {
+  if (confirm("¿Estás seguro que quieres finalizar la semana?")) {
     //Limpiar();
     MandarAccionYObj2({ accion: "2" }).then(() => {
       MandarAccionYObj({ accion: "0" });
@@ -178,7 +178,7 @@ finSemana.addEventListener("click", () => {
 });
 
 finAnio.addEventListener("click", () => {
-  if (confirm("Seguro que quieres finalizar el año?")) {
+  if (confirm("¿Estás seguro que quieres finalizar el año?")) {
     Limpiar();
     MandarAccionYObj2({ accion: "3" })
       .then(() => {

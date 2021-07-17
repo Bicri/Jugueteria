@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label for="cantLista">Cantidad</label>
-                            <input type="number" class="form-control" id="cantLista" placeholder="Cantidad deseada">
+                            <input type="text" class="form-control" id="cantLista" placeholder="Cantidad deseada">
                         </div>
                         <button type="submit" class="btn btn-primary" id="BtnAgregar">Agregar</button>
                     </form>
@@ -47,7 +47,7 @@
                     <table class="table table-hover" style="margin:0;">
                         <thead style="position:sticky; top:89px; background: rgba(240, 248, 255,0.7); backdrop-filter:blur(25px);">
                             <tr>
-                                <th scope="col">#ID</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Almacen</th>
                                 <th scope="col">Deseada</th>

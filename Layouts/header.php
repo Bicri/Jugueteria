@@ -22,7 +22,7 @@ $first_part = $components[2];
             </div>
         </div>
         <div class="utili">
-            <a href="./Utilidad.php" class="<?php echo ($first_part == "Utilidad.php") ? "active" : "" ?>"> UTILIDAD </a>
+            <a href="./Utilidad.php" class="<?php echo ($first_part == "Utilidad.php") || ($first_part == "Utilidad2.php") ? "active" : "" ?>"> UTILIDAD </a>
             <div class="submenu">
                 <a href="./Utilidad2.php" class="active2"> Por periodo </a>                
             </div>
