@@ -583,6 +583,7 @@ cerrarModalConfirm.addEventListener("click", (e) => {
 });
 
 BTNconfirmacion1.addEventListener("click", (e) => {
+  document.querySelector("#buscarIDAdmin").focus();
   let accionConfirm = e.target.dataset.accion;
   let idConfirm =
     e.target.parentElement.parentElement.querySelector(
@@ -603,6 +604,7 @@ BTNconfirmacion1.addEventListener("click", (e) => {
   } else console.log("Error en la BD");
 });
 BTNconfirmacion2.addEventListener("click", (e) => {
+  document.querySelector("#buscarIDAdmin").focus();
   let accionConfirm = e.target.dataset.accion;
   let idConfirm =
     e.target.parentElement.parentElement.querySelector(
