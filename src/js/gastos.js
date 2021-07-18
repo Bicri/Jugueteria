@@ -123,4 +123,5 @@ const MandarObjGastos = async () => {
 
 BTNgastos.addEventListener("click", () => {      
     MandarObjGastos();
+    vigilanciaInput.focus();
 });
