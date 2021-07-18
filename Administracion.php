@@ -40,7 +40,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Cantidad</th>
-                            <th scope="col">Precio</th>
+                            <th scope="col">Precio sugerido</th>
                             <th scope="col">Acción</th>
                         </tr>
                     </thead>
