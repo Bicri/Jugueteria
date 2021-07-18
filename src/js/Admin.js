@@ -421,6 +421,7 @@ AgregarNuevobtn.addEventListener("click", (e) => {
     "**Puede dejar en blanco este campo y el sistema asignará un ID"; */
   toggleModal("AÑADIR NUEVO PRODUCTO");
   resetA1();
+  resetB();
 });
 
 BotonModalAccion.addEventListener("click", (e) => {
