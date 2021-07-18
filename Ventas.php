@@ -155,7 +155,7 @@
           <input type="text" name="inputCantidad" maxlength="6" id="inputCantidad" class="inputText"><br><br>
         </div>
         <div>
-          <label>Precio final de venta</label><br>
+          <label>Precio de venta final</label><br>
           <input type="text" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
           <div style="display:flex; justify-content:center; align-items: center;">
             <input type="button" value="Añadir" class="btn btn-success" id="AñadirCompra">

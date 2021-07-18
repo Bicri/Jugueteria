@@ -9,9 +9,8 @@ const cerrarModalConfirm = document.querySelector("#cerrarModalConfirm");
 const BTNconfirmacion1 = document.querySelector("#BTNconfirmacion1");
 const BTNconfirmacion2 = document.querySelector("#BTNconfirmacion2");
 
-let auxiliar=false;
+let auxiliar = false;
 //const botonCerrarCarrito = document.querySelector("#close-iconUni");
-
 const botonCerrarCarrito = document.querySelector("#close-iconUni");
 const closeIconLista = document.querySelector("#closeIconLista");
 /* ELEMENTOS DEL MODAL JALADOS A JavaScript */
@@ -26,9 +25,7 @@ const precioAdmin = document.querySelector("#precioAdmin");
 const cantAdmin = document.querySelector("#cantAdmin");
 const BotonModalAccion = document.querySelector("#BotonModalAccion");
 
-
 const cantdeseadaLista = document.querySelector("#cantdeseadaLista");
-
 
 /* -----------EVENTOS DE VALIDACION---------------- */
 //No permite el ingreso de el punto decimal
@@ -114,13 +111,13 @@ let flag = false;
 const passwordAdmin = document.querySelector("#passwordAdmin");
 
 passwordAdmin.addEventListener("keyup", () => {
-  console.log(flag);
+  //console.log(flag);
   fetch("Contrasena/Contrasena.php")
     .then((contra) => {
       return contra.json();
     })
     .then((contra2) => {
-      console.log(contra2);
+      //console.log(contra2);
 
       if (passwordAdmin.value == contra2) {
         flag = true;
@@ -234,7 +231,7 @@ const resetA4 = () => {
     nomAdmin.style.cursor = "text";
   }
 };
-const resetB = () => {  
+const resetB = () => {
   if (cantAdmin.hasAttribute("disabled")) {
     cantAdmin.removeAttribute("disabled");
     cantAdmin.style.cursor = "text";
@@ -260,7 +257,8 @@ itemsAdmin.addEventListener("click", (e) => {
     nomAdmin.value =
       elementoProducto.querySelector("#nomProdTabla").textContent;
     cantAdmin.value = 1;
-    precioAdmin.value = elementoProducto.querySelector("#precioTablaAdmin").textContent;
+    precioAdmin.value =
+      elementoProducto.querySelector("#precioTablaAdmin").textContent;
     costoAdmin.value = "0.00";
   }
   if (e.target.classList.contains("btn-warning") && flag) {
@@ -271,20 +269,26 @@ itemsAdmin.addEventListener("click", (e) => {
     BotonModalAccion.dataset.accion = "3";
     idViejolet = elementoProducto.querySelector("#idProdTabla").textContent;
     console.log(BotonModalAccion.dataset.accion);
-    if(parseInt(elementoProducto.querySelector("#cantidadTablaAdmin").textContent) <=0){
+    if (
+      parseInt(
+        elementoProducto.querySelector("#cantidadTablaAdmin").textContent
+      ) <= 0
+    ) {
       BotonModalAccion.dataset.accion = "4";
       auxiliar = true;
-      idAdmin.value = elementoProducto.querySelector("#idProdTabla").textContent;
-    nomAdmin.value =
-      elementoProducto.querySelector("#nomProdTabla").textContent;
-    cantAdmin.value = "No aplica";
-    precioAdmin.value = elementoProducto.querySelector("#precioTablaAdmin").textContent;
-    costoAdmin.value = "No aplica";
-    cantAdmin.setAttribute("disabled", "");
-    cantAdmin.style.cursor = "not-allowed";
-    costoAdmin.setAttribute("disabled", "");
-    costoAdmin.style.cursor = "not-allowed";
-    return;
+      idAdmin.value =
+        elementoProducto.querySelector("#idProdTabla").textContent;
+      nomAdmin.value =
+        elementoProducto.querySelector("#nomProdTabla").textContent;
+      cantAdmin.value = "No aplica";
+      precioAdmin.value =
+        elementoProducto.querySelector("#precioTablaAdmin").textContent;
+      costoAdmin.value = "No aplica";
+      cantAdmin.setAttribute("disabled", "");
+      cantAdmin.style.cursor = "not-allowed";
+      costoAdmin.setAttribute("disabled", "");
+      costoAdmin.style.cursor = "not-allowed";
+      return;
     }
     resetB();
     SolicitarObjeto(
@@ -350,12 +354,14 @@ itemsAdmin.addEventListener("click", (e) => {
     );
   }
 
-  if (e.target.classList.contains("btn-primary")) {    
+  if (e.target.classList.contains("btn-primary")) {
     toggleModalLista();
     idLista.value = elementoProducto.querySelector("#idProdTabla").textContent;
     nomLista.value =
       elementoProducto.querySelector("#nomProdTabla").textContent;
-    cantLista.value = elementoProducto.querySelector("#cantidadTablaAdmin").textContent;
+    cantLista.value = elementoProducto.querySelector(
+      "#cantidadTablaAdmin"
+    ).textContent;
     cantdeseadaLista.value = 1;
     BotonModalLista.dataset.accion = "5";
   }
@@ -444,12 +450,16 @@ BotonModalAccion.addEventListener("click", (e) => {
       costo: parseFloat(costoAdmin.value),
       cantidad: parseInt(cantAdmin.value),
     };
-    if (MandarAccionYObj(objAñadirNuevo, accion)) {
-      alert("OPERACIÓN EXITOSA");
-      fetchID();
-      toggleModal("");
-      return true;
-    } else console.log("Error en la BD");
+    MandarAccionYObj(objAñadirNuevo, accion).then((resp) => {
+      if (resp) {
+        alert("OPERACIÓN EXITOSA");
+        fetchID();
+        toggleModal("");
+        return true;
+      } else {
+        alert("ERROR: Este producto ya ha sido agregado.");
+      }
+    });
   }
   if (accion === "2") {
     //$jugueteRecibido = '{"accion":"2","idNuevo":"","precio":"25.5","costo":"10","cantidad":"2"}';
@@ -484,15 +494,18 @@ BotonModalAccion.addEventListener("click", (e) => {
       dia: dia,
     };
     console.log(objAñadirNuevo);
-    if (MandarAccionYObj(objAñadirNuevo, accion)) {
-      alert("OPERACIÓN EXITOSA");
-      fetchID();
-      toggleModal("");
-      return true;
-    } else alert("Error en la BD");
-    return true;
+    MandarAccionYObj(objAñadirNuevo, accion).then((resp) => {
+      if (resp) {
+        alert("OPERACIÓN EXITOSA");
+        fetchID();
+        toggleModal("");
+        return true;
+      } else {
+        alert("ERROR: Este producto ya ha sido agregado.");
+      }
+    });
   }
-  if (accion === "4" && auxiliar) {
+  /* if (accion === "4" && auxiliar) {
     console.log("ACCION 4 aux");
     //"anio":"2021","mes":"07","dia":"09"}
     objAñadirNuevo = {
@@ -501,25 +514,24 @@ BotonModalAccion.addEventListener("click", (e) => {
       idViejo: idViejolet,
       nombre: nomAdmin.value,
       precio: parseFloat(precioAdmin.value),
-      costo: parseFloat(costoAdmin.value),
-      cantidad: parseInt(cantAdmin.value),
+      costo: 0,
+      cantidad: 0,
       anio: anio,
       mes: mes,
       dia: dia,
     };
     console.log(objAñadirNuevo);
-    if (MandarAccionYObj(objAñadirNuevo, accion)) {
-      alert("OPERACIÓN EXITOSA");
-      fetchID();
-      toggleModal("");
-      return true;
-    } else alert("Error en la BD");
-    return true;
-  }
-  
-  else {
-    alert("Error interno,accion no especificada");
-  }
+    MandarAccionYObj(objAñadirNuevo, accion).then((resp) => {
+      if (resp) {
+        alert("OPERACIÓN EXITOSA");
+        fetchID();
+        toggleModal("");
+        return true;
+      } else {
+        alert("ERROR: Este producto ya ha sido agregado.");
+      }
+    });
+  } */
 });
 
 ContenedorModal.addEventListener("click", (e) => {
@@ -531,7 +543,7 @@ ContenedorModal.addEventListener("click", (e) => {
 //ACCION 5 AÑADIR A LISTA
 
 BotonModalLista.addEventListener("click", () => {
-  if(cantdeseadaLista.value =="" || cantdeseadaLista.value<=0){
+  if (cantdeseadaLista.value == "" || cantdeseadaLista.value <= 0) {
     alert("Introduce la cantidad deseada; debe ser diferente de 0");
     return;
   }

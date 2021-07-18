@@ -62,11 +62,11 @@ const MandarAccionYObj2 = async (obj) => {
 
 const ponerDatos = (response) => {
   lblIngresos.textContent = response[0].Ingresos;
-  lblCDirectos.textContent = response[0].Costos;
+  lblCIndirectos.textContent = response[0].Costos;  
   vigilancia.textContent = response[1].Ingresos;
   comida.textContent = response[1].Costos;
   otros.textContent = response[1].Indirecto;
-  lblCIndirectos.textContent = response[0].Indirecto;
+  lblCDirectos.textContent = response[0].Indirecto;
   if (response[0].Utilidad < 0) {
     tituloUtilidad.textContent = "Perdida";
     tituloUtilidad.style.color = "red";

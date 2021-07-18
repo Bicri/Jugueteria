@@ -462,7 +462,7 @@ const btnAumentarDisminuir = (e) => {
         pintarCarrito();
         return true;
       } else {
-        alert("No hay más");
+        alert("Almacen insuficiente");
       }
     });
     //if (e.target.classList.contains("btn-info")) {
@@ -471,7 +471,7 @@ const btnAumentarDisminuir = (e) => {
     const producto = carrito[e.target.dataset.id];
     if (producto.cantidad > 1 && aumentarCarritoConsultaBD(idparaAccion, 0))
       producto.cantidad--;
-    else if (producto.cantidad <= 1 && confirm("are you shure?")) {
+    else if (producto.cantidad <= 1) {
       if (aumentarCarritoConsultaBD(idparaAccion, 0)) {
         delete carrito[e.target.dataset.id];
       }
