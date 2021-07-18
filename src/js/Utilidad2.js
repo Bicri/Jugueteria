@@ -171,7 +171,7 @@ finSemana.addEventListener("click", () => {
     //Limpiar();
     MandarAccionYObj2({ accion: "2" }).then(() => {
       MandarAccionYObj({ accion: "0" });
-      alert("Semana finalizada");
+      //alert("Semana finalizada");
 
     });
   } else return false;
@@ -183,7 +183,7 @@ finAnio.addEventListener("click", () => {
     MandarAccionYObj2({ accion: "3" })
       .then(() => {
         MandarAccionYObj({ accion: "0" });
-        alert("Año finalizado finalizada");
+        //alert("Año finalizado finalizada");
       })
       .catch((e) => {
         console.log(e);

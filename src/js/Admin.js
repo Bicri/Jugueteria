@@ -354,7 +354,7 @@ itemsAdmin.addEventListener("click", (e) => {
     );
   }
 
-  if (e.target.classList.contains("btn-primary")) {
+  if (e.target.classList.contains("btn-primary")) {    
     toggleModalLista();
     idLista.value = elementoProducto.querySelector("#idProdTabla").textContent;
     nomLista.value =
