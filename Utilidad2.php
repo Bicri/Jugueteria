@@ -104,7 +104,7 @@
                         <div class="renglonLabel">
                             <!-- style="display:none" -->
                             <div style="margin:0;" class="etiquetas">
-                                <h5 style="font-weight: 600; margin:0;">Almacen</h5>
+                                <h5 style="font-weight: 600; margin:0; text-align: right;">Invertido en almacén</h5>
                                 <h6 style="margin:0;" id="almacen">$500.00</h6>
                             </div>
                         </div>

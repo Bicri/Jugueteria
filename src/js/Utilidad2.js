@@ -144,8 +144,8 @@ BtnFechas.addEventListener("click", () => {
       })
       .then((response) => {
         lblIngresos.textContent = response.Ingresos;
-        lblCDirectos.textContent = response.Costos;
-        lblCIndirectos.textContent = response.Indirecto;
+        lblCIndirectos.textContent = response.Costos;
+        lblCDirectos.textContent = response.Indirecto;
         if (response.Utilidad < 0) {
           tituloUtilidad.textContent = "Perdida";
           tituloUtilidad.style.color = "red";
