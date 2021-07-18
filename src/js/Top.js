@@ -34,7 +34,7 @@ const MandarObj = async (obj,mensaje,color) => {
         element.unidades;
       productoTop.querySelector("#ingresoTop").textContent =
         element.ingreso;
-        document.querySelector("#tituloH").textContent = `Juguetes ${mensaje}`;
+        document.querySelector("#tituloH").textContent = `${mensaje}`;
         document.querySelector("#thead").style.background = color;
   
       const clone = productoTop.cloneNode(true);      
@@ -45,14 +45,14 @@ const MandarObj = async (obj,mensaje,color) => {
 
 const Btntop = document.querySelector("#BtnTop");
 Btntop.addEventListener("click",()=>{
-    MandarObj({accion:"1"},"más vendidos","#8BCCFD");
+  MandarObj({accion:"1"},"Los más vendidos de la semana","#8BCCFD");
 });
 
 const Btnbottom = document.querySelector("#bottom");
 Btnbottom.addEventListener("click",()=>{
-    MandarObj({accion:"0"},"menos vendidos","#CBABFF");
+    MandarObj({accion:"0"},"Los menos vendidos de la semana","#CBABFF");
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    MandarObj({accion:"1"},"más vendidos","#8BCCFD");
+    MandarObj({accion:"1"},"Los más vendidos de la semana","#8BCCFD");
   });

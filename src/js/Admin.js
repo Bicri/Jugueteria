@@ -425,6 +425,7 @@ AgregarNuevobtn.addEventListener("click", (e) => {
 });
 
 BotonModalAccion.addEventListener("click", (e) => {
+  document.querySelector("#buscarIDAdmin").focus();
   if (
     nomAdmin == "" ||
     precioAdmin.value <= 0 ||
@@ -544,6 +545,7 @@ ContenedorModal.addEventListener("click", (e) => {
 //ACCION 5 AÑADIR A LISTA
 
 BotonModalLista.addEventListener("click", () => {
+  document.querySelector("#buscarIDAdmin").focus();
   if (cantdeseadaLista.value == "" || cantdeseadaLista.value <= 0) {
     alert("Introduce la cantidad deseada; debe ser diferente de 0");
     return;

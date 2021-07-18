@@ -17,8 +17,8 @@ $first_part = $components[2];
         <div class="admin">
             <a href="./Administracion.php" class="<?php echo ($first_part == "Administracion.php" || $first_part == "ListaCompras.php" || $first_part == "JuguetesTop.php") ? "active" : "" ?>"> ADMINISTRACIÓN </a>
             <div class="submenu">
-                <a href="./ListaCompras.php" class="active2"> ListaCompras </a>
-                <a href="./JuguetesTop.php" class="active2"> JuguetesTop </a>
+                <a href="./ListaCompras.php" class="active2"> Lista de compras </a>
+                <a href="./JuguetesTop.php" class="active2"> Juguetes top </a>
             </div>
         </div>
         <div class="utili">
