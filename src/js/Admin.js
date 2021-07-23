@@ -366,7 +366,7 @@ itemsAdmin.addEventListener("click", (e) => {
     BotonModalLista.dataset.accion = "5";
   }
 
-  if (!e.target.classList.contains("btn")) {
+  if (!e.target.classList.contains("btn1")) {
     return false;
   } else if (e.target.classList.contains("btn-danger") && !flag) {
     alert("contraseña necesaria");
