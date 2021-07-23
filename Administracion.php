@@ -65,10 +65,10 @@
             <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
             <td class="table-light">
                 <!-- <button class="btn btn-success" title="Agregar stock">➕</button> -->
-                <img src="src/img/add.svg" title="Agregar stock" class="btn-success iconos">
-                <img src="src/img/pencil.svg" title="Agregar stock" class="btn-warning iconos">
-                <img src="src/img/delete.svg" title="Agregar stock" class="btn-danger iconos">
-                <img src="src/img/add-list.svg" title="Agregar stock" class="btn-primary iconos">
+                <img src="src/img/add.svg" title="Agregar stock" class="btn1 btn-success iconos">
+                <img src="src/img/pencil.svg" title="Editar producto" class="btn1 btn-warning iconos">
+                <img src="src/img/delete.svg" title="Eliminar producto" class="btn1 btn-danger iconos">
+                <img src="src/img/add-list.svg" title="Agregar a lista de futuras compras" class="btn1 btn-primary iconos">
                 <!-- <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
                 <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
                 <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary"> -->
