@@ -58,16 +58,20 @@
 
     <!-- TEMPLATE PARA CADA PRODUCTO EN LA TABLA-->
     <template id="FilaElementoAdmin">
-        <tr>
-            <td class="table-light" id="idProdTabla">123456789asdf</td>
+        <tr  style="line-height: 50px;">
+            <td class="table-light" id="idProdTabla" >123456789asdf</td>
             <td class="table-light" id="nomProdTabla">PistolaNerf G 240 Naranja 24mm</td>
             <td class="table-light">Disponible <span id="cantidadTablaAdmin">100</span></td>
             <td class="table-light">$<span id="precioTablaAdmin">500.87<span /></td>
             <td class="table-light">
-                <button class="btn btn-success" title="Agregar stock">➕</button>
-                <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
+                <!-- <button class="btn btn-success" title="Agregar stock">➕</button> -->
+                <img src="src/img/add.svg" title="Agregar stock" class="btn-success iconos">
+                <img src="src/img/pencil.svg" title="Agregar stock" class="btn-warning iconos">
+                <img src="src/img/delete.svg" title="Agregar stock" class="btn-danger iconos">
+                <img src="src/img/add-list.svg" title="Agregar stock" class="btn-primary iconos">
+                <!-- <input type="button" value="✏️" title="Editar producto" class="btn btn-warning">
                 <input type="button" value="🗑️" title="Eliminar producto" class="btn btn-danger">
-                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary">
+                <input type="button" value="📑" title="Agregar a lista de compras futuras" class="btn btn-primary"> -->
             </td>
         </tr>
     </template>
