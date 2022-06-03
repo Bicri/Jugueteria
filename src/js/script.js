@@ -1,3 +1,5 @@
+
+const modalCarrito = document.querySelector('#modalCarrito')
 const items = document.querySelector("#items");
 const templateCard = document.querySelector("#template-card").content;
 const ElementosDebajoCart = document.querySelector("#template-footer").content;
@@ -420,7 +422,15 @@ const CancelaAgregaCarrito = async (accion) => {
     }, // data can be `string` or {object}!
   });
   let respuestaUltima = await permisoparaAccion.text();
-  console.log(respuestaUltima);
+  if(respuestaUltima === "0"){
+    modalCarrito.classList.remove('showModal')
+      const toastEl = document.querySelector("#toast");
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+      // console.log(modalCarrito.classList)
+      
+      // console.log(modalCarrito.classList)
+  }
 };
 confirmarCompra.addEventListener("click", () => {
   CancelaAgregaCarrito(1);

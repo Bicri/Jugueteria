@@ -369,9 +369,19 @@ itemsAdmin.addEventListener("click", (e) => {
   if (!e.target.classList.contains("btn1")) {
     return false;
   } else if (e.target.classList.contains("btn-danger") && !flag) {
-    alert("contraseña necesaria");
+      if(passwordAdmin.value.length===0)
+      {
+        alert("Ingresa contraseña");
+      }else{
+        alert("Contraseña incorrecta")
+      }
   } else if (e.target.classList.contains("btn-warning") && !flag) {
-    alert("contraseña necesaria");
+    if(passwordAdmin.value.length===0)
+    {
+      alert("Ingresa contraseña");
+    }else{
+      alert("Contraseña incorrecta")
+    }
   }
 });
 

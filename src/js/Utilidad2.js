@@ -121,48 +121,53 @@ BtnFechas.addEventListener("click", () => {
     alert("Por favor escoge una fecha de inicio y una de fin de periodo");
     return false;
   } else {
-    fechaI = fechaInicio.value.split("-");
-    fechaF = fechaFin.value.split("-");
-    anioI = parseInt(fechaI[0]);
-    mesI = parseInt(fechaI[1]);
-    diaI = parseInt(fechaI[2]);
-    anioF = parseInt(fechaF[0]);
-    mesF = parseInt(fechaF[1]);
-    diaF = parseInt(fechaF[2]);
-    objPeriodo;
-    MandarAccionYObj2({
-      accion: "1",
-      anioI: anioI,
-      mesI: mesI,
-      diaI: diaI,
-      anioF: anioF,
-      mesF: mesF,
-      diaF: diaF,
-    })
-      .then((resp) => {
-        return resp.json();
+    if(fechaInicio.value>fechaFin.value){
+        alert("La fecha de inicio no puede ser mayor a la fecha fin")
+    }else
+    {
+      fechaI = fechaInicio.value.split("-");
+      fechaF = fechaFin.value.split("-");
+      anioI = parseInt(fechaI[0]);
+      mesI = parseInt(fechaI[1]);
+      diaI = parseInt(fechaI[2]);
+      anioF = parseInt(fechaF[0]);
+      mesF = parseInt(fechaF[1]);
+      diaF = parseInt(fechaF[2]);
+      objPeriodo;
+      MandarAccionYObj2({
+        accion: "1",
+        anioI: anioI,
+        mesI: mesI,
+        diaI: diaI,
+        anioF: anioF,
+        mesF: mesF,
+        diaF: diaF,
       })
-      .then((response) => {
-        lblIngresos.textContent = response.Ingresos;
-        lblCIndirectos.textContent = response.Costos;
-        lblCDirectos.textContent = response.Indirecto;
-        if (response.Utilidad < 0) {
-          tituloUtilidad.textContent = "Perdida";
-          tituloUtilidad.style.color = "red";
-        } else {
-          tituloUtilidad.style.color = "green";
-          tituloUtilidad.textContent = "Utilidad";
-        }
-        utilidad.textContent = response.Utilidad;
-        almacen.textContent = response.Almacen;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-
-    //{"accion":"1","anioI":"2021","mesI":"06","diaI":"20","anioF":"2021","mesF":"07","diaF":"03"}
+        .then((resp) => {
+          return resp.json();
+        })
+        .then((response) => {
+          lblIngresos.textContent = response.Ingresos;
+          lblCIndirectos.textContent = response.Costos;
+          lblCDirectos.textContent = response.Indirecto;
+          if (response.Utilidad < 0) {
+            tituloUtilidad.textContent = "Perdida";
+            tituloUtilidad.style.color = "red";
+          } else {
+            tituloUtilidad.style.color = "green";
+            tituloUtilidad.textContent = "Utilidad";
+          }
+          utilidad.textContent = response.Utilidad;
+          almacen.textContent = response.Almacen;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+  
+      //{"accion":"1","anioI":"2021","mesI":"06","diaI":"20","anioF":"2021","mesF":"07","diaF":"03"}
+    }
+    
   }
-  console.log();
   console.log(fechaF);
 });
 
