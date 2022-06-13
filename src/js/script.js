@@ -413,6 +413,7 @@ const pintarFooter = () => {
 };
 
 const CancelaAgregaCarrito = async (accion) => {
+  console.log('accion = ',accion);
   let objCancelarCarrito = { Total: accion }; //0 para eliminar carrito
   let permisoparaAccion = await fetch("Controlador/CancelaAgregaCarrito.php", {
     method: "POST", // or 'PUT'
@@ -422,8 +423,10 @@ const CancelaAgregaCarrito = async (accion) => {
     }, // data can be `string` or {object}!
   });
   let respuestaUltima = await permisoparaAccion.text();
-  if(respuestaUltima === "0"){
-    modalCarrito.classList.remove('showModal')
+  if(respuestaUltima === "0" && accion===1){
+    contenidoModal.classList.toggle("show");
+    fondoAdd.classList.toggle("showModal");
+
       const toastEl = document.querySelector("#toast");
       const toast = new bootstrap.Toast(toastEl);
       toast.show();
