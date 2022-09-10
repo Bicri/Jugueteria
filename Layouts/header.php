@@ -27,7 +27,7 @@ $first_part = $components[2];
                 <a href="./Utilidad2.php" class="active2"> Por periodo </a>                
             </div>
         </div>
-        <a href="./Alertas.php" class="<?php echo ($first_part == "Alertas.php") ? "active" : "" ?>"> ALERTAS</a>
+        <a href="./Alertas.php" class="<?php echo ($first_part == "Alertas.php") ? "active" : "" ?>"> EXISTENCIAS</a>
         <a href="" id="gastos"> GASTOS</a>
     </div>
 </nav>

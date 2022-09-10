@@ -31,12 +31,12 @@
                     <form style="margin-top:20px; flex-direction: column;" class="justialignCenter">
                         <div class="form-group">
                             <label for="nomLista">NOMBRE</label>
-                            <input type="text" class="form-control" id="nomLista" aria-describedby="emailHelp" placeholder="Nombre del producto">
+                            <input type="text" class="form-control" id="nomLista" aria-describedby="emailHelp" placeholder="Nombre del producto" maxlength="30">
                             <small id="emailHelp" class="form-text text-muted"></small>
                         </div>
                         <div class="form-group">
                             <label for="cantLista">Cantidad</label>
-                            <input type="text" class="form-control" id="cantLista" placeholder="Cantidad deseada">
+                            <input type="text" class="form-control" id="cantLista" placeholder="Cantidad deseada" maxlength="6">
                         </div>
                         <button type="submit" class="btn btn-primary" id="BtnAgregar">Agregar</button>
                     </form>

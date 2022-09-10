@@ -123,7 +123,7 @@
                 </form>
 
             </div>
-            <input type="button" id="BotonModalAccion" value="Agregar" class="btn btn-success" style="margin:0;" target="_blank">
+            <input type="button" id="BotonModalAccion" value="Guardar" class="btn btn-success" style="margin:0;" target="_blank">
         </div>
     </div>
 

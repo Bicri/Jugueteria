@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jugueteria</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo="> <!-- linea para quitar error favicon.i -->
   <link rel="stylesheet" href="src/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="src/css/estilos.css">
@@ -156,7 +157,7 @@
         </div>
         <div>
           <label>Precio de venta final</label><br>
-          <input type="text" name="inputPrecio" id="inputPrecio" class="inputText"><br><br>
+          <input type="text" name="inputPrecio" id="inputPrecio" class="inputText" maxlength="6"><br><br>
           <div style="display:flex; justify-content:center; align-items: center;">
             <input type="button" value="Añadir" class="btn btn-success" id="AñadirCompra">
           </div>
@@ -174,8 +175,20 @@
   
   <?php include_once("Layouts/modalGastos.php"); ?>
 
+          <div class="position-fixed bottom-0 end-0 p-3" style="z-index:10;">
+            <div id="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Ventas</strong>
+                    
+                    <button type="button" data-bs-dismiss="toast" aria-label="Cerrar notificación" class="btn-close"></button>
+                </div>
+                <div class="toast-body">
+                    Venta realizada con éxito
+                </div>
+            </div>
+          </div>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="src/js/modales.js"></script>
   <script src="src/js/script.js"></script>
   <script src="src/js/gastos.js"></script> 

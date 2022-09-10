@@ -1,3 +1,5 @@
+
+const modalCarrito = document.querySelector('#modalCarrito')
 const items = document.querySelector("#items");
 const templateCard = document.querySelector("#template-card").content;
 const ElementosDebajoCart = document.querySelector("#template-footer").content;
@@ -411,6 +413,7 @@ const pintarFooter = () => {
 };
 
 const CancelaAgregaCarrito = async (accion) => {
+  console.log('accion = ',accion);
   let objCancelarCarrito = { Total: accion }; //0 para eliminar carrito
   let permisoparaAccion = await fetch("Controlador/CancelaAgregaCarrito.php", {
     method: "POST", // or 'PUT'
@@ -420,7 +423,17 @@ const CancelaAgregaCarrito = async (accion) => {
     }, // data can be `string` or {object}!
   });
   let respuestaUltima = await permisoparaAccion.text();
-  console.log(respuestaUltima);
+  if(respuestaUltima === "0" && accion===1){
+    contenidoModal.classList.toggle("show");
+    fondoAdd.classList.toggle("showModal");
+
+      const toastEl = document.querySelector("#toast");
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+      // console.log(modalCarrito.classList)
+      
+      // console.log(modalCarrito.classList)
+  }
 };
 confirmarCompra.addEventListener("click", () => {
   CancelaAgregaCarrito(1);

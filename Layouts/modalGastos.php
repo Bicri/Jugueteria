@@ -13,15 +13,15 @@
                     <br>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Vigilancia</label>
-                        <input type="text" class="form-control" id="vigilanciaInput" placeholder="Introduce el gasto">
+                        <input type="text" class="form-control" id="vigilanciaInput" placeholder="Introduce el gasto" maxlength="6">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Comida</label>
-                        <input type="text" class="form-control" id="comidanput" placeholder="Introduce el gasto">
+                        <input type="text" class="form-control" id="comidanput" placeholder="Introduce el gasto" maxlength="6">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Otros</label>
-                        <input type="text" class="form-control" id="otrosInput" placeholder="Introduce el gasto">
+                        <input type="text" class="form-control" id="otrosInput" placeholder="Introduce el gasto" maxlength="6">
                     </div>
                 </form>
             </div>

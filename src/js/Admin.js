@@ -246,6 +246,7 @@ itemsAdmin.addEventListener("click", (e) => {
     resetB();
     IDlHelp.textContent = "";
     toggleModal("AÑADIR STOCK A PRODUCTO");
+    BotonModalAccion.value = "Guardar";
     BotonModalAccion.dataset.accion = "2";
     //console.log(elementoProducto.querySelector("#idProdTabla").textContent);
     //todos menos cantidad y precio
@@ -266,6 +267,7 @@ itemsAdmin.addEventListener("click", (e) => {
     resetA4();
     auxiliar = false;
     toggleModal("EDITAR PRODUCTO");
+    BotonModalAccion.value = "Guardar Cambios";
     BotonModalAccion.dataset.accion = "3";
     idViejolet = elementoProducto.querySelector("#idProdTabla").textContent;
     console.log(BotonModalAccion.dataset.accion);
@@ -369,12 +371,22 @@ itemsAdmin.addEventListener("click", (e) => {
   if (!e.target.classList.contains("btn1")) {
     return false;
   } else if (e.target.classList.contains("btn-danger") && !flag) {
-    alert("contraseña necesaria");
+      if(passwordAdmin.value.length===0)
+      {
+        alert("Ingresa contraseña");
+      }else{
+        alert("Contraseña incorrecta")
+      }
   } else if (e.target.classList.contains("btn-warning") && !flag) {
-    alert("contraseña necesaria");
+    if(passwordAdmin.value.length===0)
+    {
+      alert("Ingresa contraseña");
+    }else{
+      alert("Contraseña incorrecta")
+    }
   }
 });
-
+ 
 /* ---------------------------------------------------------- */
 /* ---------------------------------------------------------- */
 /* FUNCIÓN UNIVERSAL PARA MANDAR LOS OBJETOS DEL FORMULARIO */
@@ -420,6 +432,7 @@ AgregarNuevobtn.addEventListener("click", (e) => {
   /* IDlHelp.textContent =
     "**Puede dejar en blanco este campo y el sistema asignará un ID"; */
   toggleModal("AÑADIR NUEVO PRODUCTO");
+  BotonModalAccion.value = "Guardar";
   resetA1();
   resetB();
 });
@@ -436,6 +449,11 @@ BotonModalAccion.addEventListener("click", (e) => {
     cantAdmin == ""
   ) {
     alert("Error en los datos introducidos; deben ser diferentes de 0");
+    return;
+  }
+
+  if(parseFloat(costoAdmin.value) > parseFloat(precioAdmin.value)){
+    alert("El precio de venta sugerido es menor al costo del producto");
     return;
   }
   let objAñadirNuevo = {};
